@@ -67,16 +67,16 @@ Decisions made in the Basic Design (Chapter 11, "Development Base"):
 
 ## Documents
 
-All documents are Word files under `docs/`, one folder per language. The Japanese original prevails where translations differ.
+All documents live under `docs/`, one folder per language, in two formats with the same name: Markdown (readable in the browser) and Word. The Japanese original prevails where translations differ.
 
 | | 日本語 | English | 中文 |
 |---|---|---|---|
-| Draft Project Proposal | [企画草案](docs/jp/コスプレ写真の無断転載対策ツール%20企画草案.docx) | [Draft Project Proposal](docs/en/Anti-Repost%20Tool%20for%20Cosplay%20Photos%20-%20Draft%20Project%20Proposal.docx) | [企划草案](docs/cn/Cosplay照片防盗图工具%20企划草案.docx) |
-| Design Plan (Edition 2) | [設計計画書](docs/jp/設計計画書.docx) | [Design Plan](docs/en/Anti-Repost%20Tool%20for%20Cosplay%20Photos%20-%20Design%20Plan.docx) | [设计计划书](docs/cn/Cosplay照片防盗图工具%20设计计划书.docx) |
-| Outline Design | [00 概要設計書](docs/jp/design/00_概要設計書.docx) | [00 Outline Design](docs/en/design/00_Outline%20Design.docx) | [00 概要设计书](docs/cn/design/00_概要设计书.docx) |
+| Draft Project Proposal | [企画草案](docs/jp/コスプレ写真の無断転載対策ツール%20企画草案.md) ([Word](docs/jp/コスプレ写真の無断転載対策ツール%20企画草案.docx)) | [Draft Project Proposal](docs/en/Anti-Repost%20Tool%20for%20Cosplay%20Photos%20-%20Draft%20Project%20Proposal.md) ([Word](docs/en/Anti-Repost%20Tool%20for%20Cosplay%20Photos%20-%20Draft%20Project%20Proposal.docx)) | [企划草案](docs/cn/Cosplay照片防盗图工具%20企划草案.md) ([Word](docs/cn/Cosplay照片防盗图工具%20企划草案.docx)) |
+| Design Plan (Edition 2) | [設計計画書](docs/jp/設計計画書.md) ([Word](docs/jp/設計計画書.docx)) | [Design Plan](docs/en/Anti-Repost%20Tool%20for%20Cosplay%20Photos%20-%20Design%20Plan.md) ([Word](docs/en/Anti-Repost%20Tool%20for%20Cosplay%20Photos%20-%20Design%20Plan.docx)) | [设计计划书](docs/cn/Cosplay照片防盗图工具%20设计计划书.md) ([Word](docs/cn/Cosplay照片防盗图工具%20设计计划书.docx)) |
+| Outline Design | [00 概要設計書](docs/jp/design/00_概要設計書.md) ([Word](docs/jp/design/00_概要設計書.docx)) | [00 Outline Design](docs/en/design/00_Outline%20Design.md) ([Word](docs/en/design/00_Outline%20Design.docx)) | [00 概要设计书](docs/cn/design/00_概要设计书.md) ([Word](docs/cn/design/00_概要设计书.docx)) |
 | Basic Design, Chapters 1 to 13 | [docs/jp/design](docs/jp/design) | [docs/en/design](docs/en/design) | [docs/cn/design](docs/cn/design) |
-| Research Materials | [90 調査資料](docs/jp/design/90_調査資料.docx) | [90 Research Materials](docs/en/design/90_Research%20Materials.docx) | [90 调查资料](docs/cn/design/90_调查资料.docx) |
-| Legal Research | [法務調査](docs/jp/legal/法務調査.docx) | [Legal Research](docs/en/legal/Legal%20Research.docx) | [法务调查](docs/cn/legal/法务调查.docx) |
+| Research Materials | [90 調査資料](docs/jp/design/90_調査資料.md) ([Word](docs/jp/design/90_調査資料.docx)) | [90 Research Materials](docs/en/design/90_Research%20Materials.md) ([Word](docs/en/design/90_Research%20Materials.docx)) | [90 调查资料](docs/cn/design/90_调查资料.md) ([Word](docs/cn/design/90_调查资料.docx)) |
+| Legal Research | [法務調査](docs/jp/legal/法務調査.md) ([Word](docs/jp/legal/法務調査.docx)) | [Legal Research](docs/en/legal/Legal%20Research.md) ([Word](docs/en/legal/Legal%20Research.docx)) | [法务调查](docs/cn/legal/法务调查.md) ([Word](docs/cn/legal/法务调查.docx)) |
 
 ### Basic Design chapters
 
