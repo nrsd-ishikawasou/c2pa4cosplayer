@@ -11,13 +11,10 @@ Word version: [12_Basic Design_Interface with Legal.docx](12_Basic%20Design_Inte
 ## Position of This Document
 
 - Details Chapter 12 of the Outline Design Document. It is designed together with Chapter 10 (screens) (Chapters 10 and 12 depend on each other).
-- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
+- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown). The texts of the Design Plan's decisions, items to be investigated, and open items are per Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” and the destination table of the Outline Design Document (not reproduced in this chapter; only the numbers and the omissions found in the item breakdown are listed).
 
 |Number|Type|Content|
 |---|---|---|
-|I-06|To Be Investigated|Differences in rights by country|
-|I-08|To Be Investigated|Wording of Rights Documents|
-|O-03|Open (a proposal is placed in Basic Design Chapter 5, 3.5 “Legal position (handled in legal)”; adoption depends on confirmation by experts)|Approach to governing law|
 |A-14|Omission found in the item breakdown|NRSD's position and the Terms of Use|
 |A-16|Omission found in the item breakdown|Unauthorized practice of law (handled by Legal)|
 |A-17|Omission found in the item breakdown|Cross-border data transfer (the premise disappeared with Edition 2, in which NRSD receives no User information)|
@@ -35,7 +32,7 @@ Word version: [12_Basic Design_Interface with Legal.docx](12_Basic%20Design_Inte
 
 |Number|Decision|Reason|Rejected alternatives|
 |---|---|---|---|
-|DD-12-1|Interpretations and sources of law are placed only in the items of the Legal Research, and the design documents refer to them by item number and name. When the Legal Research is revised, the sections of the referring chapters (the “point where covered” in the table of 2) are reviewed (8)|Writing the same interpretation in several documents leads to inconsistencies. Laws are amended (R-7-3-1“References to each country's laws are accumulated in an “all countries” frame and delivered to Users”)|Writing summaries of provisions in each chapter|
+|DD-12-1|Interpretations and sources of law are placed only in the items of the Legal Research, and the design documents refer to them by item number and name. When the Legal Research is revised, the sections of the referring chapters (the “point where covered” in the table of 2) are reviewed (8)|Writing the same interpretation in several documents leads to inconsistencies. Laws are amended (R-7-3-1)|Writing summaries of provisions in each chapter|
 |DD-12-2|The Terms of Use and Privacy Policy, as standard terms, are shown in full on the first-run screen (G-02“Consent”), and the consent operation is recorded on the device. The full text can always be read in G-23“About This App” and on the public page. Changes set an effective date and are announced on the public page and in the app's notifications at least 30 days (initial value) before the effective date (4.3)|The requirements of display, consent, and announcement of changes for making the Terms of Use and Privacy Policy part of the contract follow the arrangement of Legal Research L-25“Terms of Use (standard terms) and disclaimers (Japan)”|Deeming consent by merely starting the app for the first time (whether the display requirement is met could be disputed)|
 |DD-12-3|If the User does not agree to the Terms of Use, or does not re-agree to changes, what is stopped is only obtaining reference information, which is NRSD's service (the bundled package can be used). C2PA signing, editing, export, registration, verification, viewing and extracting records, creating backups, and updates are not stopped. Users who have not agreed are shown entrances where they can agree at any time (G-20“Settings” and G-21“Notifications”)|The System's software is published under Apache-2.0 and is completed within the device. No consent is needed to run software (GPLv3 Section 9, the idea of criterion 10 of the Open Source Definition), and stopping functions completed within the device by consent would have no effect because modified versions could remove it. Similar public desktop software (GIMP, Krita, darktable, Inkscape, Joplin, Audacity) does not stop functions by consent. Joplin requires no terms for the app and applies terms only to Joplin Cloud (the publisher's online service). Firefox's terms also cover the executable, but in a form that deems use as consent, and it does not stop functions for not agreeing. No precedent was found of stopping functions completed within the device by consent (research of 2026-09-30). Stopping updates would prevent Users who have not agreed from receiving vulnerability fixes. Making records unextractable would hold Users' evidence hostage|Making the app entirely unusable without consent (terms of VOICEVOX and the like impose obligations on Users (prohibiting redistribution, attribution), while this case imposes no obligations on Users). Also stopping new creation of C2PA signatures and registrations (second draft; a gate not in the Design Plan, creating an operator-side restriction from legal research)|
 |DD-12-4|Disclaimer clauses do not exempt all liability. Clauses exempting part of it are written to make clear that they apply only to slight negligence, “except in cases of NRSD's intent or gross negligence” (4.2)|The limits of the effect of disclaimer clauses (restrictions that apply to consumer Users even when provided free of charge) follow the arrangement of Legal Research L-25“Terms of Use (standard terms) and disclaimers (Japan)”|“Bears no liability whatsoever” (void). Relying only on the no-warranty clause of the software license (may be void against consumers)|
@@ -88,7 +85,7 @@ Word version: [12_Basic Design_Interface with Legal.docx](12_Basic%20Design_Inte
 |Matter|Country|Summary given|What is shown as a caution|Basis|
 |---|---|---|---|---|
 |Registration of the date of first publication, etc.|JP|The work is presumed to have been first published on the registered date. Registration tax JPY 3,000 per registration|—|L-22“Copyright registration (Japan)”|
-|Registration of the real name|JP|The registrant is presumed to be the author. Registration tax JPY 9,000 per registration|The real name goes into the public register and can be searched. Users whose policy is not to reveal their real name should first consider registration of the date of first publication, etc.|L-22“Copyright registration (Japan)”, R-2-5-2“Real names are not unintentionally made public in signatures or on screen”|
+|Registration of the real name|JP|The registrant is presumed to be the author. Registration tax JPY 9,000 per registration|The real name goes into the public register and can be searched. Users whose policy is not to reveal their real name should first consider registration of the date of first publication, etc.|L-22“Copyright registration (Japan)”, R-2-5-2|
 |Work registration|CN|It serves as preliminary evidence of the ownership of rights. For foreign authors, it is under the jurisdiction of the National Copyright Administration|How the name is written on the registration certificate|L-23“Work registration (China)”|
 |Copyright registration|US|Works from outside the United States do not require registration to sue. Statutory damages require timely registration. Published photos: up to 750 from the same year for USD 55 per registration|There are court decisions holding that claims for removal of rights management information (Section 1202) do not require registration|Legal Research, Section 3 “Declarations and Registrations by Users (Whether Required)”|
 
@@ -171,12 +168,17 @@ Word version: [12_Basic Design_Interface with Legal.docx](12_Basic%20Design_Inte
 
 |Destination|Information sent|When|User information visible to the other party|
 |---|---|---|---|
-|Public Repository (GitHub, United States)|Requests to obtain updates and reference information|At start and every 24 hours while running (Chapter 9, 4 “Updates”)|IP address (the request header is the update component's name and version; the app version is not sent; Chapter 9, 4.1 “Flow and states”)|
+|Public Repository (GitHub, United States)|Requests to obtain updates and reference information|At start and every 24 hours while running (Chapter 9, 4 “Updates”)|IP address. The request header (User-Agent) is the System's name and version when obtaining reference information and TUF metadata (Chapter 1, 4.2 “Communication with the outside”), and the update component's name and version when obtaining update components (Chapter 9, 4.1 “Flow and states”)|
 |Hong Kong mirror (Alibaba Cloud)|Same|When the Public Repository cannot be reached|Same|
 |Timestamp providers|Hashes of photos or of evidence lists (photos themselves are not sent)|At export, at repost registration, when connecting after being offline|IP address (and, for paid TSAs set up by the User, the User's account)|
 |RDAP, DNS|Domain names and IP addresses being looked up|At repost registration|IP address|
 |Reposted pages|Requests to fetch the page|At registration (default; the User can turn it off for that registration only) and only when the User presses “Check current status”|IP address. Visible to the operator of the other site|
 |E-mail software|Feedback text|Only when the User decides to send|The whole e-mail the User sends|
+|The User's Cloud sync folder (when the User chose it as a backup location; carried by the OS's sync mechanism)|Backup files encrypted with the passphrase and the recovery key, the reference information package (Chapter 8, 5.5)|At every automatic backup|To the Cloud provider: the User's account and the encrypted files (the contents cannot be read)|
+|The User's own other device (the same personal root; Chapter 1, 4.2)|Record rows, evidence and asset files, templates, work sessions, device-independent settings, the reference information package (encrypted end to end; Chapter 8, 5.4)|Automatically while running, after linking in “Devices”|IP address and device number (between the User's own devices)|
+|The device of a “verified” counterparty (Chapter 2, 5.5)|Authorizations, revocations, joint-rights documents, renewal documents, the reference information package (encrypted end to end)|Automatically while running, after marking the counterparty “verified”|IP address and device number. The User's records are not sent|
+|Relays for direct connections (public infrastructure; iroh's relays)|End-to-end encrypted contents (the relay cannot read them)|When another device or counterparty cannot be reached directly. Can be turned off in settings (G-20“Settings”)|IP address and a random device number (not linked to the notice code)|
+|The public DHT (pkarr)|A record of the User's own device number, signed with a key derived from the passphrase (expiry 10 minutes)|Only when connecting to a counterparty or device by passphrase (Chapter 8, 5.4)|IP address and a random device number|
 
 - The destination providers handle IP addresses under their own privacy policies. NRSD does not receive Users' information from the destination providers.
 
@@ -230,18 +232,15 @@ Word version: [12_Basic Design_Interface with Legal.docx](12_Basic%20Design_Inte
 
 ## 9. Mapping to Requirements
 
-|Requirement number|Requirement|Sections in this chapter|
-|---|---|---|
-|R-12-1-1|The laws covered are listed along the three axes of area of law, country, and point in the System, and each row links to the legal documents|2 “List of Laws Covered”|
-|R-12-1-2|Whether declarations and registrations by Users are required is determined|3 “Declarations and Registrations by Users”|
-|R-12-1-3|What is returned to the screens (consent, disclaimers, rights of the original works, passing on personal information) is handed to Chapter 10|6 “What Is Returned to the Screens”|
+|Requirement number (text in the Outline Design Document)|Sections in this chapter|
+|---|---|
+|R-12-1-1|2 “List of Laws Covered”|
+|R-12-1-2|3 “Declarations and Registrations by Users”|
+|R-12-1-3|6 “What Is Returned to the Screens”|
 
 ## 10. Gaps Declared in This Chapter
 
-- Each country's laws are amended. The Legal Research is reviewed quarterly (8), but amendments in between are reflected late.
-- For the issues of 7, the design does not guarantee that legal requirements are met. They are left to operational decisions.
-- Announcements of changes to the Terms of Use do not reach the apps of Users who keep using it offline (4.3). Whether announcement on the public page suffices requires confirmation by experts.
-- The texts of the Terms of Use and Privacy Policy are before review by experts, and 4.2 is a draft.
+- The gaps of this chapter follow the table in Chapter 13, 4.1 “Gaps in the mechanism” (the rows whose chapter column is this chapter; with why they cannot be closed, the extent addressed, the remaining risks, and who bears them) (not reproduced in this chapter).
 
 ## 11. Corrections to Other Chapters and the Outline Design Document
 

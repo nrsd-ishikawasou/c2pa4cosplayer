@@ -81,31 +81,7 @@ How each chapter is written:
 
 ## 1. Overall Architecture
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-2-1|Decision|What the System protects shall be the rights (copyright and portrait rights) that the Rights Holders have in their own photographs|
-|D-2-2|Decision|The scope of the System shall be the application of licenses|
-|D-2-3|Decision|The greatest value of the System shall be deterrence|
-|D-2-4|Decision|Automated detection shall be a separate design plan|
-|D-2-5|Decision|Sales management is not handled. Anyone who needs it shall fork and modify the System, and NRSD shall not be concerned with the results|
-|D-2-6|Decision|Representation in legal proceedings and legal judgment are not performed|
-|D-3-2|Decision|Viewers and operators are not defined within the System|
-|D-3-3|Decision|Users shall be able to use the System without looking at GitHub|
-|D-5-1|Decision|The System does not verify Users and does not collect User information. It requires no registration to use the System|
-|D-5-5|Decision|The System provides the means of matching but does not perform matching on anyone's behalf|
-|D-6-1|Decision|The Client App shall be a desktop application running on Windows, macOS, and Linux|
-|D-6-2|Decision|The System shall not be built as a website|
-|D-12-1|Decision|A Public Repository is set up. No private repository is set up|
-|D-12-3|Decision|Rights Holder Information, signing keys, work data, ledgers, and evidence are kept on the User's device, and NRSD does not collect them|
-|D-13-1|Decision|Phase 2 shall be a separate design plan|
-|D-13-3|Decision|Registration of contact details for notifying authors is handled in the design plan for Phase 2|
-|A-6|Omission found in the item breakdown|Preparation against fake apps|
-|A-9|Omission found in the item breakdown|Costs, and GitHub capacity limits|
-|A-10|Omission found in the item breakdown|Mapping from Design Plan decisions to the design|
-|A-14|Omission found in the item breakdown|NRSD's position and the Terms of Use|
-|A-17|Omission found in the item breakdown|Cross-border data transfer (the premise disappeared with Edition 2, in which NRSD receives no User information)|
+Decisions received: per the table at the head of Basic Design Chapter 1 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: the system boundary, responsibilities of components, where data resides and how it flows, common policies, operator functions, and chapter dependencies.
 
@@ -156,18 +132,9 @@ What to settle in the basic design
 
 - Data schemas, identifier formats, values of retention periods, performance figures, and the form of the operator functions.
 
-Decisions in the basic design (summary)
-
-- The components are the Client App (including data on the User's device), the Public Repository, the Hong Kong mirror, the operator tool, and NRSD's keys (used for signing updates and reference information) (Basic Design Chapter 1, 4.1 “Components”).
-- The identification number is a 61-bit value issued once per work, and is the same value as the matching number and work number of the Draft Project Proposal (Basic Design Chapter 1, 8.2 “Identifier scheme”).
-- The screen handles only display and input; rendering, image processing, files, networking, and key operations are done in the Rust core (Basic Design Chapter 1, DD-1-8“The screen handles only display and input; processing happens in the Rust core”).
-- All records are written to a temporary file and swapped in after being written fully (ibid., DD-1-9“Records are written fully to a temporary file and then swapped in”). Data is kept in a location that is not synchronized (on Windows, Local AppData) (ibid., DD-1-10“Data is kept in a per-user location that is not synchronized”). Only one instance runs per machine (ibid., DD-1-11“Only one instance of the app runs per machine”).
-- Threats were identified per element using the six STRIDE categories, giving 23 threats from T-1“Posing as the Rights Holder to C2PA-sign first or replace the C2PA signature” to T-23“Rewriting the public page's “Check notice code” page to show a fake notice code” (ibid., 11.2).
+Decisions in the basic design: per Basic Design Chapter 1, 1 “List of Design Decisions” (not reproduced in this document).
 
 Dependencies
-
-- Depends on: none (common premise)
-- Depended on by: all chapters, Chapter 13 “Design Verification”
 
 Chapter dependency table and order (R-1-9-3“There is a chapter dependency table and an order for entering the basic design (below)”)
 
@@ -193,23 +160,7 @@ To Legal: NRSD's position, Terms of Use, and Privacy Policy.
 
 ## 2. Signing Information and Matching
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-3-1|Decision|Users shall be the Rights Holders of images (cosplayers and photographers) and those authorized by either of them|
-|D-3-6|Decision|It is assumed that persons posing as the Rights Holder cannot be excluded, and the handling of matching is set out in Chapter 5|
-|D-5-1|Decision|The System does not verify Users and does not collect User information. It requires no registration to use the System|
-|D-5-2|Decision|The certificate for C2PA signatures is created within the Client App from the information entered by the User. No certificate authority is required|
-|D-5-3|Decision|Acts by persons posing as the Rights Holder (prior signing, replacement of signatures, and counter-complaints) are treated as not preventable, and clues for matching are presented. No judgment is made|
-|D-5-4|Decision|Identity and Entitlement are handled separately|
-|D-5-5|Decision|The System provides the means of matching but does not perform matching on anyone's behalf|
-|I-01|To Be Investigated|C2PA signing certificates|
-|I-02|To Be Investigated|Matching of Notice accounts and signing keys|
-|O-01|Open (decided in Basic Design Chapter 2, 4 “The Means of Matching and the Clues”)|How to present matching clues|
-|A-4|Omission found in the item breakdown|Correcting wrong Registrations and relieving the impersonated true Rights Holder|
-|A-7|Omission found in the item breakdown|Handling of User identity-verification information (the premise disappeared with Edition 2, which dropped identity verification)|
-|A-15|Omission found in the item breakdown|Risk of real names appearing in C2PA signatures|
+Decisions received: per the table at the head of Basic Design Chapter 2 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: how the information used for C2PA signatures is created, the matching clues when someone posing as the Rights Holder appears, and the handling of Rights Holder Information and signing keys.
 
@@ -248,39 +199,15 @@ What to settle in the basic design
 
 - How certificates are made and their contents, the matching procedure and how clues are presented, the key storage method, and the flow of the input screens.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 2, 1 “List of Design Decisions” (not reproduced in this document).
 
-- The character set of notice codes and identification numbers is Crockford Base32 (Basic Design Chapter 2, DD-2-7“Notice codes and identification numbers use Crockford Base32”). Characters that change the direction of handle names are not accepted (ibid., DD-2-8“Handle names are normalized; direction-changing characters are rejected”).
-- The personal root is valid for 40 years; C2PA signing is stopped for a personal root more than 20 years old, and remaking it is required. The signing certificate expires together with the personal root. Every image is shown valid by general validators for at least 20 years from signing. Personal roots from before remaking are kept on the device and used to check old outputs and old notice codes (Basic Design Chapter 2, DD-2-11“Certificate validity is long enough that every image is shown valid for 20 years from signing”, 3.6 “Past personal roots”).
-- On Windows the key is stored in Credential Manager with “This PC” persistence; on Linux without Secret Service, in a key file encrypted with a passphrase. Hardware keys are not used (ibid., DD-2-5“Signing keys are kept in the OS keystore; moving uses the backup file”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 8 “Repository and Data Management” (mutually dependent; one with the device data), Chapter 10 “Screens and Design” (mutually dependent), Chapter 12 “Interface with Legal” (mutually dependent)
-- Depended on by: Chapter 3 “Signing”, Chapter 5 “Rights Documents”, Chapter 6 “Registration and Evidence Preservation”, Chapter 8 “Repository and Data Management”, Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: none (User information is not collected).
 
 ## 3. Signing
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-7-1|Decision|A C2PA signature is attached to every image output|
-|D-7-2|Decision|The three layers of Section 4 of the Draft Project Proposal (C2PA signature, invisible watermark, and matching hashes) are carried over|
-|D-7-3|Decision|Two streams are set up: ① delivery and ② social media|
-|D-7-4|Decision|Matching Data is attached to Delivery Images and an Enclosed Document is enclosed|
-|D-7-5|Decision|A Visible Signature in the design chosen by the Rights Holder is added to Social Media Images|
-|D-7-6|Decision|Loss of a signature is treated as something that can be judged to be intentional removal by the receiving party|
-|D-7-7|Decision|The identification number is issued by the Client App and recorded automatically in the C2PA manifest. Whether it is appended to the file name is chosen by the User when saving|
-|I-03|To Be Investigated|Retention of C2PA signatures on posting sites and Cloud|
-|O-08|Open (decided in Design Plan Edition 2 as D-7-7“Identification numbers are issued by the Client App and recorded automatically in the C2PA manifest. Whether they are appended to file names is chosen by the User when saving”)|Issuer of identification numbers|
-|O-10|Open (decided in Basic Design Chapter 3, 7.2 “Work data fields (decision on O-10“Recording format of work data”)”)|Recording format of work data|
-|O-11|Open (decided in Basic Design Chapter 3, DD-3-6“Visible Signatures on Delivery Images are decided per template”)|Visible Signatures on Delivery Images|
-|A-3|Omission found in the item breakdown|Checking whether C2PA signatures survive on Cloud|
-|A-8|Omission found in the item breakdown|Removal of shooting information (location, etc.)|
-|A-15|Omission found in the item breakdown|Risk of real names appearing in C2PA signatures|
+Decisions received: per the table at the head of Basic Design Chapter 3 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: which information is attached to images, in what order, and how.
 
@@ -327,34 +254,15 @@ What to settle in the basic design
 
 - The concrete items of the manifest, the TSA, watermark parameters, number formats, where work data is recorded, and the differences between the two streams.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 3, 1 “List of Design Decisions” (not reproduced in this document).
 
-- Supported formats are JPEG, PNG, TIFF, and WebP. For RAW, HEIC, etc., only the file fingerprint is recorded (Basic Design Chapter 11, DD-11-5“Image reading and writing use the image crate”).
-- “Processing that does not change the appearance” in requirement R-3-4-2“The relationship with “processing that does not change the appearance” in Figure 3 is sorted out” is read as “processing that makes no visible change” (Basic Design Chapter 3).
-- O-08“Issuer of identification numbers” was decided in Design Plan Edition 2 as D-7-7“Identification numbers are issued by the Client App and recorded automatically in the C2PA manifest. Whether they are appended to file names is chosen by the User when saving” (the Client App issues identification numbers). Basic Design Chapter 3, 7.1 “Identification number” makes it the same value as the matching number and work number of the Draft Project Proposal. O-10“Recording format of work data” and O-11“Visible Signatures on Delivery Images” were resolved in Basic Design Chapter 3 “Signing” (O-11“Visible Signatures on Delivery Images”: the Visible Signature on Delivery Images is decided per template).
-- The author name, copyright notice, and terms of use are placed in the manifest's `cawg.metadata` (C2PA 2.x `c2pa.metadata` allows only fixed fields).
-- So that tools that do not read C2PA can also see the Rights Holder, the rights fields of IPTC photo metadata are written to the output file in XMP and EXIF (Basic Design Chapter 3, DD-3-8“IPTC rights fields are written into the file”).
-- Encoding and writing into the file are finished before C2PA signing (the C2PA hard binding covers the final bytes. Basic Design Chapter 3, DD-3-1“Defines the processing order”). The digital source type for the Visible Signature operation is `humanEdits`, and no generative-AI value is attached (ibid., 3.4).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 2 “Signing Information and Matching” (signing key), Chapter 5 “Rights Documents” (mutually dependent), Chapter 8 “Repository and Data Management” (location of work data), Chapter 11 “Development Base” (mutually dependent; libraries and runtime), Chapter 12 “Interface with Legal” (mutually dependent)
-- Depended on by: Chapter 4 “Image Editing and Batch Application”, Chapter 5 “Rights Documents”, Chapter 6 “Registration and Evidence Preservation”, Chapter 10 “Screens and Design”, Chapter 11 “Development Base”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: the effect of timestamps in each country.
 
 ## 4. Image Editing and Batch Application
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-8-3|Decision|Designs created on the editing screen become templates, applicable both one image at a time and per folder|
-|D-8-4|Decision|Even in batch application, placement, orientation, and color can be adjusted per photograph|
-|A-11|Omission found in the item breakdown|Font licenses|
-|D-7-5|Decision|A Visible Signature in the design chosen by the Rights Holder is added to Social Media Images|
-|D-8-2|Decision|The image editing screen, batch application, and the Rights Document creation screen are provided. The composition of the other screens is set in the design document|
-|O-11|Open (decided in Basic Design Chapter 3, DD-3-6“Visible Signatures on Delivery Images are decided per template”)|Visible Signatures on Delivery Images|
+Decisions received: per the table at the head of Basic Design Chapter 4 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: the functions that create Visible Signatures and apply them to images.
 
@@ -390,39 +298,15 @@ What to settle in the basic design
 
 - Whether there is auto-placement and its method, the template format, and the choice of fonts.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 4, 1 “List of Design Decisions” (not reproduced in this document).
 
-- A Visible Signature stacks text layers and image layers within “groups”, which are the units of placement. Text layers can include values that change per photograph (Basic Design Chapter 4, DD-4-2“Layers are of two kinds, text and image; text layers can use placeholders”, DD-4-3“A group of layers is the unit of placement”).
-- Text shaping and rendering use the same Rust mechanism for both preview and export, and vertical typesetting is implemented in-house. OS fonts are not used (ibid., DD-4-5“Text shaping and rendering use the same Rust mechanism for preview and export”, DD-4-6“Text is drawn only with bundled and imported fonts, never OS fonts”).
-- The state of editing in progress is saved automatically as a work session, and undo and redo use a history per session (default 200 steps) (ibid., DD-4-8“Editing in progress is saved automatically as a work session”, DD-4-9“Undo and redo use a history per work session”).
-- Export is chosen from presets per posting site (ibid., DD-4-11“Export uses presets per posting site”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 3 “Signing” (processing order), Chapter 10 “Screens and Design” (mutually dependent), Chapter 11 “Development Base” (mutually dependent)
-- Depended on by: Chapter 10 “Screens and Design”, Chapter 11 “Development Base”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: rights in assets, font licenses.
 
 ## 5. Rights Documents
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-9-1|Decision|Rights Holders choose, at the time of sale, how far to grant rights|
-|D-9-2|Decision|The Permitted Scope chosen at the time of sale is the basis for judging what a repost violates|
-|D-9-3|Decision|An Enclosed Document stating the matters set out in Section 9.2 is enclosed with Delivery Images|
-|D-9-4|Decision|The Enclosed Document includes a sentence stating that the images must not be passed to others without permission. Its loss is not the fault of the Rights Holder|
-|D-9-5|Decision|Information covering all countries is published as a link, and text is enclosed only for the nationalities common among purchasers|
-|D-9-6|Decision|The party held responsible is the Infringer, regardless of whether they are a purchaser|
-|I-06|To Be Investigated|Differences in rights by country|
-|I-07|To Be Investigated|Knowing the purchaser's country|
-|I-08|To Be Investigated|Wording of Rights Documents|
-|O-03|Open (a proposal is placed in Basic Design Chapter 5, 3.5 “Legal position (handled in legal)”; adoption depends on expert review)|Approach to the governing law|
-|O-04|Open (decided in Basic Design Chapter 5, 2.1 “Options (decision on O-04“Options for the Permitted Scope”)”)|Options for the Permitted Scope|
-|A-2|Omission found in the item breakdown|Functions supporting the Notice (the Notice is the premise of effectiveness, and Entitlement matching relies on it)|
-|A-19|Omission found in the item breakdown|Consistency with the terms of sales platforms (handled by Legal)|
+Decisions received: per the table at the head of Basic Design Chapter 5 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: how the Permitted Scope is chosen, and the content and management of Enclosed Documents and Notice texts.
 
@@ -453,41 +337,15 @@ What to settle in the basic design
 
 - Options for the Permitted Scope, the format of the Enclosed Document, the format of wording data, and where the link target is placed.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 5, 1 “List of Design Decisions” (not reproduced in this document).
 
-- O-04“Options for the Permitted Scope” was resolved in Basic Design Chapter 5, 2.1 “Options (decision on O-04“Options for the Permitted Scope”)”.
-- The Enclosed Document is TXT (the common part in one file with three languages, country parts one per country) plus machine-readable JSON (W3C ODRL 2.2) (Basic Design Chapter 5, 3.1 “Structure”, DD-5-7“The machine-readable Permitted Scope is written in ODRL 2.2”).
-- The nature of the license (non-exclusive, non-transferable, non-sublicensable) is aligned with the license the sales platform's terms grant to members (Basic Design Chapter 5, 3.2 “Outline of the common part”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 2 “Signing Information and Matching” (Notice and matching), Chapter 3 “Signing” (mutually dependent), Chapter 10 “Screens and Design” (mutually dependent), Chapter 12 “Interface with Legal” (mutually dependent)
-- Depended on by: Chapter 3 “Signing”, Chapter 6 “Registration and Evidence Preservation”, Chapter 7 “Legal Action Guidance”, Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: the legal position of the Enclosed Document, the terms of sales platforms, and the governing law.
 
 ## 6. Registration and Evidence Preservation
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-9-2|Decision|The Permitted Scope chosen at the time of sale is the criterion for judging what a repost infringes|
-|D-10-1|Decision|Registration of reposts by Users themselves is included within the scope of this document|
-|D-10-2|Decision|Registration is done from the Client App with a single button, and evidence is preserved at the same time|
-|D-10-3|Decision|Pages requiring login are obtained by the User personally logging in|
-|D-10-4|Decision|Input fields indicating evidence that should be kept are provided|
-|D-10-5|Decision|The specific items to be obtained are decided in the design document|
-|D-10-6|Decision|The judgment on matching and the responsibility for Registration are borne by the User who registered|
-|D-10-7|Decision|Evidence is stored on the User’s device and not published. The System does not collect evidence|
-|D-10-8|Decision|The status of registered reposts can always be seen in the Client App|
-|D-10-9|Decision|Information on registered reposts is listed on the User’s device, and the options for action are presented. No sharing among Users takes place (dealt with in Phase 2)|
-|D-13-2|Decision|The Registration mechanism shall be designed so as to leave room to accept Registration from automated detection later|
-|A-4|Omission found in the item breakdown|Correcting wrong Registrations and relieving the impersonated true Rights Holder|
-|A-5|Omission found in the item breakdown|Content of status checking (automatically visiting URLs would touch the boundary with Phase 2)|
-|A-20|Omission found in the item breakdown|Safety when fetching repost pages|
-|D-9-7|Decision|The location of the server is taken to be ascertainable by investigation; if it cannot be ascertained, action is abandoned|
-|O-06|Deleted in Edition 2|Sharing of repost site information (not shared among Users)|
+Decisions received: per the table at the head of Basic Design Chapter 6 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: from the moment a User finds a repost, through keeping evidence, to following what happens next.
 
@@ -524,33 +382,15 @@ What to settle in the basic design
 
 - Items to obtain, storage format, and how status checks are updated.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 6, 1 “List of Design Decisions” (not reproduced in this document).
 
-- Evidence is kept on the User's device and exported to hand to experts and others (Design Plan D-10-7“Evidence is stored on the User’s device and not published. The System does not collect evidence”).
-- Status checking happens only when the User acts; there is no automatic crawling (Basic Design Chapter 6, 6.2 “Checking the current status”).
-- Fetched pages are saved in WARC (ISO 28500), and a collection record is kept following Annex IV of the Berkeley Protocol. Fetch requests do not identify the System (Basic Design Chapter 6, DD-6-6“A collection record is kept for each Registration”, DD-6-7“Fetched pages are saved as WARC”, DD-6-8“Fetch requests do not identify the System”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 2 “Signing Information and Matching” (matching clues), Chapter 3 “Signing” (matching), Chapter 5 “Rights Documents” (Permitted Scope), Chapter 8 “Repository and Data Management” (mutually dependent; storage location and capacity), Chapter 12 “Interface with Legal” (mutually dependent)
-- Depended on by: Chapter 7 “Legal Action Guidance”, Chapter 8 “Repository and Data Management”, Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: lawfulness of saving pages, evidentiary value in each country.
 
 ## 7. Legal Action Guidance
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-2-6|Decision|Representation in legal proceedings and legal judgment are not performed|
-|D-9-7|Decision|The location of the server is taken to be ascertainable by investigation; if it cannot be ascertained, action is abandoned|
-|D-11-1|Decision|How to pursue infringement is not judged|
-|D-11-2|Decision|Contact points, sample texts, and references to the laws of each country are presented as guidance|
-|D-11-3|Decision|The laws of each country are accumulated as references within an “all countries” framework and added with each implementation|
-|A-12|Omission found in the item breakdown|Handling of joint action and priority targets in Section 8 of the Draft Project Proposal|
-|A-16|Omission found in the item breakdown|Unauthorized practice of law (handled by Legal)|
-|A-21|Omission found in the item breakdown|Complaints passing the User's personal information to the other party|
+Decisions received: per the table at the head of Basic Design Chapter 7 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: the range that shows Users “what to look at to be able to respond”.
 
@@ -582,38 +422,15 @@ What to settle in the basic design
 
 - Data formats for contact points, texts, and references, and the maintenance procedure.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 7, 1 “List of Design Decisions” (not reproduced in this document).
 
-- The guidance shows contact points, required items, and model texts, and gives no individual legal opinion. It is free of charge and does not lead to paid services. Complaints are sent by the User themselves (Basic Design Chapter 7, DD-7-1“Guidance shows contact points, required items, and model texts”, DD-7-2“Guidance is free of charge and does not lead to paid services”, DD-7-3“NRSD maintains contact points, texts, and references as reference information”, DD-7-4“Users send complaints themselves”).
-- The Japanese model text follows Form A of the Copyright Guidelines (3rd edition), and shows the takedown contact points of Large-Scale Specified Telecommunications Service Providers and the 7-day notification deadline (ibid., DD-7-5“The Japanese model text follows Form A”, 6.3).
-- Before the model text, the liability for wrongful or false complaints and the other party's counter-notice procedure are shown (ibid., DD-7-6“Liability for wrongful complaints is shown first”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture” (distribution of reference information, operator functions), Chapter 5 “Rights Documents”, Chapter 6 “Registration and Evidence Preservation”, Chapter 10 “Screens and Design” (mutually dependent), Chapter 12 “Interface with Legal” (mutually dependent)
-- Depended on by: Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: the range that does not constitute unauthorized practice of law.
 
 ## 8. Repository and Data Management
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-3-3|Decision|Users shall be able to use the System without looking at GitHub|
-|D-10-7|Decision|Evidence is stored on the User’s device and not published. The System does not collect evidence|
-|D-12-1|Decision|The Public Repository is provided. No Private Repository is provided|
-|D-12-2|Decision|The software is published, and its being taken away is not prevented|
-|D-12-3|Decision|Rights Holder Information, the signing key, work data, the ledger, and evidence are kept on the User’s device; NRSD does not collect them|
-|D-12-4|Decision|The public page is viewable and not editable, and information that could be used for impersonation is not posted on it|
-|D-12-5|Decision|Fork operation by Users themselves is not presupposed|
-|I-04|To Be Investigated|Access to GitHub from mainland China|
-|O-05|Open (decided in Basic Design Chapter 8, 3.3 “Public page (decision on O-05“Content of the public page”)”)|Content of the public page|
-|O-10|Open (decided in Basic Design Chapter 3, 7.2 “Work data fields (decision on O-10“Recording format of work data”)”)|Recording format of work data|
-|A-1|Omission found in the item breakdown|Write permissions to the private repository (the premise disappeared with Edition 2, which abolished the private repository)|
-|A-9|Omission found in the item breakdown|Costs, and GitHub capacity limits|
-|A-17|Omission found in the item breakdown|Cross-border data transfer (the premise disappeared with Edition 2, in which NRSD receives no User information)|
+Decisions received: per the table at the head of Basic Design Chapter 8 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: what is placed in the Public Repository, and how data on the User's device is placed, protected, and exported.
 
@@ -644,41 +461,22 @@ What to settle in the basic design
 
 - The file layout of device data, the export format, and alternative routes.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 8, 1 “List of Design Decisions” (not reproduced in this document).
 
-- The backup file is a ZIP encrypted in the age format (passphrase, scrypt 2^18) (Basic Design Chapter 8, DD-8-3“Moving devices and preparing for failure use backup files (age format)”).
-- Backups with a different personal root are not merged (ibid., DD-8-6“Backups with a different personal root are not merged”).
-- On-device encryption of records is left to the OS full-disk encryption, which Users are advised to enable (ibid., DD-8-7“Encryption of records is left to full-disk encryption of the OS”).
-- Reference information is distributed as packages with a version, expiry, and file list, and packages of older versions are rejected (ibid., DD-8-8“Reference information is distributed as packages with versions and expiry”).
-- GitHub is protected with an organization account, two-factor authentication, and immutable releases. The Hong Kong mirror keeps no access logs (ibid., DD-8-9“Protected by a GitHub organization and immutable releases”, DD-8-10“The mirror keeps no access logs”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 2 “Signing Information and Matching” (mutually dependent; one with signing keys and Rights Holder Information), Chapter 6 “Registration and Evidence Preservation” (mutually dependent; evidence capacity)
-- Depended on by: Chapter 2 “Signing Information and Matching”, Chapter 3 “Signing”, Chapter 6 “Registration and Evidence Preservation”, Chapter 9 “Distribution and Updates”, Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: the terms of use of the Public Repository (GitHub).
 
 ## 9. Distribution and Updates
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-3-3|Decision|Users shall be able to use the System without looking at GitHub|
-|D-12-6|Decision|Distribution is from a GitHub link, with an easy-to-understand README|
-|D-12-7|Decision|The Client App receives binaries from the Public Repository and updates itself|
-|I-04|To Be Investigated|Access to GitHub from mainland China|
-|I-05|To Be Investigated|Code signing|
-|A-6|Omission found in the item breakdown|Preparation against fake apps|
-|A-18|Omission found in the item breakdown|Export controls on software containing cryptography (handled by Legal)|
+Decisions received: per the table at the head of Basic Design Chapter 9 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: the mechanisms by which Users obtain the app, can trust that it is official, and keep receiving updates.
 
 Scope
 
 - Covered: installation, proof of official builds, updates, download routes, and releases.
-- Not covered: distribution through app stores (not set in the Design Plan).
+- Not covered: distribution through paid app stores (Microsoft Store, Mac App Store). Flathub for Linux and the browser extension stores are treated as routes alongside the distributables that NRSD distributes itself (Basic Design Chapter 9, 2.1 “Distributables per OS”; changed on 2026-10-01).
 
 What must be possible
 
@@ -701,36 +499,15 @@ What to settle in the basic design
 
 - Installer formats, code signing, the update method, and the release procedure.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 9, 1 “List of Design Decisions” (not reproduced in this document).
 
-- One distribution per OS: on Windows an NSIS installer (per-user install), on macOS a DMG for Apple CPUs (Intel Macs are not supported), on Linux an AppImage (Basic Design Chapter 9, DD-9-1“One distribution per OS, code-signed”).
-- Updates are fetched and verified in the background, and replacement happens on close or when the User presses the button. No updates that roll back the version are distributed (Basic Design Chapter 9, DD-9-5“Replacement happens on close or when the User presses the button”, DD-9-6“No updates that roll back the version are distributed”).
-- Uninstalling keeps the records by default. The operation to erase records and signing keys is in the app's settings (Basic Design Chapter 9, DD-9-7“The operation to erase records is placed in the app's settings”).
-- At each release, the export control conditions (only public standard cryptography, public, free of charge) are checked (Basic Design Chapter 9, 6.3 “Export control of software containing cryptography”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 8 “Repository and Data Management” (Public Repository), Chapter 11 “Development Base”
-- Depended on by: Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: export controls on software containing cryptography.
 
 ## 10. Screens and Design
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-3-3|Decision|Users shall be able to use the System without looking at GitHub|
-|D-8-1|Decision|The Client App shall have an appealing appearance. Appearance is treated as a requirement directly tied to the effectiveness of the System|
-|D-8-2|Decision|The image editing screen, batch application, and the Rights Document creation screen are provided. The organization of other screens is decided in the design document|
-|D-8-5|Decision|The details of the screens are decided in the design document|
-|D-9-8|Decision|The display languages are Japanese, Chinese, and English, with others added on request|
-|O-07|Open (decided in Basic Design Chapter 10, DD-10-5“No OS integration; drag and drop is used instead”: not provided)|OS-specific integration|
-|A-13|Omission found in the item breakdown|A feedback channel for Users who do not look at GitHub|
-|A-14|Omission found in the item breakdown|NRSD's position and the Terms of Use|
-|D-8-3|Decision|A design created on the editing screen becomes a template that can be applied to single images or by folder|
-|D-8-4|Decision|Even in batch application, placement, orientation, and color can be adjusted for each photograph|
+Decisions received: per the table at the head of Basic Design Chapter 10 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: what must be possible on each screen, and the design policy.
 
@@ -766,30 +543,15 @@ What to settle in the basic design
 
 - The list of screens and transitions, the design, and wording.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 10, 1 “List of Design Decisions” (not reproduced in this document).
 
-- The correspondence for requirement R-10-2-1“The User operations of the requirements of all chapters (Chapters 2 to 9) exist on some screen” is shown in the table of Basic Design Chapter 10, 4 “Mapping of Requirements to Screens”. There are 25 screens (Basic Design Chapter 10, 3.1 “List of screens”).
-- The image editing screen (G-25“Image Editing”) is an independent screen opened from the left navigation. Specifications of all 25 screens, the confirmation dialogs, and the list of notices were set (Basic Design Chapter 10, 3.5 “Specifications per screen” to 3.7).
-
-Dependencies
-
-- Depends on: all chapters (the screens receive the User operations of Chapters 2 to 9; mutually dependent with Chapters 2, 4, 5, and 7), Chapter 12 “Interface with Legal” (mutually dependent)
-- Depended on by: Chapter 2 “Signing Information and Matching”, Chapter 4 “Image Editing and Batch Application”, Chapter 5 “Rights Documents”, Chapter 7 “Legal Action Guidance”, Chapter 12 “Interface with Legal” (mutually dependent), Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: none (receives what returns to the screens from Chapter 12 “Interface with Legal”).
 
 ## 11. Development Base
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-6-3|Decision|The development base is not fixed to any specific library in this document. The statement on c2pa-python in Section 6 of the Draft Project Proposal is not carried over|
-|D-6-4|Decision|The development base shall be selected in the design document from among those meeting the conditions in Section 6.2|
-|O-02|Open (decided as Tauri 2 in Basic Design Chapter 11, DD-11-1“Built with Tauri 2”)|Development base|
-|O-09|Open (decided as Apache-2.0; 2026-09-30)|NRSD’s license type|
-|A-11|Omission found in the item breakdown|Font licenses|
-|A-18|Omission found in the item breakdown|Export controls on software containing cryptography (handled by Legal)|
+Decisions received: per the table at the head of Basic Design Chapter 11 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: what to build it with and how to maintain it.
 
@@ -816,35 +578,15 @@ What to settle in the basic design
 
 - Concrete technologies and libraries, and the build environment.
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 11, 1 “List of Design Decisions” (not reproduced in this document).
 
-- The Client App and the operator tool are built with Tauri 2, with screens in HTML, CSS, and TypeScript and processing in Rust (resolving O-02“Development base”. Basic Design Chapter 11, DD-11-1“Built with Tauri 2”). NRSD's license is Apache-2.0 (resolving O-09“NRSD’s license type”. Basic Design Chapter 11, 9 “NRSD's License (Decision on O-09“NRSD’s license type”)”).
-- Dependencies are limited to permitted licenses and official registries, with an SBOM and provenance attestations (Basic Design Chapter 11, DD-11-11“Dependencies are limited to permitted licenses and official registries”, DD-11-12“An SBOM and provenance attestations are attached”). The update signing key and the reference-information signing key are not kept in CI (ibid., DD-11-13“The update signing key and the reference-information signing key are not kept in CI”).
-- Supported machines: Windows 10/11 and Linux on CPUs supporting x86-64-v3; macOS 14 or later on Apple CPUs. Intel Macs are not supported because ONNX Runtime dropped support for them (Basic Design Chapter 11, 3.1 “Minimum supported OS versions”).
-- The hashes and minimum versions of ONNX Runtime components are checked in CI. c2pa-rs does not bring in OpenSSL (ibid., DD-11-14“Hashes and minimum versions of ONNX Runtime components are checked”, DD-11-15“c2pa-rs does not bring in OpenSSL”).
-
-Dependencies
-
-- Depends on: Chapter 1 “Overall Architecture”, Chapter 3 “Signing” (mutually dependent), Chapter 4 “Image Editing and Batch Application” (mutually dependent)
-- Depended on by: Chapter 3 “Signing”, Chapter 4 “Image Editing and Batch Application”, Chapter 9 “Distribution and Updates”, Chapter 10 “Screens and Design”, Chapter 12 “Interface with Legal”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 To Legal: licenses, export controls.
 
 ## 12. Interface with Legal
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|I-06|To Be Investigated|Differences in rights by country|
-|I-08|To Be Investigated|Wording of Rights Documents|
-|O-03|Open (a proposal is placed in Basic Design Chapter 5, 3.5 “Legal position (handled in legal)”; adoption depends on expert review)|Approach to governing law|
-|A-14|Omission found in the item breakdown|NRSD's position and the Terms of Use|
-|A-16|Omission found in the item breakdown|Unauthorized practice of law (handled by Legal)|
-|A-17|Omission found in the item breakdown|Cross-border data transfer (the premise disappeared with Edition 2, in which NRSD receives no User information)|
-|A-18|Omission found in the item breakdown|Export controls on software containing cryptography (handled by Legal)|
-|A-19|Omission found in the item breakdown|Consistency with the terms of sales platforms (handled by Legal)|
-|A-21|Omission found in the item breakdown|Complaints passing the User's personal information to the other party|
+Decisions received: per the table at the head of Basic Design Chapter 12 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: which laws, for which countries, are covered at which points of the System; what Users need to declare or register; what is taken as a source and what the System declares it follows.
 
@@ -895,28 +637,13 @@ Declarations and registrations by Users (whether required is checked by Legal)
 - Work registration (Copyright Protection Center of China, etc.; optional)
 - Copyright registration (in Japan, registration of the date of first publication and registration of the real name; in the US, registration; optional)
 
-Decisions in the basic design (summary)
+Decisions in the basic design: per Basic Design Chapter 12, 1 “List of Design Decisions” (not reproduced in this document).
 
-- The wording of Rights Documents is distributed only after review by experts versed in that country's law (Design Plan 9.5 “Approach to Governing Law (Reference)”. Basic Design Chapter 12, DD-12-10“The wording of Rights Documents is distributed only after expert review”).
-- The System does not collect User information. NRSD receives only the feedback e-mails Users send themselves, and publishes how it handles them in the Privacy Policy (Basic Design Chapter 12, DD-12-6“The Article 32 items are published”).
-- The Terms of Use are agreed at first run as standard terms. Consent gates only the fetching of NRSD's reference information; other functions are not conditional on consent. Disclaimers are limited in scope in line with the Consumer Contract Act. The software license and the Terms of Use are written separately (Basic Design Chapter 12, DD-12-2“Terms of Use and Privacy Policy are agreed as standard terms”, DD-12-3“Consent gates only the fetching of reference information”, DD-12-4“The scope of disclaimers is stated explicitly”, DD-12-5“The license and the Terms of Use are written separately”).
-- Export control is handled by using only public standard cryptography and distributing openly and free of charge (Basic Design Chapter 12, DD-12-8“Only public standard cryptography is used, distributed openly and free of charge”).
-- Legal issues concerning NRSD's operations are placed in the Legal Research (Basic Design Chapter 12, 7 “Legal Issues (Placed in the Legal Research as Material for Operational Decisions)”).
-
-Dependencies
-
-- Depends on: all chapters (receives the legal points each chapter covers; mutually dependent with Chapters 2, 3, 5, 6, and 7), Chapter 10 “Screens and Design” (mutually dependent)
-- Depended on by: Chapter 2 “Signing Information and Matching”, Chapter 3 “Signing”, Chapter 5 “Rights Documents”, Chapter 6 “Registration and Evidence Preservation”, Chapter 7 “Legal Action Guidance”, Chapter 10 “Screens and Design”, Chapter 13 “Design Verification”
+Dependencies: per the chapter dependency table in Chapter 1 “Overall Architecture”.
 
 ## 13. Design Verification
 
-The decisions received are as in the following table (decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
-
-|Number|Type|Content|
-|---|---|---|
-|D-2-3|Decision|The greatest value of the System shall be deterrence|
-|A-10|Omission found in the item breakdown|Mapping from Design Plan decisions to the design|
-|All chapters|—|This document takes the design of all chapters as the object of verification|
+Decisions received: per the table at the head of Basic Design Chapter 13 and Basic Design Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” (not reproduced in this document).
 
 What to define: the argument that this design achieves the purpose, and the declaration of gaps.
 
@@ -934,55 +661,4 @@ What to define: the argument that this design achieves the purpose, and the decl
   - Zero gaps is impossible. For each known gap, show why it cannot be closed, how far it was addressed, the remaining risk, and who bears it.
   - Gaps when a premise (“Premises”) breaks down.
   - The impact of unresolved legal points.
-  - Basic Design Chapter 13, 4.1 “Gaps in the mechanism” declares the following 48 gaps, with reasons, the extent addressed, remaining risks, and who bears them (under Design Plan Edition 2).
-
-|Number|Gap|Chapter|
-|---|---|---|
-|H-1|Prior C2PA signing, replacement, and counter-complaints by persons posing as the Rights Holder cannot be prevented|Chapter 2 “Signing Information and Matching”|
-|H-2|Matching results remain probabilistic|Chapter 6 “Registration and Evidence Preservation”|
-|H-3|Reposts whose location cannot be determined are not acted on|Chapter 6 “Registration and Evidence Preservation”, Chapter 7 “Legal Action Guidance”|
-|H-4|C2PA signatures are lost on social media and elsewhere|Chapter 3 “Signing”|
-|H-5|Removal of rights management information by format conversion or recompression is excluded in Japan from deemed infringement, excluded in China as technically unavoidable, and in the US requires intent and knowledge of the link to infringement|Chapter 3 “Signing”|
-|H-6|Images exported offline have no timestamp in the manifest|Chapter 3 “Signing”|
-|H-7|Visible Signatures can be removed by cropping or painting over|Chapter 4 “Image Editing and Batch Application”|
-|H-8|Enclosed Documents can be removed in passing; whether they form a contract depends on the country|Chapter 5 “Rights Documents”|
-|H-9|Pages requiring login rely only on the User's screen images; status changes are not recorded while the User does not check|Chapter 6 “Registration and Evidence Preservation”|
-|H-10|Complaints may pass the User's name and contact details to the other party|Chapter 7 “Legal Action Guidance”|
-|H-11|Changes in contact points and laws may be reflected late|Chapter 7 “Legal Action Guidance”, Chapter 12 “Interface with Legal”|
-|H-12|The System does not verify Users; viewers who do not match cannot tell a false signer; general verification sites show “Valid” (not Trusted)|Chapter 2 “Signing Information and Matching”|
-|H-13|If the device is fully compromised, C2PA signing until the key is remade cannot be prevented; signatures with a leaked key are shown valid until the old personal root expires (up to 40 years)|Chapter 1 “Overall Architecture”, Chapter 2 “Signing Information and Matching”|
-|H-14|Records, evidence, and signing keys exist only on the User's device; losing the device without a backup loses them; weak backup passphrases can be stolen; a forgotten passphrase cannot be recovered|Chapter 8 “Repository and Data Management”|
-|H-15|Fake apps obtained outside the README cannot be prevented; SmartScreen may warn early even for code-signed builds|Chapter 9 “Distribution and Updates”|
-|H-16|If the update signing key leaks, existing Users reinstall by hand|Chapter 9 “Distribution and Updates”|
-|H-17|In mainland China the README may be unreachable|Chapter 8 “Repository and Data Management”, Chapter 9 “Distribution and Updates”|
-|H-18|C2PA validators do not treat the System's timestamps as trusted time and check certificate validity at the time of checking; images past the personal root's expiry (40 years from creation) are shown as failed by general validators|Chapter 3 “Signing”|
-|H-19|HEIC and RAW pixels are not read; there is no right-click menu|Chapter 10 “Screens and Design”, Chapter 11 “Development Base”|
-|H-20|Visual taste does not suit everyone; trials are small|Chapter 10 “Screens and Design”|
-|H-21|Changes in law may be reflected late|Chapter 12 “Interface with Legal”|
-|H-22|If NRSD's keys (update, reference information) are stolen, fake updates or reference information may be distributed|Chapter 1 “Overall Architecture”, Chapter 9 “Distribution and Updates”|
-|H-23|There is no central mechanism to tell third parties of revoked authorizations|Chapter 2 “Signing Information and Matching”|
-|H-24|Information on repost sites is not shared among Users|Chapter 6 “Registration and Evidence Preservation”|
-|H-25|For photos published before adoption, clues are limited to the Original and the fact of publication|Chapter 2 “Signing Information and Matching”|
-|H-26|Taking a record of the repost page (the Registration default) shows the User's IP address to the other site|Chapter 1, 4.2 “Communication with the outside”, Chapter 6 “Registration and Evidence Preservation”|
-|H-27|On Linux without Secret Service, a passphrase is needed at each start|Chapter 2, 7.5 “Storage method per OS”|
-|H-28|Emoji whose COLRv1 paints the rendering components do not support cannot be drawn|Chapter 4, 6.3 “Emoji”|
-|H-29|Auto-save occurs 2 seconds after operations stop; operations just before an abnormal exit may be lost|Chapter 4, 11 “Work Sessions (the State in the Middle of Editing)”|
-|H-30|The app does not crop, so photos outside Instagram's aspect-ratio range may be cropped on the posting site|Chapter 4, 14.1 “Export presets”|
-|H-31|When two machines are used in parallel, merging is manual via backup files; there is no automatic sync|Chapter 8, 5.4 “Merging”|
-|H-32|Unusable on Intel Macs and on PCs whose CPUs lack AVX2 etc. (x86-64-v3) (Intel before 2013, and some Pentium/Celeron after 2013)|Chapter 11, 3.1 “Minimum supported OS versions”|
-|H-33|Unknown vulnerabilities in components cannot be prevented until disclosed|Chapter 11 “Development Base”|
-|H-34|Notice of changes to the Terms of Use does not reach the app of Users who keep working offline|Chapter 12, 4.3 “Procedure for changes”|
-|H-35|The disclaimer wording in the Terms of Use and its precedence over the software license are not yet reviewed by experts|Chapter 12, 4.2 “Draft wording of the key clauses (drafts)”|
-|H-36|Cannot be installed on Windows without WebView2 and without network access|Chapter 9, 2.1 “Distributables per OS”|
-|H-37|Removing the app alone leaves records and signing keys on the device|Chapter 9, 2.2 “Uninstallation and device records”|
-|H-38|If a device without OS full-disk encryption is stolen, records (evidence, case records, Rights Holder Information) may be read|Chapter 8, DD-8-7“Encryption of records is left to full-disk encryption of the OS”|
-|H-39|If distribution of reference information is stopped (frozen), new contact points do not arrive|Chapter 8, 3.4 “Reference information package”|
-|H-40|Even after checking matching clues, a User may still wrongly complain about someone else's photo|Chapter 7, 3.2.1 “Liability for mistaken or false complaints”|
-|H-41|WCAG 2.2 1.4.10 “Reflow” is not met; enlarging screen text shrinks the photo display area|Chapter 10, 2.7 “Readability criteria (WCAG 2.2 AA)”, Chapter 10, 12 “Gaps Declared in This Chapter”|
-|H-42|Including the personal root certificate in the C2PA certificate chain (x5chain) does not follow C2PA 2.4's “should not include”|Chapter 2 “Signing Information and Matching”|
-|H-43|After the notice code is changed (20-year renewal, loss without backup, suspected leak), matching of old works no longer agrees unless the old code is kept in the Notice|Chapter 2 “Signing Information and Matching”|
-|H-44|If CI or the GitHub organization is taken over, correctly code-signed fake builds may be placed in official releases|Chapter 1 “Overall Architecture”, Chapter 8 “Repository and Data Management”, Chapter 9 “Distribution and Updates”, Chapter 11 “Development Base”|
-|H-45|While the GitHub organization has one owner, if that person loses all authentication and recovery methods, the organization cannot be recovered|Chapter 1 “Overall Architecture”, Chapter 8 “Repository and Data Management”|
-|H-46|Auto-placement may miss the subject|Chapter 4 “Image Editing and Batch Application”|
-|H-47|Characters absent from all bundled and imported fonts cannot be drawn|Chapter 4 “Image Editing and Batch Application”|
-|H-48|On Linux, preview photo colors do not reflect the display's color settings|Chapter 4 “Image Editing and Batch Application”, Chapter 11 “Development Base”|
+  - The list of gaps is per Basic Design Chapter 13, 4.1 “Gaps in the mechanism” (H-1 to H-48, with reasons, the extent addressed, remaining risks, and who bears them) (not reproduced in this document).

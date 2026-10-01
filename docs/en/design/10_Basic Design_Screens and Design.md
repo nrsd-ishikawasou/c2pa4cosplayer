@@ -11,18 +11,10 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 ## Position of This Document
 
 - Details Chapter 10 of the Outline Design Document. This chapter fits the Users' operations of the requirements of all chapters into screens, and is written after the basic design of the other chapters. It is designed together with Chapter 12 “Interface with Legal” (Chapters 10 and 12 depend on each other).
-- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
+- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown). The texts of the Design Plan's decisions, items to be investigated, and open items are per Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” and the destination table of the Outline Design Document (not reproduced in this chapter; only the numbers and the omissions found in the item breakdown are listed).
 
 |Number|Type|Content|
 |---|---|---|
-|D-3-3|Decision|Users shall be able to use the System without looking at GitHub|
-|D-8-1|Decision|The Client App shall have an appealing appearance. Appearance is treated as a requirement directly tied to the effectiveness of the System|
-|D-8-2|Decision|The image editing screen, batch application, and the Rights Document creation screen are provided. The organization of other screens is decided in the design document|
-|D-8-3|Decision|A design created on the editing screen becomes a template that can be applied to single images or by folder|
-|D-8-4|Decision|Even in batch application, placement, orientation, and color can be adjusted for each photograph|
-|D-8-5|Decision|The details of the screens are decided in the design document|
-|D-9-8|Decision|The display languages are Japanese, Chinese, and English, with others added on request|
-|O-07|Open (decided in Basic Design Chapter 10, DD-10-5“No OS integration; drag and drop is used instead”: not provided)|OS-specific integration|
 |A-13|Omission found in the item breakdown|A feedback channel for Users who do not look at GitHub|
 |A-14|Omission found in the item breakdown|NRSD's position and the Terms of Use|
 
@@ -51,7 +43,7 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |DD-10-1|The look is “pale colors, rounded shapes and letters, and one guide character”. The character is NRSD's original, and appears only at first-run guidance, empty states, completion, and errors; it does not appear on working screens (editing, lists)|Users like characters and cute things, and software that looks bad is not used (D-8-1“The Client App shall have an appealing appearance. Appearance is treated as a requirement directly tied to the effectiveness of the System”). Showing it even on working screens would get in the way of checking photos|No character (contrary to D-8-1“The Client App shall have an appealing appearance. Appearance is treated as a requirement directly tied to the effectiveness of the System”). A character in the style of an existing work (would touch the rights of original works ourselves; L-29“Commissioning design and characters (Japan)”)|
 |DD-10-2|Design (colors, components, character) is done by NRSD's Lead Developer, who also judges whether the look passes. Understandability is judged by User trials (2.4). The contractual issues for commissioning an external designer in the future are placed in Legal L-29“Commissioning design and characters (Japan)”|There is no designer to commission (2026-09-30, NRSD). Look is a matter of taste, so one judge is appointed|Commissioning an external designer (second draft; there is no one to commission). Judging by majority vote (would not be decided)|
 |DD-10-3|The screen is one window, with a vertical navigation on the left (Home, Edit, Export, Works, Reposts, Verify) and settings and help at the bottom. Work with several stages (first-run input, export, registration, taking action) proceeds within the window with the stages shown at the top|Non-technical people can always see “where am I now, and how many steps remain”. One window shows fewer OS differences|Opening several windows (confusing). Making everything a wizard (slow for experienced Users)|
-|DD-10-4|Readability follows WCAG 2.2 AA (text contrast 4.5:1 or more, component boundaries 3:1 or more, meaning not conveyed by color alone, no breakage with text enlarged to 200%)|Consideration for diversity of color vision and for fatigue from long hours viewing photos. Basing criteria on an external standard makes them judgeable|Custom criteria (cannot be judged)|
+|DD-10-4|Readability is judged against all success criteria of WCAG 2.2 one by one (all of A and AA are met; of AAA, those met are enumerated), by the definition in 2.7 (aspect, criterion, value, and how it is measured) (2026-09-30, NRSD's requirement). Formerly: WCAG 2.2 AA (text contrast 4.5:1 or more, component boundaries 3:1 or more, meaning not conveyed by color alone, no breakage with text enlarged to 200%)|Consideration for diversity of color vision and for fatigue from long hours viewing photos. Basing criteria on an external standard makes them judgeable|Custom criteria (cannot be judged)|
 |DD-10-5|No OS integration (right-click menus, etc.) is provided. Dragging and dropping photos and folders onto the window takes its place. Reordering of layers within the screen is built with pointer events (press, move, release) rather than HTML5 drag and drop|Windows 11's new right-click menu puts conventional registrations behind “Show more options”, macOS requires a separate extension executable, and Linux differs by file manager, so the three OSes would not give the same experience. Drag and drop works the same on the three OSes. When the setting to accept files dropped onto the window (Tauri's dragDropEnabled) is enabled, HTML5 drag and drop within the screen cannot be used on Windows (the description in config.rs of tauri-utils: “Disabling it is required to use HTML5 drag and drop on the frontend on Windows”)|Registering in the right-click menu on Windows only (explanations would differ by OS)|
 |DD-10-6|For the feedback channel, the app composes the feedback text and the User sends it to NRSD by their own e-mail (opening the e-mail software, or copying the text and address). The app does not send automatically|Users do not look at GitHub (D-3-3“Users shall be able to use the System without looking at GitHub”). NRSD has no servers (DD-1-2“NRSD has no servers and receives no User information (except feedback e-mails Users send themselves)”) and does not collect Users' information (D-5-1“The System does not confirm Users and collects no User information. No registration is required in order to use the System”). The User decides whether to send and what to attach|GitHub Issues (shows GitHub to Users). An external form service (sends information to a third party). Sending automatically from the app|
 |DD-10-7|The screen languages are Japanese (ja), Simplified Chinese (zh-Hans), and English (en). Glyph shapes are matched by switching fonts per language. Traditional Chinese is added on request|D-9-8“The display languages are Japanese, Chinese, and English, with others added on request”. Users in mainland China use Simplified Chinese. The same kanji differ in glyph shape between Japan and China|Covering Chinese with one font (would display Chinese in Japanese glyph shapes)|
@@ -90,19 +82,20 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |surface|#FFFFFF|—|#2A222D|—|Cards, input fields|
 |text|#3B2B3A|12.5|#F7EAF2|14.9|Body text|
 |muted|#6E5A6B|6.0|#CDB9C8|9.4|Supplementary|
-|primary|#C23A78|4.8|#FF8CC0|8.1|Primary buttons, selection|
-|on-primary|#FFFFFF|5.0 (against primary)|#2A0E1C|8.3 (against primary)|Text on primary buttons|
-|accent|#4F6BB8|4.8|#9FB4F2|8.5|Links, information|
+|primary|#932C5B|7.2|#FF8CC0|8.1|Primary buttons, selection|
+|on-primary|#FFFFFF|7.6 (against primary)|#2A0E1C|8.3 (against primary)|Text on primary buttons|
+|accent|#3B5393|7.0|#9FB4F2|8.5|Links, information|
 |success|#23724F|5.6|#7ED3A8|9.8|Match, completion|
 |warn|#8A5A00|5.6|#F2C265|10.5|Caution|
-|danger|#B3261E|6.2|#FF8A80|7.6|Failure, irreversible operations|
+|danger|#A2221B|7.2|#FF8A80|7.6|Failure, irreversible operations|
 |border|#9C7E95|3.4|#8C7389|4.1|Boundaries of input fields and components (3:1 or more)|
-|on-danger|#FFFFFF|6.5 (against danger)|#2A0E1C|7.8 (against danger)|Text on buttons for dangerous operations|
-|work-bg|#6E6E6E|—|#3A3A3A|—|Ground of working screens (editing, batch application, photo display). Achromatic (“Showing photos” in 2.1)|
-|work-text|#FFFFFF|5.1 (against work-bg)|#FFFFFF|11.4 (against work-bg)|Text on the ground of working screens|
-|work-focus|A 2-pixel #FFFFFF frame with a 1-pixel #000000 frame outside it|5.1 (against work-bg; the inner white)|Same|11.4 (against work-bg; the inner white)|Focus frame on working screens. On bright photos the outer black is visible|
+|on-danger|#FFFFFF|7.6 (against danger)|#2A0E1C|7.8 (against danger)|Text on buttons for dangerous operations|
+|work-bg|#595959|—|#3A3A3A|—|Ground of working screens (editing, batch application, photo display). Achromatic (“Showing photos” in 2.1)|
+|work-text|#FFFFFF|7.0 (against work-bg)|#FFFFFF|11.4 (against work-bg)|Text on the ground of working screens|
+|work-focus|A 2-pixel #FFFFFF frame with a 1-pixel #000000 frame outside it|7.0 (against work-bg; the inner white)|Same|11.4 (against work-bg; the inner white)|Focus frame on working screens. On bright photos the outer black is visible|
 
-- On the ground of working screens (work-bg), a focus frame in light mode's accent (#4F6BB8) has insufficient contrast (1.0 against light mode's work-bg #6E6E6E; dark mode's accent #9FB4F2 is sufficient at 5.6 against work-bg #3A3A3A, but both are aligned to work-focus so that the frame does not change between modes), so work-focus is used. All ratios were computed with the WCAG formula.
+- On the ground of working screens (work-bg), a focus frame in light mode's accent (#3B5393) has insufficient contrast (1.3 against light mode's work-bg #595959; dark mode's accent #9FB4F2 is sufficient at 5.6 against work-bg #3A3A3A, but both are aligned to work-focus so that the frame does not change between modes), so work-focus is used. All ratios were computed with the WCAG formula.
+- Text colors are 7:1 or more (WCAG 2.2 1.4.6). On 2026-10-01, primary, accent, danger, and work-bg were recomputed with the WCAG formula, and all text colors in light mode became 7:1 or more (values as in the table). border (3.4, 4.1) is not text, so the 3:1 criterion (1.4.11) suffices.
 - Meaning is not conveyed by color alone: matching levels (Chapter 6, 4.1 “How the match level is shown”), case status, and success/failure are shown with marks of different shapes per level and text, in addition to color (the shapes of the marks are decided by the Lead Developer, and their meanings are written in a legend on screen).
 
 ### 2.4 Judgment
@@ -113,7 +106,8 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |Understandability (first-run input)|User trials|80% or more of participants (at least 5 cosplayers and photographers, initial value; 4 or more if 5) can complete input of information for C2PA signatures and posting of the Notice (G-01“Welcome”, G-02“Consent”, G-03“Signing Information”, G-04“Posting the Notice”) without explanation|
 |Understandability (Permitted Scope)|User trials|80% or more of those who read the explanation correctly answer “whether purchasers may post on social media under the chosen scope” (Chapter 5, 2.2 “Explanation for non-technical people”)|
 |Understandability (export and registration)|User trials|80% or more of participants (4 or more if 5) can complete a batch export of one folder and registration of one repost without explanation|
-|Readability|Lead Developer|Check the contrast ratios of 2.3, text enlargement to 200%, and keyboard-only operation on the three OSes|
+|Readability (all items of the definition in 2.7)|Lead Developer and CI|By the measurement method of each row of 2.7. Go through all operations on all screens with the screen readers of the three OSes|
+|Composition of trial participants|NRSD|Include at least one User who uses assistive technology (a screen reader or magnification) daily (2026-09-30, NRSD's requirement)|
 
 - Trials are done with a working version (preview version). Users are not asked to read design documents or explanatory documents for their opinions (asking cosplayers and photographers to read documents is a heavy burden, and actual usage can only be checked with a working version). The preview version is one in which first-run input, image editing, export, and repost registration all work, distributed before the trial (separate from the official distribution of Chapter 9, given only to trial participants; C2PA signatures and record formats are the same as production). This does not contradict D-3-5“No interviews are conducted; improvement is made based on comments after the System becomes usable”, which does not conduct interviews first. Trial participants are Users NRSD knows and asks. Points fixed as a result of trials are noted in the changes of the next version.
 
@@ -149,23 +143,33 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |Progress display|Progress of long processing|Which item, estimated remaining time, cancel|
 |Guide|The character (DD-10-1“The look is pale colors, rounded shapes, and one guide character”)|Only at first run, empty states, completion, and errors|
 
-### 2.7 Readability criteria (WCAG 2.2 AA)
+### 2.7 Readability definition (WCAG 2.2)
 
-- WCAG 2.2 is a W3C Recommendation (October 2023; this document looked at the version of December 12, 2024). Main criteria this app meets and how:
+- Readability is defined by “aspect, criterion, value, and how it is measured”. All judgments are made by numbers or procedures, leaving no judgment by eye alone (2026-09-30, NRSD's requirement. Formerly: the 10 main criteria of WCAG 2.2 AA).
 
-|Criterion|Requirement|Method|
-|---|---|---|
-|1.4.3 Contrast (Minimum)|Text-to-background ratio of 4.5:1 or more|Met by the color definitions of 2.3|
-|1.4.4 Resize Text|Text can be enlarged to 200% without assistive technology without loss of content or function|The text size steps of 2.5 (maximum 2.0 times; met by the app's setting alone)|
-|1.4.10 Reflow|Content can be presented without scrolling in two dimensions at the equivalent of 320 CSS pixels wide|Not met. This app is a desktop app, and the minimum window size is 1024×700 pixels (3.3). At that size no horizontal scrolling appears. The photo editing area moves photos in two directions (12 “Gaps Declared in This Chapter”)|
-|1.4.11 Non-text Contrast|Boundaries of components and graphics at a ratio of 3:1 or more|The border color of 2.3|
-|2.1.1 Keyboard|All functionality operable by keyboard|Checked on all screens. Placement on photos can be moved with keys (Chapter 4, 9.1 “Selecting and moving”)|
-|2.4.7 Focus Visible|Keyboard focus is visible|Always show a focus frame (2 pixels, accent color; on working screens, the two-color work-focus frame; 2.3)|
-|2.4.11 Focus Not Obscured (Minimum)|A focused component is not entirely hidden by author content|Notice bars and confirmation dialogs are arranged so as not to hide focus|
-|2.5.8 Target Size (Minimum)|Targets are 24×24 CSS pixels or more. Exceptions: spacing (a 24-pixel circle does not overlap other targets), an equivalent target exists, inline targets, targets determined by the user agent, essential cases (W3C's Understanding 2.5.8; sliders and the like are treated as one target)|24 pixels square or more on all components. Handles on the editing screen (size and rotation handles), even if visually small, have a press area of 24 pixels square, not relying on exceptions|
-|3.3.1 Error Identification, 3.3.3 Error Suggestion|Input errors are shown in text with how to fix them|Error text and how to fix it are shown below input fields (Chapter 2, 2.3 “Input validation”)|
+|Aspect|Criterion|Value|How it is measured|
+|---|---|---|---|
+|Standard|Every success criterion of WCAG 2.2 (A, AA, AAA) judged one by one|All of A and AA are met. Of AAA, those met are enumerated, and those not met are declared as gaps with the reason written|In the table of success criteria (86 items), write “met (method) / not met (reason) / not applicable”, updated per version|
+|Text color|1.4.3, 1.4.6|Body and supplementary text 7:1 or more; large text (24 pixels or more) 4.5:1 or more. The same on the ground of working screens|Computed with the WCAG formula from the values of the color definitions in 2.3, and all combinations in the table are checked in CI|
+|Non-text color|1.4.11|Component boundaries, marks, and lines in figures 3:1 or more|Same as above|
+|Not relying on color alone|1.4.1|Status, stage, and success/failure are shown with marks of different shapes and text in addition to color|Check that no meaning is lost with all screens made achromatic. Check with the appearance of protan, deutan, and tritan color vision|
+|Text size|1.4.4, 1.4.12|Body text 15 pixels or more. 0.9 to 2.0 times by setting. Line height 1.6 times; paragraph spacing at least 2 times the text size. Nothing breaks when letter and word spacing are widened|Capture all screens at 2.0 times and check that no content or function is missing|
+|Reflow|1.4.10|No horizontal scrolling at the minimum window of 1024×700. The photo area moves in two directions (the gap in 12; Chapter 13, H-41“WCAG 2.2 1.4.10 “Reflow” is not met; enlarging screen text shrinks the photo display area”)|Check all screens at the minimum window|
+|Target size|2.5.8, 2.5.5|Press targets are 44×44 CSS pixels or more. Handles on the editing screen can also be pressed within a 44-pixel area|Measure all components in the component list and all targets on all screens in CI|
+|Focus|2.4.7, 2.4.11, 2.4.13|The focus frame is 2 pixels or more, 3:1 or more against its surroundings, and not obscured|Go around all screens with the keyboard alone and check that the focus frame is always visible. Document the focus order per screen|
+|Keyboard|2.1.1, 2.1.2, 2.1.4|All functions can be done with the keyboard alone. Focus is not trapped. Single-character keys work only while there is focus. The editing screen has fields to enter position, size, and rotation as numbers (Chapter 4, 9.1)|Place in the test documents the procedure for going through all operations on all screens with the keyboard alone|
+|Name, role, value|4.1.2, 1.3.1, 3.3.2|Every component has a name, role, and state. Alternative text for photos, the guide, marks, and color swatches. Visible names on input fields|Go through all operations on all screens with the screen readers of the three OSes (Windows Narrator, macOS VoiceOver, Linux Orca). Run automated checks (the axe-core family) on all screens in CI, stopping on any violation (Chapter 11, 8.1)|
+|Motion|2.3.3, 2.2.2|Motion stops by the OS setting and the app setting. Nothing moves or blinks automatically. No notice disappears automatically (2.6)|Check by switching the settings|
+|Time limits|2.2.1, 2.2.3|No time limits are placed on operations. Long processing can be cancelled|—|
+|Error prevention|3.3.1, 3.3.3, 3.3.4, 3.3.6|Input errors are shown in text with how to fix them. Irreversible operations have a confirmation dialog and a button named for the operation. Reversible operations are reverted with undo|Trace every item in the list of confirmation dialogs (3.6) and the failure-handling sections of each chapter|
+|Plain language|3.1.5, 3.1.3, 3.1.4|Screen text can be understood at a lower secondary education reading level. Technical terms (C2PA signature, manifest, timestamp, notice code, etc.) get a one-sentence explanation at first appearance and a path to the glossary. No abbreviations are used|Check the full text of the message files in CI for sentence length (60 characters or less per sentence) and against the list of technical terms. Add to the judgment of User trials (2.4)|
+|Consistency|3.2.3, 3.2.4, 3.2.6|The position and names of navigation and buttons are the same on all screens. The help entrance is in the same position on all screens|Check with the component list and the screen specifications|
+|Language|3.1.1, 3.1.2|The language attribute of the screen and the language attribute of the User's input (5)|Check the `lang` of elements on all screens in CI|
+|OS support|—|Follow the OS high-contrast setting (Windows forced colors and the equivalents on macOS and Linux) and OS text magnification|Check all screens by switching the settings of the three OSes|
+|Who judges|2.4|Include among trial participants at least one User who uses assistive technology (a screen reader or magnification) daily|Trial records|
+|Publication|—|The readability policy is published on the public page in the OpenACR form (the US GSA's machine-readable accessibility conformance report; YAML and HTML), and the success criteria added in WCAG 2.2 are shown in an additional table of the same form. Updated per version, and the YAML form is validated in CI (2026-10-01, NRSD's requirement) (Chapter 8, 3.3)|Public page|
 
-- Source: W3C's WCAG 2.2.
+- Source: W3C's WCAG 2.2 (the version of December 12, 2024).
 
 ## 3. Screen Structure
 
@@ -183,7 +187,7 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |G-05|Create Backup|Create a backup file (signing keys and all records encrypted with a passphrase) and choose where to save it. See the date of the last one|Chapter 8, 5 “Backup Files”|
 |G-06|Restore from Backup|Enter a backup file and passphrase and import signing keys and records (drag allowed)|Chapter 8, 5 “Backup Files”|
 |G-07|Home|See recent works, work in progress (continue), cases in progress, announcements, the number of pending timestamps, and the date of the last backup. Go on to the main work|—|
-|G-08|Export: Photos and Purpose|Choose a folder (or photos), and decide the purpose (social media / delivery / both) and shoot name. Choose whether to add the identification number after the saved file name (initial value is to add it; afterwards the previous choice). Choose a joint rights holder (one of the counterparties of imported joint-rights documents, or none). When coming from “Export only this photo” in G-25“Image Editing”, it opens with that one photo selected|Chapter 3, 8.2 “Differences between streams”, Chapter 4, 12 “Batch Application”|
+|G-08|Export: Photos and Purpose|Choose a folder (or photos), and decide the purpose (social media / delivery / both) and shoot name. Choose whether to add the identification number after the saved file name for social media (initial value is to add it; afterwards the previous choice; for delivery it is always added; Chapter 3, 7.1). Choose a joint rights holder (one of the counterparties of imported joint-rights documents, or none). When coming from “Export only this photo” in G-25“Image Editing”, it opens with that one photo selected|Chapter 3, 8.2 “Differences between streams”, Chapter 4, 12 “Batch Application”|
 |G-09|Export: Batch Application|Apply a template to the photos of the chosen folder in batch. Choose the template (whether to include on delivery too is per template). See the results of auto-placement in a grid, and per photo adjust the group's position, size, and rotation, and the layers' visibility and color, and add layers for that photo only (Chapter 4, DD-4-3“A group of layers is the unit of placement”). To change the content or formatting of the Visible Signature, or to write the content of a layer for that photo only, “Edit Visible Signature” opens G-25“Image Editing” in the edit-the-work-session state (Chapter 4, 13.1 “Two states of the image editing screen”). Even if stopped midway, the work session is saved automatically|Chapter 4, 12 “Batch Application”, 7 “Placement”|
 |G-10|Export: Permitted Scope|Choose the Permitted Scope for delivery (P1, P2, A1 to A3) and the countries of the Enclosed Document (purchasers' common nationalities). See pictures of what can and cannot be done|Chapter 5, 2 “Permitted Scope”, 3 “Enclosed Document”|
 |G-11|Export: Run and Results|See progress, the list of failures and remedies, the output folder, the list of identification numbers (copyable), and guidance on how C2PA signatures remain per destination|Chapter 3, 9 “Batch Processing”, 10 “Output”|
@@ -193,10 +197,10 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |G-15|Reposts (Case List)|See cases by reposting site and by status. Cases with the commercial-use mark come to the top. See the last checked date and possible actions|Chapter 6, 6 “Status Checking”, 8 “List and Means”, Chapter 7, 6.2 “Joint action and priority”|
 |G-16|Case Details|See evidence, matching, results of identifying the operator, and status history. “Check current status”, “Take action”, “Extract evidence package”, “Withdraw”|Chapter 6, 3 “Evidence Preservation” to 7|
 |G-17|Action Guide|Choose the complainant's standing (copyright holder, subject, authorized agent), choose a contact point, and see the required items and evidence to attach. Confirm the guidance on personal information, copy the model text, and open the contact point. Record “complaint made”. See “To prepare further” (optional registrations)|Chapter 7 “Legal Action Guidance”, Chapter 12, 3.2 “Optional for Users (the System only guides)”|
-|G-18|Authorizations and Joint Rights|Create and import authorizations, create revocations. Create and import joint-rights documents (passed as files)|Chapter 2, 5 “Authorizations and Joint Rights”|
+|G-18|Authorizations and Joint Rights|Create and import authorizations, create revocations. Create and import joint-rights documents (passed as files, or delivered directly to verified counterparties). Add counterparties and mark them verified with the safety number|Chapter 2, 5 “Authorizations and Joint Rights”, 5.5 “Adding contacts (handover of documents)”|
 |G-19|Keys and Notice Code|Notice code, validity of the personal root and signing certificate, remaking (changes of input, 20 years after the personal root was made), remaking keys and re-posting the notice code (loss, leak), history of changes of input|Chapter 2, 3.4 “Expiry and input errors”, 6 “Rights Holder Information”, 7 “Signing Keys”|
 |G-20|Settings|The items of 10 of this chapter|—|
-|G-21|Notifications|See changes to the terms, reference information updates, app updates, remaking of the personal root, backup recommendations, and free-space notices|Chapter 12, 6 “What Is Returned to the Screens”, Chapter 9, 4 “Updates”, Chapter 8, 5 “Backup Files”, 6 “Capacity”|
+|G-21|Notifications|See changes to the terms, reference information updates and corrections, app updates, remaking of the personal root, notices that backup locations are unreachable, free space, procedural deadlines, and vulnerability advisories for components (3.7 “List of notices”)|Chapter 12, 6 “What Is Returned to the Screens”, Chapter 9, 4 “Updates”, Chapter 8, 5 “Backup Files”, 6 “Capacity”, Chapter 7, 6.3, Chapter 11, 5.3|
 |G-22|Help and Feedback|Read per-screen help and the matching procedure. Compose feedback text and send it by one's own e-mail|6.3 and 9 of this chapter|
 |G-23|About This App|Version, code signing publisher, not being involved in the rights of the original works, not collecting Users' information, list of licenses|Chapter 9, 3 “Proof of the Official Version”, Chapter 12, 6 “What Is Returned to the Screens”|
 |G-24|Compare Clues|When an image thought to be one's own work has someone else's C2PA signature, see the clues of the invisible watermark, timestamp, ingredient history, Original, and Notice side by side (no judgment). Go on to possible actions (G-17“Action Guide”)|Chapter 2, 4.4 “Clues when a person posing as the Rights Holder appears”, Design Plan 5.5 “Handling of Matching When a Signature Has Been Overwritten”|
@@ -210,7 +214,7 @@ Word version: [10_Basic Design_Screens and Design.docx](10_Basic%20Design_Screen
 |G-01“Welcome”|G-02“Consent”|“Start”|
 |G-01“Welcome”|G-06“Restore from Backup”|“Restore from backup”|
 |G-01“Welcome”|G-13“Verify”|“Use only to verify”|
-|G-02“Consent”, then G-03“Signing Information”, then G-04“Posting the Notice”, then (optional) G-05“Create Backup”|G-07“Home”|“Back” is possible at each step. Even if stopped midway, input is saved and continues at the next start|
+|G-02“Consent”, then G-03“Signing Information”, then G-04“Posting the Notice”, then G-05“Create Backup”|G-07“Home”|“Back” is possible at each step. Even if stopped midway, input is saved and continues at the next start. G-05 can be skipped (if skipped there is no backup location, and the 7-day notice of Chapter 8, 5.5 appears on Home)|
 |G-13“Verify”|G-24“Compare Clues”|When there is someone else's C2PA signature and it relates to one's own watermark or work data|
 |G-24“Compare Clues”|G-17“Action Guide”|“See possible actions”|
 |G-07“Home”|G-08“Export: Photos and Purpose”, then G-09“Export: Batch Application”, then (for delivery) G-10“Export: Permitted Scope”, then G-11“Export: Run and Results”|For social media only, G-10“Export: Permitted Scope” is skipped|
@@ -247,7 +251,7 @@ G-07“Home”
 
 |Area|Content|
 |---|---|
-|Top|The character's remark (according to the time of day and state), N pending timestamps, the date of the last backup (recommended after 30 days)|
+|Top|The character's remark (according to the time of day and state), N pending timestamps, “Last backup: N minutes ago” and, per location, the date/time of the last successful verification (notified only when no location has been reachable for 7 days; Chapter 8, 5.5)|
 |Upper center|Two large buttons: “Export photos” and “Register a repost”|
 |Center|Work in progress (reduced image, work session name, last edited date/time, current stage; “Continue”)|
 |Center|Recent works (reduced images in a row, 10 items)|
@@ -360,7 +364,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 |Field|Kind|Limits|Explanatory text (what it is used for, where it is kept)|
 |---|---|---|---|
 |Handle name|Text|Chapter 2, 2.3 “Input validation”|Goes into the certificate and is published together with C2PA-signed images. Do not enter your real name|
-|(Linux without Secret Service only) Passphrase protecting the key|Masked, entered twice|12 characters or more (initial value)|The signing key is saved encrypted with a passphrase. Enter it each time the app starts (Chapter 2, 7.5 “Storage method per OS”)|
+|(Linux without Secret Service only) Passphrase protecting the key|Masked, entered twice|15 characters or more (NIST SP 800-63B-4; the same as Chapter 8, 5.2)|The signing key is saved encrypted with a passphrase. Enter it each time the app starts (Chapter 2, 7.5 “Storage method per OS”)|
 |Role|Selection (cosplayer, photographer, authorized person)|Required|Goes into the image's record (manifest)|
 |Notice accounts|URLs (several; add and remove)|Chapter 2, 2.3 “Input validation”|Go into the certificate and are published. These are the accounts where the notice code is posted|
 
@@ -377,7 +381,8 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 #### G-05 Create Backup
 
 - Purpose: create a backup file (Chapter 8, 5.2 “How it is made”).
-- Elements: choosing the destination, passphrase (entered twice, masked, strength indicator), a confirmation check “If you forget the passphrase, it cannot be restored”, “Create”.
+- The screen title is “Backup” (the same word as Time Machine and Windows File History; the design term is not changed).
+- Elements: choose one location (external storage, the Cloud sync folder, another device of one's own; those reachable are detected and shown; several may be chosen), print the emergency kit (a single PDF: the QR code and text of the recovery key, the locations, how to restore, and the procedure for the person taking over; Chapter 8, 5.1), passphrase (entered twice, masked, an estimate of strength and a guide to the time to crack it; Chapter 8, 5.2), whether to include the Originals (default: include), “Back up now”. Afterwards it is automatic every hour and on closing (Chapter 8, 5.5) (2026-09-30, NRSD's requirement).
 - Guidance: the “3-2-1” way of keeping backups (three copies, two kinds of media, one in a separate place; Chapter 8, 5.6 “Guidance on where to keep backups”) is shown in one line and a figure. When a location on the same PC is chosen as the destination, “If this PC breaks, the backup will be lost too” is shown.
 - States: progress (N MB of M MB, estimated remaining time), completion (destination and creation date/time).
 - Errors: not enough free space, passphrase too short or commonly used.
@@ -386,7 +391,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 #### G-06 Restore from Backup
 
 - Purpose: restore from a backup file (Chapter 8, 5.3 “How it is restored (import)”).
-- Elements: choosing the file (drag allowed), passphrase, “Restore”. The choice when the personal root differs (replace, cancel; Chapter 8, 5.4 “Merging”).
+- Elements: choosing the file (drag allowed), passphrase, “Restore”. “Restore with the emergency kit” (read the recovery key's QR code or type its text), “Open as a handover” (read-only; Chapter 8, 5.3). The choice when the personal root differs (replace, cancel; Chapter 8, 5.3 “How it is restored (import)”).
 - States: progress, completion (number imported, list of records that failed verification).
 - Errors: wrong passphrase or broken file (Chapter 8, 8 “Handling Failures”).
 - Exits: G-07“Home”. When coming from G-01“Welcome” at first start, after restoring it proceeds via G-02“Consent” to G-07“Home” (Chapter 12, DD-12-3“Consent gates only the fetching of reference information”).
@@ -395,6 +400,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 
 - Purpose: see recent works, work in progress, cases in progress, and announcements, and go on to the main work (layout in 3.3).
 - Empty state (first use): the guide says “Let's export your first photo”, and shows “Export photos” and “Create a Visible Signature”.
+- At the top, “Last backup: N minutes ago” (the same form as Time Machine) and, per location, the date/time of the last successful verification are shown (Chapter 8, 5.5).
 - Each row of work in progress has “Continue” and other operations (rename, delete the work session; a confirmation dialog (3.6) before deleting).
 - If the previous session did not end properly, a notice appears at the top, showing the last saved work sessions and template drafts with “Continue” (3.7, Chapter 4, 11.5 “After abnormal termination”).
 - Exits: G-08“Export: Photos and Purpose”, G-12“Works”, G-13“Verify”, G-14“Register a Repost”, G-15“Reposts (Case List)”, G-21“Notifications”, G-25“Image Editing”, and the screens of the stages of work in progress.
@@ -402,7 +408,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 #### G-08 Export: Photos and Purpose
 
 - Purpose: choose photos and decide the purpose and export presets (Chapter 4, 12.1 “Flow”, 14.1 “Export presets”).
-- Elements: choosing photos and folders (drag allowed), the number chosen and the number of unreadable photos, purpose (social media, delivery, both), export presets (several may be chosen), shoot name, whether to add the identification number to the file name, choosing a template, joint rights holder (one of the counterparties of imported joint-rights documents, or none; per work session; `{coholder}` of Chapter 4, 3.1 “Content and placeholders”), export destination folder.
+- Elements: choosing photos and folders (drag allowed), the number chosen and the number of unreadable photos, purpose (social media, delivery, both), export presets (several may be chosen), shoot name, whether to add the identification number to the file name, choosing a template, the role for this work session (default: the role of the signing information; Chapter 2, 2.3), authorization (required when the role is an authorized person; one of the authorizations meeting the conditions of Chapter 2, 5.4 (valid and matching scope); if there is none, export is not possible and the User is guided to G-18), joint rights holder (one of the counterparties of imported joint-rights documents, or none; per work session; `{coholder}` of Chapter 4, 3.1 “Content and placeholders”), export destination folder.
 - Single-photo export: when coming from “Export only this photo” in G-25“Image Editing”, it opens with that one photo selected, and the open work session is used instead of choosing a template.
 - Errors: the same folder as the Original cannot be chosen as the export destination (Chapter 4, 14.5 “Location and names”).
 - Exits: G-09“Export: Batch Application”. For single-photo export, G-10“Export: Permitted Scope” if delivery is included, or G-11“Export: Run and Results” if social media only.
@@ -430,13 +436,15 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 
 - Purpose: list and search exported works and see details (Chapter 3, 7 “Identification Numbers and Work Data”).
 - Elements: list (reduced image, identification number, shoot name, date, timestamp status), search (identification number, shoot name, date range), details (C2PA signature, timestamp, Permitted Scope, export location, open the work session).
+- The Enclosed Document of each work can be made again as the version of that time. When a corrected version comes out, the affected works are listed and corrected-version Enclosed Documents are generated (Chapter 5, 2.4, 4).
+- “Search by image” (opens the Google Lens and TinEye pages; uploading the photo is done by the User; Chapter 6, 2.1). Correction of the shoot name, joint rights holder, and displayed Permitted Scope (appended as a correction record; the original value and date/time go into the history; Chapter 3, 7.2). Record where it was originally posted (URL, destination, date of posting; optional, several) (`published` of Chapter 3, 7.2; used for “URL of the original post” in complaint model texts).
 - Empty state: “No works yet” and a path to export.
 - Exits: G-14“Register a Repost” (from the matching result), work session screens.
 
 #### G-13 Verify
 
-- Purpose: check any image or Enclosed Document (Chapter 3, 10.2 “Checking by the User”, Chapter 2, 4.1 “Matching with the Notice account”).
-- Elements: putting in images and Enclosed Documents (drag allowed), results (words for C2PA signature verification; the table of Chapter 3, 10.2 “Checking by the User”), signer (handle name, Notice accounts, expected notice code, a button to open the account), timestamp, matching of the watermark's identification number against one's own work data, match level of the matching hash, match of Enclosed Document hashes.
+- Purpose: check any image or Enclosed Document (Chapter 3, 10.2 “Checking by the User”, Chapter 2, 4.1 “Matching with the Notice account”). This screen leaves no records (regardless of whether signing information exists; a stateless check, like Adobe Verify and c2patool). Records arise only from registration in G-14, which can proceed only after the signing information (3.2).
+- Elements: putting in images and Enclosed Documents (drag allowed), results (words for C2PA signature verification; the table of Chapter 3, 10.2 “Checking by the User”), signer (handle name, Notice accounts, expected notice code, a button to open the account), timestamp, matching of the watermark's identification number against one's own work data, match level of the matching hash, match of Enclosed Document hashes, a mark on outputs carrying the hash of a revoked authorization (Chapter 2, 5.1), and a caution when the signer's handle name is hard to distinguish from one's own name (the skeleton of UTS #39; Chapter 2, 4.1).
 - Exits: G-24“Compare Clues” (when there is someone else's C2PA signature related to one's own work), G-14“Register a Repost” (only if first-run input (G-03“Signing Information”) has been completed, because registration attaches a record signature with the User's key). Before first-run input, instead of G-14“Register a Repost”, “To register a repost, first enter your signing information” and an entrance to G-03“Signing Information” are shown.
 
 #### G-14 Register a Repost
@@ -456,7 +464,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 #### G-16 Case Details
 
 - Purpose: see the case's evidence and status and choose the next step (Chapter 6; layout in 3.3).
-- Elements: case number, repost destination, status, list of evidence, matching result, who and where, status history, guide dates of procedural deadlines (days counted from the date of complaint: the 7-day notification of Japan's designated providers, 10 to 14 business days after a counter-notice in the United States, etc.; Chapter 7, 6.3 “Display of procedural deadlines”), “Check current status”, “Take action”, “Extract evidence package”, “Withdraw”, permanent text that it is not legal advice.
+- Elements: case number, repost destination, status, list of evidence, matching result, who and where, status history, guide dates of procedural deadlines (days counted from the date of complaint: the 7-day notification of Japan's designated providers, 10 to 14 business days after a counter-notice in the United States, etc.; Chapter 7, 6.3 “Display of procedural deadlines”), “N days to the deadline”, “Add to calendar (.ics)”, “Check current status”, “Take action”, “Extract evidence package”, “Withdraw”, permanent text that it is not legal advice.
 - Exit: G-17“Action Guide”.
 
 #### G-17 Action Guide
@@ -468,7 +476,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 #### G-18 Authorizations and Joint Rights
 
 - Purpose: create and import authorizations, revocations, and joint-rights documents (Chapter 2, 5 “Authorizations and Joint Rights”).
-- Elements: create (the counterparty's notice code, scope, term, condition text), import (file; the result of the check; Chapter 2, 5.4 “Checking documents”), list (valid, outside the term, revoked).
+- Elements: create (the counterparty's notice code, scope, term, condition text), import (file; the result of the check; Chapter 2, 5.4 “Checking documents”), list (valid, outside the term, revoked). “Add a counterparty” (show one's own QR code, read the counterparty's QR code, or a short passphrase; once connected, the same safety number appears on both sides, and comparing them marks the counterparty “verified”; the same flow as Signal's safety numbers; Chapter 2, 5.5). The list of verified counterparties (“Remove this counterparty”). Documents are delivered directly to verified counterparties. A proposal to make and send a renewal document 30 days before the term ends.
 - Exit: G-20“Settings”.
 
 #### G-19 Keys and Notice Code
@@ -484,7 +492,7 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 
 #### G-21 Notifications
 
-- Purpose: see changes to the terms, reference information updates, app updates, certificate validity, backup recommendations, and free-space notices.
+- Purpose: see changes to the terms, reference information updates and corrections, app updates, remaking of the personal root, notices that backup locations are unreachable, free space, procedural deadlines, and vulnerability advisories for components (3.7 “List of notices”).
 - When an update is ready, “The update is ready. It will be applied when you close the app” and “Restart now to update” are shown at the top of the notification list and at the top of the screen. “Restart now to update” cannot be pressed in the middle of batch processing, registration, or backup creation (Chapter 9, DD-9-5“Replacement happens on close or when the User presses the button”).
 - Elements: notification list (unread mark, date, kind). For changes to the terms, the effective date and a summary of the changes are shown, and re-consent is asked at the first start after the effective date (G-02“Consent”; Chapter 12, 4.3 “Procedure for changes”).
 - Exits: the destination screen of each notification.
@@ -530,6 +538,10 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 |Replace from backup|The current records are replaced with the backup. A backup of the current records is made first|Make a backup and replace, Cancel|
 |First registration (page record taken by default)|A record of the page is taken together with registration. The other site can see your IP address|Take and register, Do not take it for this registration|
 |Delete data at uninstallation (the Windows uninstaller checkbox)|Records (works, cases, evidence, templates) are erased. They cannot be restored without a backup. Signing keys remain. To erase signing keys too, first use “Erase this device's records” in the app's settings (Chapter 9, 2.3 “Procedure for “Erase this device's records””)|Erase, Keep|
+|Create a revocation|Stops the counterparty's exports under this authorization. Revocation cannot be undone. It is delivered to the counterparty directly (if verified) or passed as a file|Revoke, Cancel|
+|Remove a verified counterparty|From now on, documents with this counterparty are not delivered directly. Imported documents remain|Remove, Cancel|
+|Remove a device|Stops syncing records and backing up with this device. The device's records are not erased (to erase them, use “Erase this device's records” on that device)|Remove, Cancel|
+|Include the Originals in the first backup|Includes the Originals (N photos, about M GB). The first time takes a while, and in a Cloud sync folder it uses capacity|Include, Do not include|
 
 - The default button of a confirmation dialog is never the irreversible side (so that pressing Enter does not erase).
 
@@ -537,12 +549,16 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 
 |Notice|Where shown|When shown|
 |---|---|---|
-|Backup recommendation|Top of Home, G-21“Notifications”|30 days after the last backup (Chapter 8, 5.5 “Recommending backups”)|
+|Backup locations unreachable|Top of Home, G-21“Notifications”|When no location has been reachable for 7 days (Chapter 8, 5.5 “Backup locations and automatic backups”)|
 |Pending timestamps|Top of Home|When there are deferred ones (Chapter 1, 7.9 “Offline export and later timestamps”)|
 |Remaking the personal root|G-21“Notifications”, a dialog at start (after 20 years)|19 years after the personal root was made (guidance to remake within a year) and 20 years (C2PA signing stops and remaking is required) (Chapter 2, 3.4 “Expiry and input errors”, 8 “Handling Failures”)|
 |The previous session did not end properly|Top of G-07“Home”|At start, when the previous session was not closed properly (Chapter 4, 11.5 “After abnormal termination”)|
 |The template has a new version|Left of G-09“Export: Batch Application”, top of G-25“Image Editing” (edit-the-work-session state)|When the original version of the template copied by the work session has gone up (Chapter 4, 8.2 “Versions”)|
 |Reference information update|G-21“Notifications”|When a new version has been obtained|
+|Reference information correction|G-21“Notifications” (one line in the same form as the content of app updates), G-12“Works”|When a version carrying the correction mark has been obtained. The list of affected sales and a single button “Make corrected-version Enclosed Documents” (Chapter 5, 2.4)|
+|Procedural deadline|G-21“Notifications”, OS notification, G-16“Case Details”|3 days before the deadline and on the day (the VALARM of RFC 5545; Chapter 7, 6.3). Those missed while not running are shown at the next start|
+|Vulnerability advisory for components|G-21“Notifications”, G-23“About This App”|When a VEX of CSAF 2.0 has come in the reference information package (affected, not affected, fixed version; Chapter 11, 5.3)|
+|Anomaly detection and crash report|A dialog at the next start|If there is a report (Chapter 1, 10.3 “Errors”), show “See the contents”, “Send (attach to an e-mail)”, and “Do not send” (9)|
 |App update|G-21“Notifications” and the top of the screen|When an update is ready (replaced on closing or with “Restart now to update”; Chapter 9, 4.1 “Flow and states”)|
 |Reference information is old|G-21“Notifications”. More than 30 days after expiry, also at the top of G-17“Action Guide”|When the reference information package has expired (Chapter 8, 3.4 “Reference information package”)|
 |Unsupported CPU|A dialog at start (before opening the app's screens)|When the CPU does not support x86-64-v3. Shows “The CPU of this PC is not supported” and the conditions of supported machines (Chapter 11, 3.1 “Minimum supported OS versions”), then exits|
@@ -558,120 +574,121 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 
 |Requirement|User's operation / what appears on screen|Screen|
 |---|---|---|
-|R-2-1-1“The signer (the information placed in the certificate) can be confirmed from an image's C2PA signature”|Check the signer (content of the certificate)|G-13“Verify”|
-|R-2-1-2“There are provisions for certificate expiry and renewal and for input errors”|Notice of certificate validity, remaking, correcting input|G-19“Keys and Notice Code”, G-21“Notifications”|
-|R-2-2-1“There is a means by which anyone can confirm the link between the signer and the Rights Holder of the photograph by matching with the Notice account”|Post the notice code. Open the Notice account of an image's signer and match|G-04“Posting the Notice”, G-13“Verify”|
-|R-2-2-2“Possession of the Original can be used as a clue”|— (the Original's fingerprint is recorded at export; visible in work details)|G-12“Works”|
-|R-2-2-3“There is a provision for when a Notice account is taken over”|Re-post the notice code|G-04“Posting the Notice”, G-19“Keys and Notice Code”|
-|R-2-3-1“When prior signing, replacement of signatures, or counter-complaints occur, matching clues can be laid out side by side (without judgment)”|See the clues side by side|G-24“Compare Clues”|
-|R-2-3-2“For photographs published before adoption, the clues that can be shown and the range that cannot are stated (what cannot be shown is declared in Chapter 13)”|Read the clues that can be shown for photos from before adoption|G-01“Welcome”, G-22“Help and Feedback”|
-|R-2-3-3“From the clues, the true Rights Holder can see what actions are possible (Chapter 7)”|See possible actions|G-24“Compare Clues”, G-17“Action Guide”|
-|R-2-4-1“A non-technical person can complete the input of information for C2PA signatures (the criterion is set in the basic design)”|Input of information for C2PA signatures|G-02“Consent”, G-03“Signing Information”, G-04“Posting the Notice”|
-|R-2-4-2“Authorizations can be granted, scoped, time-limited, and revoked”|Create and import authorizations, create revocations|G-18“Authorizations and Joint Rights”|
-|R-2-4-3“A photographer and a cosplayer can handle the same photograph”|Create and import joint-rights documents|G-18“Authorizations and Joint Rights”|
-|R-2-5-1“The range placed on images (made public) is determined”|— (the range that goes into the certificate is shown in G-03“Signing Information”)|G-03“Signing Information”|
-|R-2-5-2“Real names are not unintentionally made public in signatures or on screen”|— (no field for real names; 7)|All screens|
-|R-2-5-3“The history of changes remains on the device”|See the history of changes of input|G-19“Keys and Notice Code”|
-|R-2-6-1“They are stored safely and protected during processing”|OS user authentication at start. On Linux without Secret Service, the passphrase dialog at start (3.6) and the “passphrase-protected storage” setting in G-03“Signing Information”|OS screens, the dialog at start, G-03“Signing Information”|
-|R-2-6-2“On loss or leak, the key can be remade and the Notice re-posted, and the handling of past signatures is determined”|Remake keys and re-post the notice code|G-19“Keys and Notice Code”, G-04“Posting the Notice”|
-|R-2-6-3“They can be used on multiple devices”|Create a backup and restore on another device|G-05“Create Backup”, G-06“Restore from Backup”|
-|R-3-1-1“The supported formats are determined”|Guidance on unsupported formats (converting HEIC and RAW)|G-08“Export: Photos and Purpose”, G-11“Export: Run and Results”|
-|R-3-1-2“Broken images, huge images, and images that already have a signature can be handled safely”|Notices about broken, huge, and already signed images|G-08“Export: Photos and Purpose”, G-11“Export: Run and Results”|
-|R-3-2-1“The items recorded and the items not recorded (personal information) are determined”|— (fields not recorded; recorded fields are visible in work details)|G-12“Works”|
-|R-3-2-2“The version of the specification followed is determined”|— (the specification version is shown in G-23“About This App”)|G-23“About This App”|
-|R-3-2-3“Whether to record the Permitted Scope and Visible Signature operations is determined (decided together with Chapter 5)”|— (records of the Permitted Scope are visible in work details)|G-12“Works”|
-|R-3-3-1“The TSA (considering TSAs in China as well) is determined”|Timestamps of C2PA signatures are automatic (DigiCert, GlobalSign, FreeTSA in that order; Chapter 3, 4 “Trusted Timestamps”). Setting up accounts of paid TSAs for evidence, and choosing per case|G-20“Settings”, G-14“Register a Repost”, G-16“Case Details”|
-|R-3-3-2“When unreachable, timestamps can be held and added later”|See the number of deferred timestamps and the results of later attachment|G-07“Home”, G-12“Works”|
-|R-3-4-1“The information embedded and the strength are determined”|— (the watermark ID is visible in work details)|G-12“Works”|
-|R-3-4-2“The relationship with “processing that does not change the appearance” in Figure 3 is sorted out”|—|—|
-|R-3-4-3“It runs on typical machines without a GPU (the speed criterion is set in the basic design)”|— (processing time is seen in the progress)|G-11“Export: Run and Results”|
-|R-3-5-1“What they are computed on and where they are recorded are determined”|—|—|
-|R-3-6-1“Numbers are issued uniquely and can be written in file names and captions”|See, copy, and search identification numbers. Put them in the Visible Signature|G-09“Export: Batch Application”, G-11“Export: Run and Results”, G-12“Works”|
-|R-3-6-2“The items and recording location of work data are determined”|See work data|G-12“Works”|
-|R-3-7-1“Processing runs in an order that does not break the signature”|—|—|
-|R-3-7-2“The differences between delivery and social media are determined”|Choose the purpose|G-08“Export: Photos and Purpose”|
-|R-3-7-3“The Original is not changed”|— (that the Original is not changed is stated in a word in G-08“Export: Photos and Purpose”)|G-08“Export: Photos and Purpose”|
-|R-3-7-4“Shooting information (location, etc.) is removed”|— (removal of shooting information is stated in a word in G-08“Export: Photos and Purpose”)|G-08“Export: Photos and Purpose”|
-|R-3-8-1“Interruption, resumption, and partial failure are handled”|Interrupt and resume, list of failures and remedies|G-11“Export: Run and Results”|
-|R-3-8-2“Progress and results can be shown”|See progress and results|G-11“Export: Run and Results”|
-|R-3-9-1“The names and structure of output are determined”|Open the output folder|G-11“Export: Run and Results”|
-|R-3-9-2“Users can check their output themselves”|Check outputs|G-13“Verify”|
-|R-3-9-3“Whether C2PA signatures remain on posting sites and Cloud is known, and the handling when they do not is determined (by NRSD's decision Cloud is also investigated)”|Read how C2PA signatures remain per destination|G-11“Export: Run and Results”|
-|R-4-1-1“Name, account name, date, overlay image, and license statement can be placed”|Place elements (name, account, date, overlay, license notice, identification number)|G-25“Image Editing”|
-|R-4-1-2“Orientation (vertical writing, rotation) and color can be changed”|Change direction and color|G-25“Image Editing”, G-09“Export: Batch Application” (per-photo adjustment)|
-|R-4-1-3“The licenses of the fonts used have been checked”|See the licenses of bundled fonts. When importing fonts, see that the conditions of use are for the User to check|G-23“About This App”, G-25“Image Editing”|
-|R-4-1-4“Imported assets are handled safely”|Read cautions on imported assets|G-25“Image Editing”|
-|R-4-1-5“Elements can be stacked as layers, with stacking order, visibility, locking, and opacity”|Add layers, change order, hide, lock, change opacity|G-25“Image Editing”, G-09“Export: Batch Application” (per-photo visibility)|
-|R-4-2-1“Designs can be saved and reused, and used on multiple devices”|Save, choose, rename, copy, reorder, delete, extract, and import templates (to another device via `.nrsdtpl` or backup files)|G-25“Image Editing”, G-09“Export: Batch Application” (choose)|
-|R-4-2-2“Whether to provide default templates is determined”|Choose a default template|G-25“Image Editing”, G-09“Export: Batch Application”|
-|R-4-3-1“Signatures can be placed avoiding the subject”|See the results of auto-placement|G-09“Export: Batch Application”|
-|R-4-3-2“Nothing breaks even for images where the signature does not fit”|Adjust photos that “need adjustment”|G-09“Export: Batch Application”|
-|R-4-4-1“Adjustments can be made while viewing a preview, and undone”|Adjust with the preview, undo|G-25“Image Editing”, G-09“Export: Batch Application”|
-|R-4-4-2“The Original is not damaged”|— (non-destructive)|—|
-|R-4-4-3“The state of editing in progress is saved automatically and can be resumed later”|Stop midway, continue, recover after abnormal termination|G-07“Home” (work in progress), G-09“Export: Batch Application”, G-25“Image Editing”|
-|R-4-5-1“Signatures can be applied to a folder in one batch and adjusted per photograph”|Apply to a folder in batch and adjust per photo|G-08“Export: Photos and Purpose”, G-09“Export: Batch Application”|
-|R-4-6-1“Images can be output in the size, compression, and color space for social media”|Choose size, compression, and color space for social media|G-08“Export: Photos and Purpose” (detailed settings), G-20“Settings” (defaults)|
-|R-5-1-1“A non-technical person can understand the meaning and choose (the criterion is set in the basic design)”|Choose the Permitted Scope (explanations and pictures)|G-10“Export: Permitted Scope”|
-|R-5-1-2“Which Permitted Scope was chosen for which image is recorded”|See the Permitted Scope per work|G-12“Works”|
-|R-5-1-3“The handling of changes after sale is determined”|Guidance that it cannot be changed after sale|G-10“Export: Permitted Scope”, G-12“Works”|
-|R-5-2-1“They include the matters of Design Plan 9.2”|Preview of the Enclosed Document|G-10“Export: Permitted Scope”|
-|R-5-2-2“Rewriting can be detected”|Check the Enclosed Document|G-13“Verify”|
-|R-5-3-1“Who wrote it, who checked it, and which version it is can be known”|See the version of the Enclosed Document|G-10“Export: Permitted Scope”, G-12“Works”|
-|R-5-3-2“Updates can be delivered to Users (distribution of reference information; 1-3)”|Notice of reference information updates|G-21“Notifications”|
-|R-5-4-1“There is a link covering all countries and a way to decide the nationalities enclosed”|Choose the countries of the Enclosed Document|G-10“Export: Permitted Scope”, G-20“Settings” (defaults)|
-|R-5-5-1“Example Notice texts (three languages) can be shown”|Copy sample Notice texts|G-04“Posting the Notice”, G-20“Settings”|
-|R-5-5-2“The information needed for Entitlement matching can be included in the Notice”|— (G-04“Posting the Notice” shows that the notice code is a clue for matching Entitlement)|G-04“Posting the Notice”|
-|R-6-1-1“Registration can be done with one button”|“Register”|G-14“Register a Repost”|
-|R-6-1-2“For pages that require login, what the User obtained themselves can be imported”|Put in screenshots|G-14“Register a Repost”|
-|R-6-1-3“Registrations are recorded on the User's device and do not affect other Users' records”|— (recorded on the device with a record signature)|—|
-|R-6-1-4“There is room to accept Registrations from Phase 2”|—|—|
-|R-6-2-1“The matters to be shown later (Design Plan 10.3) can be kept”|Fill in the evidence input fields|G-14“Register a Repost”|
-|R-6-2-2“There are provisions for failures to obtain and for malicious sites”|Display of fetch failures, cautions on saving|G-14“Register a Repost”|
-|R-6-3-1“A timestamp is attached, and it can be shown that nothing was tampered with”|See whether there is a timestamp|G-16“Case Details”|
-|R-6-3-2“Evidence can be exported in a form that can be handed to experts”|Extract the evidence package|G-16“Case Details”|
-|R-6-4-1“The degree of match and what is violated can be shown”|See the match level and candidates for what is violated|G-14“Register a Repost”, G-16“Case Details”|
-|R-6-5-1“The User can see what happened to registered reposts afterward”|See the status, check the current status|G-15“Reposts (Case List)”, G-16“Case Details”|
-|R-6-5-2“It is linked to the record of complaints”|Record that a complaint was made|G-17“Action Guide”|
-|R-6-6-1“Wrong Registrations can be withdrawn”|Withdraw|G-16“Case Details”|
-|R-6-6-2“The handling of registering a repost that is not the User's own work is determined”|See the matching result and guidance on responsibility before complaining|G-17“Action Guide”|
-|R-6-7-1“Registered reposts can be gathered into a list and possible actions presented (not shared among Users)”|See the list per reposting site and possible actions|G-15“Reposts (Case List)”|
-|R-7-1-1“Contact points per posting site and provider can be known”|Choose a contact point|G-17“Action Guide”|
-|R-7-1-2“Changes in contact points can be followed (distribution of reference information; 1-3)”|Notice of reference information updates|G-21“Notifications”|
-|R-7-2-1“They can be shown per country and language”|Choose the language of the model text|G-17“Action Guide”|
-|R-7-2-2“Users can know in advance that complaints may pass their personal information to the other party”|Confirm the guidance on personal information|G-17“Action Guide”|
-|R-7-3-1“References to each country's laws are accumulated in an “all countries” frame and delivered to Users”|Read references to each country's law|G-17“Action Guide”, G-22“Help and Feedback”|
-|R-7-4-1“The procedure can be shown”|Read the procedure for identifying the operator|G-16“Case Details”, G-17“Action Guide”|
-|R-7-4-2“It is shown that action is abandoned when the location cannot be determined even after investigation (declared as a gap in Chapter 13)”|Read the guidance for when the location is unknown|G-17“Action Guide”|
-|R-7-5-1“The flow of complaining with the evidence package, the Permitted Scope, and the Enclosed Document attached can be understood”|See and extract the evidence to attach|G-17“Action Guide”, G-16“Case Details”|
-|R-7-5-2“The approach of joint action and of prioritizing commercial use is shown”|Commercial-use mark, the approach to joint action|G-15“Reposts (Case List)”, G-17“Action Guide”|
-|R-7-6-1“It is stated explicitly that this is not legal advice, and the sources of information are stated”|See the line-drawing text and sources|G-16“Case Details”, G-17“Action Guide”|
-|R-8-1-1“It holds the software, the public page, and reference information, and no personal information”|—|—|
-|R-8-1-2“Reference information and updates of modified versions can be distinguished from official ones”|— (notice that reference information and updates failing verification are not used)|G-21“Notifications”|
-|R-8-2-1“The placement of Rights Holder Information, ledgers, evidence, and work data is determined”|— (the data location can be seen in settings)|G-20“Settings”|
-|R-8-2-2“It is guaranteed that they do not leave the device (except when the User exports them)”|— (that nothing leaves the device is shown in G-01“Welcome” and G-23“About This App”)|G-01“Welcome”, G-23“About This App”|
-|R-8-4-1“Tampering can be detected, history remains, and recovery from exports is possible”|Restore from a backup|G-06“Restore from Backup”|
-|R-8-5-1“A guide to device capacity is shown”|Notice of free space|G-21“Notifications”|
-|R-8-5-2“Distributions and reference information of the Public Repository can be obtained from mainland China as well”|— (connections in mainland China use the mirror automatically)|—|
-|R-8-7-1“There is a provision for when GitHub becomes unusable”|— (while GitHub is unavailable, obtained from the mirror)|—|
-|R-9-1-1“Non-technical people can install it on the three OSes”|— (installer screens are OS standard)|—|
-|R-9-1-2“The handling of device data on uninstall is determined”|— (the uninstaller's question)|Uninstaller|
-|R-9-2-1“It can be distinguished from fake apps”|See how to tell the official version|G-23“About This App”|
-|R-9-2-2“The keys used for releases are protected”|—|—|
-|R-9-3-1“It is updated without User operation, and what is received is verified”|Update notices|G-21“Notifications”|
-|R-9-3-2“Failure does not break it, and data is migrated”|Notice of update failure|G-21“Notifications”|
-|R-9-3-3“There is a provision for when the update route is taken over”|—|—|
-|R-9-4-1“It can be obtained from the README without confusion, including from mainland China”|— (README)|—|
-|R-9-5-1“The required license notices are bundled”|See the list of licenses|G-23“About This App”|
+|R-2-1-1|Check the signer (content of the certificate)|G-13“Verify”|
+|R-2-1-2|Notice of certificate validity, remaking, correcting input|G-19“Keys and Notice Code”, G-21“Notifications”|
+|R-2-2-1|Post the notice code. Open the Notice account of an image's signer and match|G-04“Posting the Notice”, G-13“Verify”|
+|R-2-2-2|— (the Original's fingerprint is recorded at export; visible in work details)|G-12“Works”|
+|R-2-2-3|Re-post the notice code|G-04“Posting the Notice”, G-19“Keys and Notice Code”|
+|R-2-3-1|See the clues side by side|G-24“Compare Clues”|
+|R-2-3-2|Read the clues that can be shown for photos from before adoption|G-01“Welcome”, G-22“Help and Feedback”|
+|R-2-3-3|See possible actions|G-24“Compare Clues”, G-17“Action Guide”|
+|R-2-4-1|Input of information for C2PA signatures|G-02“Consent”, G-03“Signing Information”, G-04“Posting the Notice”|
+|R-2-4-2|Create and import authorizations, create revocations|G-18“Authorizations and Joint Rights”|
+|R-2-4-3|Create and import joint-rights documents|G-18“Authorizations and Joint Rights”|
+|R-2-5-1|— (the range that goes into the certificate is shown in G-03“Signing Information”)|G-03“Signing Information”|
+|R-2-5-2|— (no field for real names; 7)|All screens|
+|R-2-5-3|See the history of changes of input|G-19“Keys and Notice Code”|
+|R-2-6-1|OS user authentication at start. On Linux without Secret Service, the passphrase dialog at start (3.6) and the “passphrase-protected storage” setting in G-03“Signing Information”|OS screens, the dialog at start, G-03“Signing Information”|
+|R-2-6-2|Remake keys and re-post the notice code|G-19“Keys and Notice Code”, G-04“Posting the Notice”|
+|R-2-6-3|Create a backup and restore on another device. Link devices and sync records (Chapter 8, 5.4)|G-05“Create Backup”, G-06“Restore from Backup”, G-20“Settings” (devices)|
+|R-3-1-1|Guidance on unsupported formats (converting HEIC and RAW)|G-08“Export: Photos and Purpose”, G-11“Export: Run and Results”|
+|R-3-1-2|Notices about broken, huge, and already signed images|G-08“Export: Photos and Purpose”, G-11“Export: Run and Results”|
+|R-3-2-1|— (fields not recorded; recorded fields are visible in work details)|G-12“Works”|
+|R-3-2-2|— (the specification version is shown in G-23“About This App”)|G-23“About This App”|
+|R-3-2-3|— (records of the Permitted Scope are visible in work details)|G-12“Works”|
+|R-3-3-1|Timestamps of C2PA signatures are automatic (DigiCert, GlobalSign, FreeTSA in that order; Chapter 3, 4 “Trusted Timestamps”). Setting up accounts of paid TSAs for evidence, and choosing per case|G-20“Settings”, G-14“Register a Repost”, G-16“Case Details”|
+|R-3-3-2|See the number of deferred timestamps and the results of later attachment|G-07“Home”, G-12“Works”|
+|R-3-4-1|— (the watermark ID is visible in work details)|G-12“Works”|
+|R-3-4-2|—|—|
+|R-3-4-3|— (processing time is seen in the progress)|G-11“Export: Run and Results”|
+|R-3-5-1|—|—|
+|R-3-6-1|See, copy, and search identification numbers. Put them in the Visible Signature|G-09“Export: Batch Application”, G-11“Export: Run and Results”, G-12“Works”|
+|R-3-6-2|See work data|G-12“Works”|
+|R-3-7-1|—|—|
+|R-3-7-2|Choose the purpose|G-08“Export: Photos and Purpose”|
+|R-3-7-3|— (that the Original is not changed is stated in a word in G-08“Export: Photos and Purpose”)|G-08“Export: Photos and Purpose”|
+|R-3-7-4|— (removal of shooting information is stated in a word in G-08“Export: Photos and Purpose”)|G-08“Export: Photos and Purpose”|
+|R-3-8-1|Interrupt and resume, list of failures and remedies|G-11“Export: Run and Results”|
+|R-3-8-2|See progress and results|G-11“Export: Run and Results”|
+|R-3-9-1|Open the output folder|G-11“Export: Run and Results”|
+|R-3-9-2|Check outputs|G-13“Verify”|
+|R-3-9-3|Read how C2PA signatures remain per destination|G-11“Export: Run and Results”|
+|R-4-1-1|Place elements (name, account, date, overlay, license notice, identification number)|G-25“Image Editing”|
+|R-4-1-2|Change direction and color|G-25“Image Editing”, G-09“Export: Batch Application” (per-photo adjustment)|
+|R-4-1-3|See the licenses of bundled fonts. When importing fonts, see that the conditions of use are for the User to check|G-23“About This App”, G-25“Image Editing”|
+|R-4-1-4|Read cautions on imported assets|G-25“Image Editing”|
+|R-4-1-5|Add layers, change order, hide, lock, change opacity|G-25“Image Editing”, G-09“Export: Batch Application” (per-photo visibility)|
+|R-4-2-1|Save, choose, rename, copy, reorder, delete, extract, and import templates (to another device of one's own via sync (Chapter 8, 5.4) or backup files; to a counterparty via a `.nrsdtpl` file or direct delivery to a verified counterparty; Chapter 4, 8.3)|G-25“Image Editing”, G-09“Export: Batch Application” (choose)|
+|R-4-2-2|Choose a default template|G-25“Image Editing”, G-09“Export: Batch Application”|
+|R-4-3-1|See the results of auto-placement|G-09“Export: Batch Application”|
+|R-4-3-2|Adjust photos that “need adjustment”|G-09“Export: Batch Application”|
+|R-4-4-1|Adjust with the preview, undo|G-25“Image Editing”, G-09“Export: Batch Application”|
+|R-4-4-2|— (non-destructive)|—|
+|R-4-4-3|Stop midway, continue, recover after abnormal termination|G-07“Home” (work in progress), G-09“Export: Batch Application”, G-25“Image Editing”|
+|R-4-5-1|Apply to a folder in batch and adjust per photo|G-08“Export: Photos and Purpose”, G-09“Export: Batch Application”|
+|R-4-6-1|Choose size, compression, and color space for social media|G-08“Export: Photos and Purpose” (detailed settings), G-20“Settings” (defaults)|
+|R-5-1-1|Choose the Permitted Scope (explanations and pictures)|G-10“Export: Permitted Scope”|
+|R-5-1-2|See the Permitted Scope per work|G-12“Works”|
+|R-5-1-3|Guidance that it cannot be changed after sale|G-10“Export: Permitted Scope”, G-12“Works”|
+|R-5-2-1|Preview of the Enclosed Document|G-10“Export: Permitted Scope”|
+|R-5-2-2|Check the Enclosed Document|G-13“Verify”|
+|R-5-3-1|See the version of the Enclosed Document|G-10“Export: Permitted Scope”, G-12“Works”|
+|R-5-3-2|Notice of reference information updates|G-21“Notifications”|
+|R-5-4-1|Choose the countries of the Enclosed Document|G-10“Export: Permitted Scope”, G-20“Settings” (defaults)|
+|R-5-5-1|Copy sample Notice texts|G-04“Posting the Notice”, G-20“Settings”|
+|R-5-5-2|— (G-04“Posting the Notice” shows that the notice code is a clue for matching Entitlement)|G-04“Posting the Notice”|
+|R-6-1-1|“Register”|G-14“Register a Repost”|
+|R-6-1-2|Put in screenshots|G-14“Register a Repost”|
+|R-6-1-3|— (recorded on the device with a record signature)|—|
+|R-6-1-4|—|—|
+|R-6-2-1|Fill in the evidence input fields|G-14“Register a Repost”|
+|R-6-2-2|Display of fetch failures, cautions on saving|G-14“Register a Repost”|
+|R-6-3-1|See whether there is a timestamp|G-16“Case Details”|
+|R-6-3-2|Extract the evidence package|G-16“Case Details”|
+|R-6-4-1|See the match level and candidates for what is violated|G-14“Register a Repost”, G-16“Case Details”|
+|R-6-5-1|See the status, check the current status|G-15“Reposts (Case List)”, G-16“Case Details”|
+|R-6-5-2|Record that a complaint was made|G-17“Action Guide”|
+|R-6-6-1|Withdraw|G-16“Case Details”|
+|R-6-6-2|See the matching result and guidance on responsibility before complaining|G-17“Action Guide”|
+|R-6-7-1|See the list per reposting site and possible actions|G-15“Reposts (Case List)”|
+|R-7-1-1|Choose a contact point|G-17“Action Guide”|
+|R-7-1-2|Notice of reference information updates|G-21“Notifications”|
+|R-7-2-1|Choose the language of the model text|G-17“Action Guide”|
+|R-7-2-2|Confirm the guidance on personal information|G-17“Action Guide”|
+|R-7-3-1|Read references to each country's law|G-17“Action Guide”, G-22“Help and Feedback”|
+|R-7-4-1|Read the procedure for identifying the operator|G-16“Case Details”, G-17“Action Guide”|
+|R-7-4-2|Read the guidance for when the location is unknown|G-17“Action Guide”|
+|R-7-5-1|See and extract the evidence to attach|G-17“Action Guide”, G-16“Case Details”|
+|R-7-5-2|Commercial-use mark, the approach to joint action|G-15“Reposts (Case List)”, G-17“Action Guide”|
+|R-7-6-1|See the line-drawing text and sources|G-16“Case Details”, G-17“Action Guide”|
+|R-8-1-1|—|—|
+|R-8-1-2|— (notice that reference information and updates failing verification are not used)|G-21“Notifications”|
+|R-8-2-1|— (the data location can be seen in settings)|G-20“Settings”|
+|R-8-2-2|— (that nothing leaves the device is shown in G-01“Welcome” and G-23“About This App”)|G-01“Welcome”, G-23“About This App”|
+|R-8-4-1|Restore from a backup|G-06“Restore from Backup”|
+|R-8-5-1|Notice of free space|G-21“Notifications”|
+|R-8-5-2|— (connections in mainland China use the mirror automatically)|—|
+|R-8-7-1|— (while GitHub is unavailable, obtained from the mirror)|—|
+|R-9-1-1|— (installer screens are OS standard)|—|
+|R-9-1-2|— (the uninstaller's question)|Uninstaller|
+|R-9-2-1|See how to tell the official version|G-23“About This App”|
+|R-9-2-2|—|—|
+|R-9-3-1|Update notices|G-21“Notifications”|
+|R-9-3-2|Notice of update failure|G-21“Notifications”|
+|R-9-3-3|—|—|
+|R-9-4-1|— (README)|—|
+|R-9-5-1|See the list of licenses|G-23“About This App”|
 
 - Count: of the 104 requirements of Chapters 2 to 9 of the Outline Design Document (the number after deleting four requirements on the private repository and accepting Users in Design Plan Edition 2), 91 have a User operation or screen display (including OS authentication screens and the uninstaller), and 13 have no screen (internal processing, NRSD's work, README). All requirements with operations exist on some screen.
 
 ## 5. Languages
 
-- Texts are placed per language in ICU MessageFormat JSON (Chapter 11, DD-11-8“Internationalization uses message files”), and text is not hard-coded in screens. Plurals and gender are handled with MessageFormat.
+- Texts are placed per language in ICU MessageFormat JSON (Chapter 11, DD-11-8“Internationalization uses message files”), and text is not hard-coded in screens. Keys are named `<screen>.<component>.<role>` (e.g., `g03.handle.label`, `g03.handle.help`, `common.button.cancel`, `err.STO-031.what`). Keys use only lowercase Latin letters and periods, and insertions within a sentence are ICU `{name}`. Plurals and gender are handled with MessageFormat. The keys of fixed texts composed by the core (the headings of `00_INDEX.txt`, the report and verification procedure documents, the emergency kit, and the headings of corrected-version Enclosed Documents; excluding `err.*` of Chapter 1, 10.3) are `core.<block name>.<name>` (e.g., `core.sign.index_heading`), placed in the same message files.
 - Switching languages: chosen in G-01“Welcome” and G-20“Settings”. The default is the OS language (ja, those beginning with zh, otherwise en). Switching takes effect without restarting.
-- Glyph shapes: screen elements carry a `lang` attribute (ja, zh-Hans, en), and the per-language fonts (2.2) are applied. Strings entered by Users are displayed with the screen language's attribute.
+- Glyph shapes: screen elements carry a `lang` attribute (BCP 47 (RFC 5646) language tags: ja, zh-Hans, en), and the per-language fonts (2.2) are applied. The notation of dates and numbers follows the regional data of Unicode CLDR (used by `Intl`). Strings entered by Users are displayed with the screen language's attribute.
 - Dates, times, numbers: displayed with `Intl.DateTimeFormat` and `Intl.NumberFormat` according to the screen language and region. Recorded in UTC ISO 8601 (Chapter 1, 10.7 “Time”). Times related to evidence always show the time offset (e.g., UTC+9) beside them.
 - Consistent terms: a glossary (identification number, Permitted Scope, Enclosed Document, notice code, case, repost, etc.) is defined in three languages, and translators follow it. Translations are checked by NRSD (Chapter 11, DD-11-8“Internationalization uses message files”).
+- Translations are exchanged in XLIFF 2.1 (OASIS). The source of the texts stays as ICU MessageFormat JSON; CI converts it to XLIFF to hand to translators and imports the returned XLIFF into JSON (CI checks that the round trip does not change the content; Chapter 11, DD-11-8“Internationalization uses message files”) (2026-10-01, NRSD's requirement).
 - The screen language and the countries of the Enclosed Document are separate settings (Chapter 1, 10.8 “Languages and countries”). Even with the screen in English, the Japanese version of the Enclosed Document can be chosen.
 - Text length: English is longer than Japanese, so it is checked that buttons and headings do not break at English lengths (included in the readability check; 2.4).
 
@@ -722,15 +739,16 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 
 ## 8. OS Integration
 
-- DD-10-5“No OS integration; drag and drop is used instead”. No right-click menus, file associations, or resident presence (notification area icons).
+- DD-10-5“No OS integration; drag and drop is used instead”. No right-click menus, file associations, or resident presence (notification area icons). The URL scheme registered with the OS (Chapter 1, 10.10) is only the app's own one (receiving from the browser extension) and does not fall under the three that DD-10-5 rejects.
 - Drag and drop onto the window: dropping photos and folders on G-07“Home” or G-08“Export: Photos and Purpose” starts the export flow, on G-13“Verify” verifies, on G-06“Restore from Backup” restores from a backup, and on G-14“Register a Repost” puts them in the reposted image and screenshot fields.
-- OS notifications: only for completion of long batch processing (Tauri's notification feature).
+- OS notifications: OS notifications are used only for the completion of long processing (export, backups) and for procedural deadlines (3.7; the time of the VALARM of RFC 5545) (Tauri's notification feature) (aligned with 3.7 on 2026-10-01).
 
 ## 9. Feedback Channel
 
 - “Send feedback” in G-22“Help and Feedback”: enter the kind (does not work / hard to understand / error in contact points or sample texts / other), body, and choice of information to attach (app version, OS, recent error codes; included by default; photos, records, and personal information are not attached).
 - Before sending, the sentence “All NRSD receives is this e-mail (e-mail address, body, attached information). It is used only for replying and improvement” and guidance to the Privacy Policy are shown (Chapter 12, 5 “Privacy Policy”).
-- The app composes the text and shows “Open in e-mail software” (mailto) or “Copy text and address”. The one who sends is the User, and the app does not send automatically (DD-10-6“Feedback is sent by the User from their own e-mail”).
+- Reports of anomaly detection and of the app crashing (the crash report of Chapter 1, 10.3 “Errors”) are asked about at the next start with “Send a report?”, showing “See the contents”, “Send (attach to an e-mail)”, and “Do not send”. Nothing is sent automatically (DD-10-6“Feedback is sent by the User from their own e-mail”) (2026-10-01, NRSD's requirement).
+- The app composes the text and shows “Open in e-mail software” (mailto) or “Copy text and address”. The mailto URL is up to 2,000 characters (within the 2,083-character limit of Windows `ShellExecute`), and for texts exceeding this only “Copy” is shown. The one who sends is the User, and the app does not send automatically (DD-10-6“Feedback is sent by the User from their own e-mail”).
 - NRSD replies to e-mails received. Guide for acknowledgment: reply within 7 days (initial value). User information is not used other than the e-mail address received for replying (Chapter 12, 5 “Privacy Policy”).
 
 ## 10. Settings
@@ -742,52 +760,58 @@ Figure 10-6 Layout of G-16“Case Details” (rough proposal)
 |Display|Text size|Standard (small, standard, large, extra large, maximum; 2.5)|
 |Display|Reduce motion|Follow the OS|
 |Display|Display consideration (hide Notice accounts and case URLs)|Off|
+|Display|Window size and position (per device; tauri-plugin-window-state)|Previous values|
 |Export|Default output folder|Next to the photo folder|
-|Export|Default export preset for social media|X (2048 on the long side, JPEG 92, sRGB; Chapter 4, 14.1 “Export presets”)|
+|Export|Default export preset for social media. Presets made with “Decide myself” are saved with names in `export.presets` and listed|X (2048 on the long side, JPEG 92, sRGB; Chapter 4, 14.1 “Export presets”)|
 |Export|Default template|The last used template (at first, “Name only” of Chapter 4, 8.4 “Default templates”)|
+|Export|Whether to add the identification number to file names for social media (Chapter 3, 7.1 “Identification number”; can be changed per work session in G-08, and the changed value becomes the next default)|Add|
 |Editing|Number of undo steps|200 (50 to 1,000; Chapter 4, 10.4 “Number of steps and memory”)|
 |Editing|Automatic saving|Always on (cannot be turned off; Chapter 4, 11.3 “How saving works”). Only the save state display can be toggled. Save failure notices are shown even if the display is turned off (3.7)|
+|Editing|Recently used colors (how colors are chosen in Chapter 4, 3.2 “Formatting”)|Up to 8|
+|Signing information|The mark of whether the Notice was posted (the optional check in G-04“Posting the Notice”; the app does not check whether it was posted)|None|
 |Export|Default for AI training|Not allowed (A3 of Chapter 5 “Rights Documents”)|
 |Export|Timestamps of C2PA signatures|Automatic (free TSAs; Chapter 3, 4 “Trusted Timestamps”; not chosen)|
-|Registration|Accounts of paid TSAs for evidence (Japanese accredited providers, Chinese trusted timestamps; Chapter 6, 3.2 “Trusted timestamps”)|None (if set, can be chosen per case)|
+|Registration|Accounts of paid TSAs for evidence (Japanese accredited providers, Chinese trusted timestamps; Chapter 6, 3.2 “Trusted timestamps”; the URL, user name, and passphrase are kept not in `settings.json` but in the OS keystore as `tsa-<provider number>`; Chapter 3, 4, Chapter 2, 7.5)|None (if set, can be chosen per case)|
 |Rights Documents|Countries of the Enclosed Document|None (the User chooses purchasers' common nationalities; Chapter 5, 5 “Countries”)|
 |Rights Documents|Default Permitted Scope|P1 (checked every time in G-10“Export: Permitted Scope”)|
 |Rights Documents|Sample Notice texts|Copies of the three levels (same as G-04“Posting the Notice”)|
 |Signing information|Handle name, role, Notice accounts|Can be changed (the signing certificate is remade; its validity is the same as the personal root's; Chapter 2, 3.4 “Expiry and input errors”)|
 |Terms of Use|Consent status, and agreeing or withdrawing consent (Chapter 12, DD-12-3“Consent gates only the fetching of reference information”)|The choice at the first G-02“Consent”|
 |Signing information|Authorizations and joint rights, keys and notice code|To G-18“Authorizations and Joint Rights”, G-19“Keys and Notice Code”|
-|Data|Location of data on the device, create a backup, restore from a backup, interval of backup recommendations|30 days (initial value)|
+|Updates|Do not download update distributables on metered or data-saver connections (connection judgment in Chapter 1, 4.2 “Communication with the outside”)|On|
+|Data|“Backup”: locations (several; external storage, the Cloud sync folder, another device), automatic every hour and on closing (cannot be turned off), printing the emergency kit, whether to include the Originals, “Back up now” (Chapter 8, 5.5)|Decided at first run|
+|Data|The public key of the recovery key (independent of the device; made when the backup location is first decided, and the private key is placed only in the printed emergency kit; “Remake the recovery key”; Chapter 8, 5.1)|Made at first run|
+|Data|“Devices” (Chapter 8, 5.4 “Device-to-device synchronization”; the list shows the name, the time of the last sync, and “Remove this device”)|—|
+|Data|Portable kit (the app and reference information to USB), importing reference information and updates from files (Chapter 9, 5, 4.5)|—|
+|Reference information|Exchange reference information with one's other devices and verified counterparties (Chapter 8, 3.4). Use relays for direct connections (when off, only the same network and the Cloud sync folder)|On|
+|Signing information|OS user verification before signing, documents, importing backups, and erasing records (Touch ID, Windows Hello, polkit; Chapter 2, 7.4)|On|
 |Data|Erase this device's records (including signing keys; typing a confirmation word is required; Chapter 9, 2.3 “Procedure for “Erase this device's records””)|—|
 |Updates|Obtaining updates (cannot be turned off; replaced on closing or with “Restart now to update”; Chapter 9, 4.1 “Flow and states”)|Replace on closing|
 
-- Saving: settings are placed as `settings.json` (with a `schema` version) in the OS's per-user app data location. Signing keys are not put in settings (OS keystore). Templates are included in backups and can be used on another device (R-4-2-1“Designs can be saved and reused, and used on multiple devices” of Chapter 4).
+- Saving: settings are placed as `settings.json` (with a `schema` version) in the OS's per-user app data location. Keys are written as the section and item of this table in lowercase `section.item` (e.g., `display.language`, `export.default_preset`, `backup.destinations`, `sync.use_relay`). Items independent of the device (the User's choices other than the screen language: the default export preset and template, the Permitted Scope, the countries of the Enclosed Document, sample Notice texts, the number of undo steps, the default for AI training, the save state display, the public key of the recovery key, and the read state of notifications (the notification number and the date/time read; the same as Feedly and Apple News aligning read state across devices)) take the newer of the values that came from another device or a backup. Items per device (locations, display, whether there is a key passphrase, use of relays, the list of devices, TSA accounts) keep the current device's values, and their keys carry the prefix `device.`. Signing keys are not put in settings (OS keystore). Templates are included in backups and can be used on another device (R-4-2-1, Chapter 4, 8.3 “Passing on (export and import)”).
 
 ## 11. Mapping to Requirements
 
-|Requirement number|Requirement|Sections in this chapter|
-|---|---|---|
-|R-10-1-1|The policy on look (cute, character) is set and the judge is decided|1 “List of Design Decisions” (DD-10-1“The look is pale colors, rounded shapes, and one guide character”, DD-10-2“Design is done and judged by NRSD's Lead Developer”), 2.1 “Direction (rough proposal)”, 2.4 “Judgment”|
-|R-10-1-2|Readability (text size, color vision) is considered|1 “List of Design Decisions” (DD-10-4“Accessibility is based on WCAG 2.2 Level AA”), 2.2 “Fonts”, 2.3 “Colors”|
-|R-10-2-1|The Users' operations of the requirements of all chapters (Chapters 2 to 9) exist on some screen|3 “Screen Structure”, 4 “Mapping of Requirements to Screens”|
-|R-10-3-1|Usable in Japanese, Chinese, and English|1 “List of Design Decisions” (DD-10-7“Screen languages are Japanese, Chinese (Simplified), and English”), 5 “Languages”|
-|R-10-3-2|Kanji glyph shapes and notation of dates and numbers suit the language and country|1 “List of Design Decisions” (DD-10-7“Screen languages are Japanese, Chinese (Simplified), and English”), 5 “Languages”|
-|R-10-4-1|At first run, guidance on input of information for C2PA signatures, posting of the Notice, consent to the Terms of Use, and not being involved in the rights of the original works (Outline Design Document “What the System protects and does not protect”)|6 “Guidance”|
-|R-10-4-2|Shows that it is not legal advice and that personal information may be passed on in complaints (Chapter 7)|6 “Guidance”|
-|R-10-4-3|Errors and help are understandable to non-technical people|6 “Guidance”|
-|R-10-5-1|Real names and key information are not shown on screen|7 “Considerations in Display”|
-|R-10-6-1|Whether to provide it is decided|1 “List of Design Decisions” (DD-10-5“No OS integration; drag and drop is used instead”), 8 “OS Integration”|
-|R-10-7-1|Deficiencies can be reported without looking at GitHub (received by the operator function; 1-10)|1 “List of Design Decisions” (DD-10-6“Feedback is sent by the User from their own e-mail”), 9 “Feedback Channel”|
-|R-10-8-1|The setting items are decided|10 “Settings”|
+|Requirement number (text in the Outline Design Document)|Sections in this chapter|
+|---|---|
+|R-10-1-1|1 “List of Design Decisions” (DD-10-1“The look is pale colors, rounded shapes, and one guide character”, DD-10-2“Design is done and judged by NRSD's Lead Developer”), 2.1 “Direction (rough proposal)”, 2.4 “Judgment”|
+|R-10-1-2|1 “List of Design Decisions” (DD-10-4“Readability is judged against all WCAG 2.2 success criteria”), 2.2 “Fonts”, 2.3 “Colors”, 2.7 “Readability definition (WCAG 2.2)”|
+|R-10-2-1|3 “Screen Structure”, 4 “Mapping of Requirements to Screens”|
+|R-10-3-1|1 “List of Design Decisions” (DD-10-7“Screen languages are Japanese, Chinese (Simplified), and English”), 5 “Languages”|
+|R-10-3-2|1 “List of Design Decisions” (DD-10-7“Screen languages are Japanese, Chinese (Simplified), and English”), 5 “Languages”|
+|R-10-4-1|6 “Guidance”|
+|R-10-4-2|6 “Guidance”|
+|R-10-4-3|6 “Guidance”|
+|R-10-5-1|7 “Considerations in Display”|
+|R-10-6-1|1 “List of Design Decisions” (DD-10-5“No OS integration; drag and drop is used instead”), 8 “OS Integration”|
+|R-10-7-1|1 “List of Design Decisions” (DD-10-6“Feedback is sent by the User from their own e-mail”), 9 “Feedback Channel”|
+|R-10-8-1|10 “Settings”|
 
 ## 12. Gaps Declared in This Chapter
 
-- “Cute” is a matter of taste, and a look accepted by everyone cannot be made. Deciding on one judge, the Lead Developer, only avoids a state of indecision.
-- User trials are small (5 or more people) and do not represent all Users. This is supplemented by feedback after the app is usable (D-3-5“No interviews are conducted; improvement is made based on comments after the System becomes usable”).
-- With no right-click menu, operations cannot be done directly from file managers.
-- Enlarging screen text narrows the photo display area on photo editing screens (G-09“Export: Batch Application”, G-25“Image Editing”).
-- WCAG 2.2 1.4.10 “Reflow” (presenting without two-dimensional scrolling at the equivalent of 320 CSS pixels wide) is not met, because as a desktop app the minimum window is 1024×700 pixels (2.7).
+- The gaps of this chapter follow the table in Chapter 13, 4.1 “Gaps in the mechanism” (the rows whose chapter column is this chapter; with why they cannot be closed, the extent addressed, the remaining risks, and who bears them) (not reproduced in this chapter).
 
 ## 13. Corrections to Other Chapters and the Outline Design Document
 
-- Add to the Outline Design Document requirement R-10-2-1“The User operations of the requirements of all chapters (Chapters 2 to 9) exist on some screen” that its correspondence is shown in the table of 4 “Mapping of Requirements to Screens” of this chapter.
+- Add to the Outline Design Document requirement R-10-2-1 that its correspondence is shown in the table of 4 “Mapping of Requirements to Screens” of this chapter.
 - In line with Design Plan Edition 2, the first-run screens (G-02“Consent”, G-03“Signing Information”, G-04“Posting the Notice”, G-05“Create Backup”, G-06“Restore from Backup”), the key screen (G-19“Keys and Notice Code”), the feedback channel (9), and clue comparison (G-24“Compare Clues”) were revised.

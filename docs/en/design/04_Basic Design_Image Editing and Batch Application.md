@@ -12,15 +12,10 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
 - Details Chapter 4 of the Outline Design Document. This chapter sets the content of the function that draws names and credits onto photographs (the Visible Signature), templates, editing operations, undo and redo, saving of work sessions (the state in the middle of editing), batch application, and export. The appearance and layout of the screens are set in Chapter 10 “Screens and Design”.
 - This chapter is based on the study memo “Study of Chapter 4 Image Editing and Batch Application” (NRSD's internal record of study, not distributed with this document; the facts underlying the design are written with their sources in each section of this document). The survey of similar software and the facts and sources of the components are kept in the study memo.
-- The decisions received are as in the following table.
+- The decisions received are as in the following table. The texts of the Design Plan's decisions, items to be investigated, and open items are per Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” and the destination table of the Outline Design Document (not reproduced in this chapter; only the numbers and the omissions found in the item breakdown are listed).
 
 |Number|Type|Content|
 |---|---|---|
-|D-7-5|Decision|A Visible Signature in a design chosen by the Rights Holder is added to Social Media Images|
-|D-8-2|Decision|The image editing screen, batch application, and the Rights Document creation screen are provided. The organization of other screens is decided in the design document|
-|D-8-3|Decision|A design created on the editing screen becomes a template that can be applied to single images or by folder|
-|D-8-4|Decision|Even in batch application, placement, orientation, and color can be adjusted for each photograph|
-|O-11|Open (decided in Basic Design Chapter 3, DD-3-6“Visible Signatures on Delivery Images are decided per template”)|Visible Signatures on Delivery Images|
 |A-11|Omission found in the item breakdown|Font licenses|
 
 - Terms: in this chapter, a “work session” is the collected state in the middle of editing (what other software calls a project). A “group” is a set of layers that is the unit of placement. A “layer” is a single element of text or image.
@@ -42,7 +37,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 |DD-4-11|Export is chosen from presets per posting site (size, format, file size limit), and one work session can have several presets|The same shoot is exported for X and for Instagram. Posting sites' limits (5 MB for X, etc.) are not exceeded|Entering the size every time|
 |DD-4-12|Colors are converted from the original image's embedded ICC to sRGB, and an sRGB ICC is embedded in the output|Most social media display in sRGB. Photos in Adobe RGB or Display P3 output as is look dull|Not converting (not the default; selectable)|
 |DD-4-13|Auto-placement finds the subject's area with a model that estimates salient regions (u2netp), and for each group chooses the candidate position that overlaps the subject least. The text color is white or black according to the brightness of the background where it is placed|Automates the manual work of Design Plan 3.3.1 “Example of a User” (avoiding the subject; white or black to suit the background)|Face detection (cannot avoid costumes and props other than faces)|
-|DD-4-14|Editing is non-destructive. The Original is not touched; only templates and work sessions are saved, and compositing is done at export|The Original is not damaged (R-4-4-2“The Original is not damaged”)|—|
+|DD-4-14|Editing is non-destructive. The Original is not touched; only templates and work sessions are saved, and compositing is done at export|The Original is not damaged (R-4-4-2)|—|
 
 ## 2. Scope of the Visible Signature
 
@@ -75,9 +70,12 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 |Export date|`{export_date}`|The date of export. Same format as the shooting date|—|
 |Identification number|`{work_id}`|The identification number of the work being exported (Chapter 3, 7.1 “Identification number”)|— (decided at export; the preview shows a sample number)|
 |Shoot name|`{shoot}`|The shoot name entered in the work session (Chapter 10, G-08“Export: Photos and Purpose”)|That line is not drawn|
-|Short notation of the Permitted Scope|`{license}`|The short notation of the Permitted Scope for the export (Chapter 5 “Rights Documents”)|—|
+|Principal Rights Holder|`{grantor}`|The handle name of the issuer (principal Rights Holder) of the imported authorization (Chapter 2, 5.1 “Authorization”). Used when a User whose role is “authorized person” chooses an authorization and exports|That line is not drawn|
+|Short notation of the Permitted Scope|`{license}`|The short notation of the Permitted Scope for the export (the `P1` / `P2+A1+A2` form of Chapter 5, 2.1 “Options (decision on O-04“Options for the Permitted Scope”)”)|—|
 
-- “That line is not drawn” means that when a placeholder in a line is empty, the whole line is not drawn. When a line is left out, the remaining lines close up toward the group's anchor.
+- The handling of “that line is not drawn” (the line is removed and the rest close up) follows 3.5 “Drawing”.
+- The sample identification number in previews is the fixed value `00000-00000-000` (its 4 check bits do not match, so it does not exist).
+- A template holds the Notice account for `{account}` as a URL. If the recipient does not have the same URL, that line is not drawn (the same handling as `{coholder}`).
 - Rejected alternative: allowing all shooting information (model, lens, ISO, location, etc.) as placeholders. Not needed for the purpose of credits. Location is removed from output in Chapter 3, and drawing it would defeat that removal (Chapter 3, 8.4 “Removal of shooting information”).
 
 ### 3.2 Formatting
@@ -101,6 +99,8 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 - Reason for outside-only outlines: inside or centered outlines on thin handwriting-style fonts crush the letters. Photoshop's stroke has outside, inside, and center, but these are not adopted.
 - “Opposite of the text color” is black if the text is white, white if black, and otherwise white or black, opposite in brightness.
 - How colors are chosen (the same for outline, shadow, and background plate colors): a color field and hue strip, hexadecimal input (e.g., `#FFFFFF`), picking from the photo (eyedropper; takes the color of one point on the photo, averaging 3×3 pixels), recently used colors (up to 8; saved in the settings), and template colors (the list of colors used in the template). Colors are held as sRGB values (DD-4-12“Colors are converted to sRGB and the sRGB ICC profile is embedded”).
+- “Auto” text color: compute the average color of the background where it is placed (the photo's pixels inside the group's frame) and its contrast ratio (WCAG formula) with white and with black, and choose the larger ratio. In terms of relative luminance, the boundary is about 0.179: black at or above, white below (the point where (1.05)/(L+0.05) and (L+0.05)/(0.05) are equal for WCAG relative luminance L). The second draft's “boundary at 0.5” chose white with the smaller ratio on backgrounds between 0.18 and 0.5, and was revised.
+- Readability check: if the contrast ratio (WCAG formula) between the text color and the average background color is less than 3:1 (initial value), an outline is added automatically and the grid shows a “hard to read” mark.
 
 ### 3.3 Vertical writing
 
@@ -110,6 +110,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 - Fonts without vertical glyphs (Caveat) cannot be chosen as the primary font of a vertical layer. They are used as a fallback only for Latin letters.
 - There is no ready-made component for vertical typesetting, so it is self-made (DD-4-5“Text shaping and rendering use the same Rust mechanism for preview and export”).
 - [To be measured] That in Klee One, Yomogi, and LXGW WenKai Lite (the three bundled fonts with vertical glyphs), vertical punctuation, brackets, the long vowel mark, and small kana take vertical forms. Criterion: draw a test sentence (including “「撮影：ー、。」ぁぃっ”) in each font and check by eye. LXGW WenKai has only `vert` and not `vrt2`, but `vert` is expected to suffice.
+- Risk: implementing vertical typesetting in-house. Impact: more work and more room for errors. Preparation: decide test sentences and check them (Chapter 4, 3.3 “Vertical writing”)
 
 ### 3.4 Missing glyphs
 
@@ -118,10 +119,11 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
 ### 3.5 Drawing
 
-- Drawing order (one text layer): background plate, shadow, outline, text fill.
-- Shadows are drawn by blurring an image filled with the shape of the text and outline (Gaussian blur; self-made) and shifting it by the angle and distance.
+- Drawing order (one text layer): background plate, shadow, outline, text fill. For each grapheme cluster (UAX #29), a fallback font is searched; the direction within a line is determined by UAX #9 (bidirectional). No automatic line wrapping (lines are divided by the User). When a placeholder in a line containing placeholders (3.1) is empty, that whole line is not drawn and the remaining lines close up toward the group's anchor. Outline joins and caps are round (round join and cap). The center of rotation is the group's center.
+- Shadows are drawn by blurring an image filled with the shape of the text and outline (Gaussian blur; σ = half of the blur value, the same relation between the box-shadow blur radius and σ as in CSS) and shifting it by the angle and distance.
 - Drawing is done with tiny-skia, and glyph outlines are extracted with skrifa. For emoji (Noto Color Emoji), the COLRv1 (vector color glyph) paint instructions are extracted with skrifa and drawn with tiny-skia (6.3).
 - Drawing precision: positions are aligned in units of 1/4 pixel, and glyph edges are smoothed (tiny-skia's anti-aliasing).
+- Color and bit depth of drawing: the Visible Signature is drawn with tiny-skia as an 8-bit RGBA (sRGB values) transparent image (tiny-skia handles only 8-bit RGBA; tiny-skia's README). If the photo is not sRGB or is 16-bit (original-size TIFF for delivery, etc.), the drawn transparent image is converted with moxcms to the photo's color space and widened to the photo's bit depth before compositing. Visible Signature colors are held as sRGB values (3.2), so they appear in the same visible color on photos in any color space. [To be measured] Overlay white, black, and primary-color text on a 16-bit Adobe RGB TIFF, and the color difference (ΔE2000) from the sRGB values is less than 1.
 - [To be measured] Whether drawing results with the same input match on Windows, macOS, and Linux. Criterion: on 50 test images, every pixel value differs by 1 or less. If not met, identify the processing that causes the difference and fix it.
 
 ## 4. Groups and Layers
@@ -169,7 +171,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 - Importable formats are limited to PNG and JPEG. SVG is not imported (it may contain processing instructions).
 - Import checks: up to 20 MB per file (initial value), up to 8,000 pixels in each dimension (initial value). Images are read with the same components as in Chapter 3, and broken files are not imported.
 - Imported images are copied and saved as template assets and referenced by SHA-256 (they can be drawn even if the original file disappears).
-- Recoloring: using the image's transparency as is, the color can be changed to white, black, any color, or auto (white or black to suit the background). This is for using a single-color logo in white or black to suit the background (Design Plan 3.3.1 “Example of a User”).
+- Recoloring: using the image's transparency as is, the color can be changed to white, black, any color, or auto (white or black to suit the background; the same rule as “auto” for text color (3.2), and because it is judged by the group's frame, text and logo in the same group get the same color). This is for using a single-color logo in white or black to suit the background (Design Plan 3.3.1 “Examples of Users”).
 - Size, rotation, and opacity are handled as for text layers.
 - Rights to images the User imports are the User's responsibility, and this is shown once at import (the same handling as Legal Research L-19“Font licenses”).
 
@@ -210,7 +212,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 ### 6.4 Imported fonts
 
 - TTF and OTF can be imported. Up to 50 MB per file (initial value). Files that cannot be read are not imported.
-- Imported fonts are copied and saved in the app's data location (Chapter 8, 2.1 “Arrangement”) and referenced from templates and work sessions by SHA-256. They move to another device through the backup file.
+- Imported fonts are copied and saved in the app's data location (Chapter 8, 2.1 “Arrangement”) and referenced from templates and work sessions by name (the font's family name) and SHA-256. They move to the User's other devices through synchronization (Chapter 8, 5.4; assets are carried with iroh-blobs) or the backup file. On a device that lacks a referenced font, drawing uses the default order (6.2) and the layer is marked “font missing” (“needs adjustment” in 12.2).
 - The license is the User's responsibility, and this is shown once at import (the first draft's policy is continued).
 
 ## 7. Placement
@@ -236,8 +238,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
   5. On ties, choose the candidate closer to the anchor set in the template.
 
-- “Auto” text color: compute the average color of the background where it is placed (the photo's pixels inside the group's frame) and its contrast ratio (WCAG formula) with white and with black, and choose the larger ratio. In terms of relative luminance, the boundary is about 0.179: black at or above, white below (the point where (1.05)/(L+0.05) and (L+0.05)/(0.05) are equal for WCAG relative luminance L). The second draft's “boundary at 0.5” chose white with the smaller ratio on backgrounds between 0.18 and 0.5, and was revised.
-- Readability check: if the contrast ratio (WCAG formula) between the text color and the average background color is less than 3:1 (initial value), an outline is added automatically and the grid shows a “hard to read” mark.
+- “Auto” text color and the readability check follow 3.2 “Formatting”.
 - Components: u2netp (Apache-2.0, about 4.6 MB) is converted to ONNX and run with the ONNX runtime (ort) (ort in Chapter 11, 4.1 “Rust components”). There is no official ONNX distribution.
 - [To be measured] Time for auto-placement of 500 photos. Criterion: within 1 minute on the PC of Chapter 1, 14.1 “Scale and performance targets”.
 - [To be measured] Hit rate on cosplay photos (full-body shots with much background, close-ups with little background). Criterion: in User trials, no adjustment needed on 70% or more of photos.
@@ -283,14 +284,17 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 - Each time a template is saved, its version number goes up by one.
 - A work session holds which version of which template it copied (15.2). When the original template has a newer version, the work session screen shows “The template has a new version”, and it is taken in only when “Take in” is pressed. Taking it in can be undone (10).
 - Changes while editing a template are automatically saved as a draft (the same method as 11.3), and “Save” confirms it and raises the version. Until confirmed, it does not appear as a “new version” to other work sessions.
+- Reconciling with other devices and backups (called from Chapter 8, 5.3 and 5.4): for templates and work sessions with the same number, the newer one by device number and monotonic number (the version for templates, the save sequence for work sessions) is taken, and the older one is kept in the version backups (11.4). If both have changed, both are kept and shown.
 
 ### 8.3 Passing on (export and import)
 
 - A template can be made into one file and given to someone else (so that photographer and cosplayer can use the same design).
-- File content: the template JSON (15.1) and the images of image layers. The format is ZIP, with an extension specific to this app (e.g., `.nrsdtpl`).
+- File content: the template JSON (15.1) and the images of image layers. The format is ZIP; the extension is `.nrsdtpl`, and the name is `<safe form of the template name>-<first 8 characters of the id>.nrsdtpl`.
 - Bundled fonts are not included (the other party's app has them too). Fonts imported by the User are not included by default. If they are included, the User is told to confirm that the license allows redistribution.
-- Import checks: number of files in the ZIP (up to 50), total size (up to 100 MB), file names (not containing `..`; fixed names only), JSON format (anything not matching the form of 15.1 is not imported), and images get the checks of 5. All are initial values.
+- Import checks: in addition to the common ZIP checks (Chapter 1, 10.2 “Storage”), the number of files inside (up to 50), total size (up to 100 MB), file names (fixed names only), JSON format (anything not matching the form of 15.1 is not imported), and images get the checks of 5. All are initial values.
 - Placeholders are drawn with the recipient's signing information (the handle name and so on become the recipient's).
+- Importing a template with the same `id`: if the version is the same or older, it is not imported (already present). If the version is newer, it is imported as a new version (the same handling as “a new version is available” in 8.2). If the version is the same but the content differs, it is imported under a new `id` as “\<name> (imported)”, keeping both (the same as the template rule of Chapter 8, 5.4).
+- A `.nrsdtpl` can be sent directly to a confirmed contact (Chapter 2, 5.5). The receiving side goes through the import checks above. The format is unchanged (the same as sharing Lightroom preset files) (NRSD's request, 2026-10-01).
 
 ### 8.4 Default templates
 
@@ -318,6 +322,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 |Copy and paste|Copy layers and groups and paste into the same or another template or photo|
 |Copy formatting only|Copy a text layer's formatting and apply it to other text layers|
 |Delete|Delete key (Delete on macOS)|
+|Enter by numbers|Enter the position (anchor and margin), size, and rotation of the selected group or layer in numeric fields. The same as dragging, done with the keyboard alone (Chapter 10, 2.7) (NRSD's request, 2026-09-30)|
 
 ### 9.2 View
 
@@ -346,12 +351,14 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
 ### 9.4 Preview
 
-- The photo is sent to the screen once as an image reduced to fit the screen (JPEG, up to 2560 pixels on the long side; initial value) and displayed. The reduced image is converted in Rust from the photo's ICC to sRGB before sending (to avoid differences in how screen components handle color). Windows WebView2 and macOS WKWebView display sRGB images according to the display's color settings. Linux WebKitGTK does not reflect the display's color settings and outputs sRGB as is (the record of the fix for WebKit bug 177185), so on wide-gamut displays photo colors do not look correct (Chapter 13, H-48“On Linux, preview photo colors do not reflect the display's color settings”).
+- The photo is sent to the screen once as a preview image reduced to fit the screen (14.3 “Resizing, color conversion, and JPEG export”) and displayed. Windows WebView2 and macOS WKWebView display sRGB images according to the display's color settings. Linux WebKitGTK does not reflect the display's color settings and outputs sRGB as is (the record of the fix for WebKit bug 177185), so on wide-gamut displays photo colors do not look correct (Chapter 13, H-48“On Linux, preview photo colors do not reflect the display's color settings”). For this reason, on Linux the display's ICC is obtained (14.3) and the preview image is converted to the display's color space instead of sRGB before sending (NRSD's request, 2026-10-01).
 - When zoom exceeds the scale of the reduced image (including actual size), only the visible area is cut out from the full-size photo, redrawn with the Visible Signature, and sent. Thin outlines can be checked at actual size.
 - For each group, the Visible Signature is drawn in Rust as a transparent image the size of the group's frame (DD-4-5“Text shaping and rendering use the same Rust mechanism for preview and export”) and sent to the screen. It is sent via Tauri's binary data response (`tauri::ipc::Response`). The screen overlays this image on the photo.
 - While moving by dragging or arrow keys, the sent image is only moved on the screen and not redrawn. It is redrawn when size, rotation, formatting, or content changes.
 - [To be measured] Time to draw one group and display it on screen. Criterion: within 100 ms (initial value).
 - Match between preview and export: because they are drawn with the same drawing mechanism, what is seen at the preview's scale matches the export. Thin outlines are checked in the actual size view (Ctrl+1; redrawn from the full-size photo).
+
+- The keys above do not collide with keys reserved by the OS (Alt+F4; Command+Q, W, H, M, Tab; Alt+Tab; Super). The WebView's built-in accelerator keys (F5 and Ctrl+R reload, F12 and Ctrl+Shift+I, Ctrl+F and F3, Ctrl+P, Ctrl+U, Ctrl+plus/minus) are stopped by setting WebView2's `AreBrowserAcceleratorKeysEnabled` to false on Windows and with tauri-plugin-prevent-default on all three OSes. Command+W on macOS is accepted as closing the window and goes through the “on close” saving and update (Chapter 9, 4.1).
 
 ## 10. Undo and Redo
 
@@ -403,10 +410,11 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 - A copy of the template (which version of which template; DD-4-10“A work session holds a copy of the template”).
 - The list of photos (15.2).
 - Per-photo adjustments (the group's anchor, margin, size, and rotation; layer visibility and color; layers for that photo only) and status (12.2).
-- Export presets (several; 14.1) and the record of whether export has been done per preset.
+- Export presets (several; 14.1) and the record of whether export has been done per preset. Whether to add the identification number to file names (`id_in_filename` of 15.2).
 - The choice of Permitted Scope (Chapter 5) and the choice of joint rights holder.
 - The current stage (choosing photos, batch application, Permitted Scope, export).
 - The undo history (10).
+- The version of the reference information and copies of the wording files used (Chapter 5, 4) (NRSD's request, 2026-09-30).
 - Photos are not duplicated. The photo's location, SHA-256, size, modification date/time, and pixel dimensions are recorded.
 
 ### 11.3 How saving works
@@ -414,18 +422,9 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 - Automatic saving: on every change, saved 2 seconds (initial value) after operations stop. Also saved when moving between screens and when closing the app. Photoshop's automatic recovery defaults to 10 minutes, but work session files contain no pixels and are small, so saving every 2 seconds is not a burden.
 - The top of the screen shows “Saved” and the time of saving. If saving fails, the top turns the warning color and the reason is shown.
 - If the User presses “Save”, the work session is given a name and confirmed (the content is the same as automatic saving).
-- Writing procedure (leaving no half-written, corrupted work session):
-
-  1. Write under a temporary name in the same folder as the work session file.
-
-  2. Flush the temporary file to the storage medium (Rust's `File::sync_all`).
-
-  3. Replace the name. On Windows, done with `MoveFileExW` with the flags for replacing an existing file and writing through (`MOVEFILE_REPLACE_EXISTING`, `MOVEFILE_WRITE_THROUGH`). On macOS and Linux, done with `rename`.
-
-  4. On macOS and Linux, also flush the folder to the storage medium (`fsync`).
-
-- Sources: the description of Rust's `std::fs::rename` (uses `MoveFileExW` on Windows), Microsoft's description of `MoveFileExW`, the description of tempfile's `persist` (that it does not synchronize content and folder), and the implementation of atomicwrites (replaces after `sync_all`).
-- `ReplaceFileW` is not adopted, because Microsoft's description says that on partial failure (error 1176) the file being replaced may be lost.
+- How a work session is held: it is divided into `work.json` (the header: name, date/time, copy of the template, presets, stage, copy of the reference information, joint rights holder, Permitted Scope), `photos/<photo number>.json` (the per-photo record: location, SHA-256, size, status, adjustments, export done), `history.log` (an append-only history; one step per line), and `snapshot.json` (the index for the list; can be rebuilt if missing). Automatic saving writes only the files of photos that changed and appends to the history (the amount written is proportional to the amount of change, not to the number of photos). Loading the list reads only the index, and per-photo records are read when they come into view in the grid (NRSD's request, 2026-09-30).
+- When the rows of `history.log` exceed twice the step limit (10.4), it is rewritten when the work session is opened, keeping only the limit's worth (temporary file and replacement).
+- Writing follows the procedure of Chapter 1, 10.2 “Storage” (temporary file and replacement).
 
 ### 11.4 Version backups
 
@@ -434,7 +433,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
 ### 11.5 After abnormal termination
 
-- Whether the app was closed properly is checked at start from a record (an “in use” record is written at start and deleted when closed properly).
+- Whether the app was closed properly is checked at start from the in-use marker (`state/running` in Chapter 8, 2.1 “Arrangement”) (Chapter 1, 7.8 “Starting after an abnormal exit”).
 - If it was not closed properly last time, at start a notice “The app did not end properly last time” appears at the top of Home (Chapter 10, G-07“Home”), listing the last saved work sessions and unconfirmed template drafts (8.2) with “Continue” (Chapter 10, 3.7 “List of notices”). Because automatic saving is every 2 seconds, at most the last 2 seconds of operations are lost.
 
 ### 11.6 Replacing or moving photos
@@ -448,9 +447,9 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 ### 11.7 Opening at the same time
 
 - Only one instance of the app runs per machine (Chapter 1, DD-1-11“Only one instance of the app runs per machine”). The in-use mark is a safeguard in case that does not work.
-- An in-use mark (a lock file in the work session's folder, with the app's process number and time) is placed per work session.
+- The in-use mark per work session is the `lock` in the work session's folder (the folder in-use mark of Chapter 1, 10.2 “Storage”).
 - If a second app opens the same work session, it opens read-only and shows so.
-- If the app of the lock file has already ended (no process with the app's number), the mark is deleted as stale and the session is opened.
+- If the lock can be taken (the holder has ended), the session is opened as it is.
 
 ### 11.8 Where kept
 
@@ -458,11 +457,14 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
 |File|Content|
 |---|---|
-|`work.json`|The work session's content (15.2)|
+|`work.json`|The work session's header (15.2, 11.3)|
+|`photos/<photo number>.json`|Per-photo records (11.3)|
+|`history.log`|Append-only history (10, 11.3)|
+|`snapshot.json`|The index for the list (can be rebuilt; 11.3)|
 |`versions/`|Backups (11.4)|
 |`lock`|In-use mark (11.7)|
 
-- Reduced images of photos can be regenerated, so they are kept in the OS cache location (Chapter 1, 9.1 “Locations per OS”) and are not included in backup files.
+- Reduced images of photos can be regenerated, so they are kept in the OS cache location (Chapter 1, 9.1 “Locations per OS”) and are not included in backup files. They are named by the photo's SHA-256 and shared across work sessions (NRSD's request, 2026-09-30).
 - Nothing is written to the photo folder.
 - Work sessions are included in backup files (Chapter 8, 5 “Backup Files”).
 
@@ -476,7 +478,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 ### 12.1 Flow
 
 1. Choose photos (a folder, or several photos) and a template (Chapter 10, G-08“Export: Photos and Purpose”).
-2. Create reduced images of the photos (512 pixels on the short side; initial value), and apply auto-placement (7.2) to all photos.
+2. Create reduced images of the photos (14.3 “Resizing, color conversion, and JPEG export”), and apply auto-placement (7.2) to all photos.
 3. In the photo list (grid), show reduced images with the Visible Signature overlaid, and their status (12.2) (Chapter 10, G-09“Export: Batch Application”).
 4. Open photos to be fixed and adjust them (the operations of 9). Several photos can be selected and fixed together (12.3).
 5. Choose the Permitted Scope (delivery only; Chapter 5) and export (14).
@@ -493,6 +495,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 |Unreadable|The photo cannot be read|Loading failure|
 
 - The display can be filtered by status. If photos marked “needs adjustment” remain, the User is told before export (export is not stopped; the User chooses).
+- Transitions of status: “Auto” right after auto-placement. “Adjusted” after an adjustment; “Needs adjustment” when caught by the checks of 7.3, 3.4, or 7.2 (“Adjusted” once resolved by an adjustment). “Review position” when a replaced photo's aspect changes (“Adjusted” after an adjustment). “Unreadable” if it cannot be read (back to “Auto”, and re-placed, when a readable replacement is given). Photos that took in a new template version return to “Auto” (adjustments are kept). Export completion is held per preset, separately from the status (11.2).
 
 ### 12.3 Adjusting together
 
@@ -508,8 +511,9 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 
 ### 12.4 Large numbers of photos
 
-- Reduced images are saved in the OS cache location and are not regenerated the next time they are opened (regenerated if missing).
+- The location of reduced images follows 11.8 “Where kept”. They are not regenerated the next time they are opened (regenerated if missing).
 - The grid draws only what is visible (Chapter 10, 3.4 “Displaying large lists”).
+- No limit is set on the number of photos (Chapter 3, 9).
 - [To be measured] Time to create reduced images and auto-place 500 photos (together with 7.2).
 
 ## 13. Relation to the Screens
@@ -522,7 +526,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 |Permitted Scope|Chapter 10, G-10“Export: Permitted Scope”|
 |Export and results|Chapter 10, G-11“Export: Run and Results”|
 |Work in progress|Chapter 10, G-07“Home”|
-|Number of undo steps, default export presets|Chapter 10, G-20“Settings”|
+|Number of undo steps, default export presets, the default for adding the identification number to file names|Chapter 10, G-20“Settings”|
 
 ### 13.1 Two states of the image editing screen
 
@@ -557,28 +561,32 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 ### 14.2 Processing
 
 - The processing order follows Chapter 3, 8 “Processing Order and Streams”. This chapter is responsible for drawing the Visible Signature, resizing, and color space conversion. Resizing, color space conversion, and conversion to 8 bits are done only for social media export; delivery keeps the original size, original color space, and original bit depth (Chapter 3, 8.2 “Differences between streams”, 8.5 “Quality of delivery export”).
+- The methods of resizing and color conversion follow 14.3 “Resizing, color conversion, and JPEG export”.
+- The Visible Signature is drawn on the resized image at that size (drawing before resizing and then shrinking would crush thin outlines). The handling of color space and bit depth when compositing the drawn transparent image onto the photo follows 3.5 “Drawing”.
+
+### 14.3 Resizing, color conversion, and JPEG export
+
 - Resizing: Lanczos3 of fast_image_resize. Images with transparency are premultiplied by alpha before resizing and then restored (fast_image_resize's default).
-- The Visible Signature is drawn on the resized image at that size (drawing before resizing and then shrinking would crush thin outlines).
-- Color (social media): convert from the original image's embedded ICC to sRGB (DD-4-12“Colors are converted to sRGB and the sRGB ICC profile is embedded”). Conversion is done with moxcms. Images without ICC are treated as sRGB. [To be measured] The difference between moxcms and lcms2 conversions on Adobe RGB and Display P3 test images. Criterion: maximum color difference (ΔE2000) less than 1. If not met, lcms2 is used.
+- Color (social media): convert from the original image's embedded ICC (ISO 15076-1; v2 and v4) to sRGB (IEC 61966-2-1) (DD-4-12“Colors are converted to sRGB and the sRGB ICC profile is embedded”). Conversion is done with moxcms. Images without ICC are treated as sRGB. [To be measured] The difference between moxcms and lcms2 conversions on Adobe RGB and Display P3 test images. Criterion: maximum color difference (ΔE2000) less than 1. If not met, lcms2 is used.
 - 16-bit images (social media) are resized in 16 bits and converted to 8 bits after drawing.
-- Color and bit depth of drawing: the Visible Signature is drawn with tiny-skia as an 8-bit RGBA (sRGB values) transparent image (tiny-skia handles only 8-bit RGBA; tiny-skia's README). If the photo is not sRGB or is 16-bit (original-size TIFF for delivery, etc.), the drawn transparent image is converted with moxcms to the photo's color space and widened to the photo's bit depth before compositing. Visible Signature colors are held as sRGB values (3.2), so they appear in the same visible color on photos in any color space. [To be measured] Overlay white, black, and primary-color text on a 16-bit Adobe RGB TIFF, and the color difference (ΔE2000) from the sRGB values is less than 1.
-
-### 14.3 JPEG export
-
+- Preview image: JPEG, quality 85, up to 2560 pixels on the long side (initial value). Converted from the photo's ICC to sRGB (to avoid differences in how screen components handle color). When the display's ICC is passed (Linux; 9.4 “Preview”), converted to that color space (moxcms; the same path as darktable, GIMP, and Krita).
+- Obtaining the display's ICC (Linux): on Wayland, the output's ICC through the color management protocol `wp_color_management_v1`; on X11, the `_ICC_PROFILE` property of the root window (ICC Profiles In X Specification); if neither, colord is queried. If none, sRGB as it is (NRSD's request, 2026-10-01).
+- Reduced images: 512 pixels on the short side (initial value). Named by the photo's SHA-256. The location is passed by the caller (11.8 “Where kept”).
+- Risk: color accuracy of moxcms. Impact: colors may shift. Preparation: compare with lcms2 and swap through the `ColorEngine` switch (14.3, Overall Implementation Design 2.1)
 - Component: jpeg-encoder (has quality, chroma subsampling, progressive, ICC embedding). image's JPEG export cannot choose chroma subsampling or progressive, so it is not used.
 - Quality 92 (initial value), no chroma subsampling (4:4:4), progressive. Social media recompress uploaded images, so colors are not subsampled at export to avoid stacking degradation.
 - An sRGB ICC is embedded.
 
 ### 14.4 Large images and parallel processing
 
-- Photos handled are up to 100 million pixels and 200 MB per image (Chapter 1, 14.1 “Scale and performance targets”). A 100-million-pixel photo uses about 381 MiB in RGBA8 and about 763 MiB in RGBA16 (about 229 MiB and 458 MiB for 60,000,000 pixels). Photos larger than this are not taken in. With image's default memory limit (512 MiB), large 16-bit photos cannot be read, so a limit computed from the photo's size is given.
+- Photos handled are up to 100 million pixels and 200 MB per image (Chapter 1, 14.1 “Scale and performance targets”). Photos larger than this are not taken in. The memory estimate per image and the loading limit follow Chapter 3, 2 “Input”.
 - The number of images processed at the same time is the smaller of “the number of logical CPU cores” and “half of free memory divided by the estimate per image (height × width × bytes per pixel × 3; bytes per pixel are 4 for 8-bit RGBA and 8 for 16-bit RGBA; three images for loading, resizing, and drawing)”. At least 1.
-- Export can be cancelled. Photos exported by the time of cancelling are kept and recorded in the work session.
+- The watermark and auto-placement models are not held at the same time; only the one in use is loaded, and memory use is written to the operation log (Chapter 3, 5; Chapter 11, 7.1).
 
 ### 14.5 Location and names
 
-- Location: under the folder the User chooses, the folders of Chapter 3, 10.1 “Names and structure” are created (for delivery `<output date>_<shoot name>_delivery/`; for social media, a folder per export preset under `<output date>_<shoot name>_sns/`).
-- Names: the original name. Whether to add the identification number is chosen at export (Chapter 3, 7.1 “Identification number”). If a file with the same name exists, it is not overwritten, and a number is added after the name.
+- Location: under the folder the User chooses, the folders of Chapter 3, 10.1 “Names and structure” are created.
+- Names: per Chapter 3, 10.1 “Names and structure”. If a file with the same name exists, it is not overwritten, and a number is added after the name.
 - Files being written are written under a temporary name and renamed on completion. Even if stopped midway, no half-written files remain.
 - The same folder as the Original cannot be chosen as the export destination (prevents accidentally overwriting the Original).
 - Before export, the free space at the destination is estimated (estimated size per image × number of images), and export does not start if it is insufficient.
@@ -586,6 +594,7 @@ Word version: [04_Basic Design_Image Editing and Batch Application.docx](04_Basi
 ### 14.6 Interruption and resumption
 
 - If the app ends in the middle of export, the exported photos are recorded in the work session. Open the work session and “Continue exporting” exports only the rest.
+- Interruption and resumption work the same across restarts of the app or the OS (completion is kept in the per-photo records). Several exports can be queued, and one runs at a time (Chapter 3, 9) (NRSD's request, 2026-09-30).
 
 ## 15. Data Formats
 
@@ -620,6 +629,8 @@ Text layers: `content` (text including placeholders), `style` (each formatting i
 
 Image layers: `asset` (SHA-256), `width` (ratio), `recolor` (none, white, black, color, auto).
 
+Forms of values: `anchor` is one of `top-left`, `top`, `top-right`, `left`, `center`, `right`, `bottom-left`, `bottom`, `bottom-right`. Ratios are numbers from 0 to 1. Colors are `#RRGGBB` (opacity is a separate field) or `auto`. `date_format` is `iso` (2026-09-29), `ja` (2026年9月29日), or `en` (Sep 29, 2026). A font reference is `{name, sha256}` (`sha256` is omitted for bundled fonts). `kind` is `text` or `image`. `placement` is `single` or `tile`, and `tile.pattern` is `grid` or `diagonal`. The JSON Schema (Chapter 1, 8.3) is written with these enumerations.
+
 ### 15.2 Work session (`schema: nrsd.session/1`)
 
 |Field|Type|Content|
@@ -631,11 +642,13 @@ Image layers: `asset` (SHA-256), `width` (ratio), `recolor` (none, white, black,
 |`template`|Template|The copy (in the form of 15.1 as is), and the original's `id` and `version`|
 |`photos`|List of photos|`path`, `sha256`, `bytes`, `mtime`, `width`, `height`, `status` (12.2), `overrides` (per group `anchor`, `inset`, `scale`, `rotation`; per layer `visible`, `color`; `extra_layers`), `exports` (export record per preset)|
 |`export_presets`|List of presets|The presets of 14.1 and the User's changes|
+|`id_in_filename`|Boolean|Whether to add the identification number to the file names of social media output (Chapter 3, 7.1 “Identification number”; the initial value is the setting `export.id_in_filename` (Chapter 10, 10), and afterwards the previous choice)|
 |`rights`|Choice of Permitted Scope|Chapter 5|
 |`coholder`|Choice of joint rights holder (one per work session, or none)|Chapter 2, 5 “Authorizations and Joint Rights”, Chapter 10, G-08“Export: Photos and Purpose”|
 |`history`|History|List of steps (10.3) and the current position|
 
 - If the format version (`schema`) goes up, work sessions in the old format are migrated to the new format when opened. The work session before migration is kept in the backups (11.4).
+- The fields of 15.2 are held in the division of 11.3 (header, per-photo records, history, index). `photos` are the per-photo files, and `history` is the append-only record.
 
 ## 16. Handling Failures
 
@@ -654,24 +667,7 @@ Image layers: `asset` (SHA-256), `width` (ratio), `recolor` (none, white, black,
 |Invalid file when importing a template, image, or font|Not imported and the reason is shown|—|—|
 |The same work session opened in two apps (a safeguard in case single-instance (Chapter 1, DD-1-11“Only one instance of the app runs per machine”) does not work)|The second one shows that it opened read-only|—|—|
 
-## 17. List of Limit Values
-
-|Item|Value|Kind|
-|---|---|---|
-|Photo pixel count|Up to 100 million pixels and 200 MB per image (Chapter 1, 14.1 “Scale and performance targets”)|Initial value|
-|Images of image layers|Up to 20 MB and 8,000 pixels in each dimension|Initial value|
-|Imported fonts|Up to 50 MB|Initial value|
-|Template groups and layers|4, 20|Initial value|
-|Characters in a text layer|500|Initial value|
-|Undo steps|Default 200, 50 to 1,000|Initial value (with reference to Photoshop's default 50 and limit 1,000)|
-|Automatic saving|2 seconds after operations stop|Initial value|
-|Work session backups|5|Initial value|
-|Reduced images|512 pixels on the short side|Initial value|
-|Preview photo|Up to 2560 pixels on the long side|Initial value|
-|Template file for passing on|Up to 50 files inside, 100 MB in total|Initial value|
-|Input to the auto-placement model|320×320 pixels|u2netp's official preprocessing|
-
-## 18. List of Measurements and Checks
+## 17. List of Measurements and Checks
 
 |Item|Criterion|
 |---|---|
@@ -681,39 +677,34 @@ Image layers: `asset` (SHA-256), `width` (ratio), `recolor` (none, white, black,
 |Drawing and displaying one group|Within 100 ms (9.4)|
 |Auto-placement time|Within 1 minute for 500 photos (7.2)|
 |Auto-placement hit rate|No adjustment needed on 70% or more of photos (7.2)|
-|Difference between moxcms and lcms2|Maximum ΔE2000 less than 1 (14.2)|
+|Difference between moxcms and lcms2|Maximum ΔE2000 less than 1 (14.3)|
+|Color difference of drawing onto a 16-bit Adobe RGB TIFF|ΔE2000 from the sRGB values less than 1 (3.5)|
 |Display size and recompression on posting sites|Actually upload and check (14.1)|
 
-## 19. Mapping to Requirements
+## 18. Mapping to Requirements
 
-|Requirement number|Requirement|Sections in this chapter|
-|---|---|---|
-|R-4-1-1|Names, account names, dates, overlay images, and license notices can be placed|3.1 “Content and placeholders”, 5 “Image Layers”|
-|R-4-1-2|Direction (vertical writing, rotation) and color can be changed|3.2 “Formatting”, 3.3 “Vertical writing”|
-|R-4-1-3|The licenses of the fonts used have been checked|6 “Fonts and Emoji”|
-|R-4-1-4|Imported assets can be handled safely|5 “Image Layers”, 6.4 “Imported fonts”, 8.3 “Passing on (export and import)”|
-|R-4-1-5|Elements can be stacked as layers, and stacking order, visibility, lock, and opacity can be handled|4 “Groups and Layers”|
-|R-4-2-1|Designs can be saved and reused, and used on multiple devices|8 “Templates”|
-|R-4-2-2|Whether default templates are provided is determined|8.4 “Default templates”|
-|R-4-3-1|Can be placed avoiding the subject|7.2 “Auto-placement”|
-|R-4-3-2|Does not break down even on images where it does not fit|7.3 “When it does not fit”|
-|R-4-4-1|Can be adjusted while viewing the preview, and undone|9 “Editing Operations”, 10 “Undo and Redo”|
-|R-4-4-2|The Original is not damaged|2 “Scope of the Visible Signature”, 11.8 “Where kept”, 14.5 “Location and names”|
-|R-4-4-3|The state in the middle of editing is saved automatically and can be resumed later|11 “Work Sessions (the State in the Middle of Editing)”|
-|R-4-5-1|Can be applied to a folder in batch and adjusted per photo|12 “Batch Application”|
-|R-4-6-1|Can be output at the size, compression, and color space for social media|14 “Export”|
+|Requirement number (text in the Outline Design Document)|Sections in this chapter|
+|---|---|
+|R-4-1-1|3.1 “Content and placeholders”, 5 “Image Layers”|
+|R-4-1-2|3.2 “Formatting”, 3.3 “Vertical writing”|
+|R-4-1-3|6 “Fonts and Emoji”|
+|R-4-1-4|5 “Image Layers”, 6.4 “Imported fonts”, 8.3 “Passing on (export and import)”|
+|R-4-1-5|4 “Groups and Layers”|
+|R-4-2-1|8 “Templates”|
+|R-4-2-2|8.4 “Default templates”|
+|R-4-3-1|7.2 “Auto-placement”|
+|R-4-3-2|7.3 “When it does not fit”|
+|R-4-4-1|9 “Editing Operations”, 10 “Undo and Redo”|
+|R-4-4-2|2 “Scope of the Visible Signature”, 11.8 “Where kept”, 14.5 “Location and names”|
+|R-4-4-3|11 “Work Sessions (the State in the Middle of Editing)”|
+|R-4-5-1|12 “Batch Application”|
+|R-4-6-1|14 “Export”|
 
-## 20. Gaps Declared in This Chapter
+## 19. Gaps Declared in This Chapter
 
-- The Visible Signature can be removed by cropping or painting over the image. The Visible Signature is for deterrence and display, and matching when it has been removed relies on the invisible watermark and the matching hash.
-- Auto-placement may miss the subject (compensated by adjustment; Chapter 13, H-46“Auto-placement may miss the subject”).
-- If among the COLRv1 paints of emoji there are some the drawing components do not support, those glyphs cannot be drawn (6.3; [To be measured]).
-- Characters not bundled (characters in no font) cannot be drawn (3.4; Chapter 13, H-47“Characters absent from all bundled and imported fonts cannot be drawn”).
-- On Linux, preview photo colors do not reflect the display's color settings (9.4; Chapter 13, H-48“On Linux, preview photo colors do not reflect the display's color settings”).
-- Automatic saving happens 2 seconds after operations stop, so the last 2 seconds of operations just before abnormal termination may be lost.
-- This app does not crop, so photos outside Instagram's aspect ratio range may be cropped by the posting site (14.1).
+- The gaps of this chapter follow the table in Chapter 13, 4.1 “Gaps in the mechanism” (the rows whose chapter column is this chapter; with why they cannot be closed, the extent addressed, the remaining risks, and who bears them) (not reproduced in this chapter).
 
-## 21. Corrections to Other Chapters and the Outline Design Document
+## 20. Corrections to Other Chapters and the Outline Design Document
 
 - Chapter 3: the input to the auto-placement model is 320×320 pixels (the first draft's 512 pixels on the short side was wrong). The Visible Signature is drawn after resizing (14.2). The export component is jpeg-encoder.
 - Chapter 8, 2.1 “Arrangement”: add `sessions/` (work sessions) and a place for imported fonts to the app's data location.

@@ -11,21 +11,10 @@ Word version: [05_Basic Design_Rights Documents.docx](05_Basic%20Design_Rights%2
 ## Position of This Document
 
 - Details Chapter 5 of the Outline Design Document. Decided together with Chapter 3 (recording in the manifest) (Chapters 3 and 5 depend on each other).
-- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
+- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown). The texts of the Design Plan's decisions, items to be investigated, and open items are per Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” and the destination table of the Outline Design Document (not reproduced in this chapter; only the numbers and the omissions found in the item breakdown are listed).
 
 |Number|Type|Content|
 |---|---|---|
-|D-9-1|Decision|The Rights Holder chooses, at the time of sale, how far rights are granted|
-|D-9-2|Decision|The Permitted Scope chosen at the time of sale is the criterion for judging what a repost infringes|
-|D-9-3|Decision|Delivery Images are accompanied by an Enclosed Document stating the matters in Section 9.2|
-|D-9-4|Decision|The Enclosed Document includes a sentence stating that the images must not be passed to others without permission. Its loss is not due to the fault of the Rights Holder|
-|D-9-5|Decision|Information covering all countries is published as a link destination, and text versions are enclosed only for the nationalities common among purchasers|
-|D-9-6|Decision|The party pursued is the Infringer, regardless of whether it is a purchaser|
-|I-06|To Be Investigated|Differences in rights by country|
-|I-07|To Be Investigated|Knowing the purchaser’s country|
-|I-08|To Be Investigated|Wording of Rights Documents|
-|O-03|Open (a proposal is placed in Basic Design Chapter 5, 3.5 “Legal position (handled in legal)”; adoption depends on confirmation by experts)|Approach to governing law|
-|O-04|Open (decided in Basic Design Chapter 5, 2.1 “Options (decision on O-04“Options for the Permitted Scope”)”)|Options for the Permitted Scope|
 |A-2|Omission found in the item breakdown|Functions supporting the Notice (the Notice is the premise of effectiveness, and Entitlement matching relies on it)|
 |A-19|Omission found in the item breakdown|Consistency with the terms of sales platforms (handled by Legal)|
 
@@ -47,8 +36,8 @@ Word version: [05_Basic Design_Rights Documents.docx](05_Basic%20Design_Rights%2
 |DD-5-1|The Permitted Scope is chosen as a “basic scope (one radio button)” and “additional permissions (checkboxes)”. Commercial use is not among the options and always “requires separate permission”|Non-technical people can understand it at a glance (Design Plan 8.2 “Screens”, 9.1 “easy-to-understand methods such as radio buttons”). The conditions of commercial permission (consideration, period, media, number of copies, etc.) are decided per transaction and cannot be expressed as options. Selecting and displaying model forms and reflecting input are ordinarily not legal services, ordinary contracts without disputes are in many cases considered not to involve a legal case (the Ministry of Justice's guidelines), and the System is free of charge, so the reason for not providing commercial options is not the unauthorized practice of law|Choosing everything with checkboxes (too many combinations; confusing)|
 |DD-5-2|The Enclosed Document is divided into a “common part” (statements of fact independent of language) and a “country part” (summaries of the country's law and references to contact points); the common part is enclosed in all languages and the country part as TXT only for the chosen countries. Complete coverage is shown by a link to the public page|Design Plan 9.3 “Countries Covered” (countries, not languages), D-9-5“Information covering all countries is published as a link destination, and text versions are enclosed only for the nationalities common among purchasers” (complete coverage by link, TXT only for common nationalities)|Writing the full text per country (much duplication)|
 |DD-5-3|The Enclosed Document places the sentence “do not give or receive the images to or from others without permission” near the top of the common part (D-9-4“The Enclosed Document includes a sentence stating that the images must not be passed to others without permission. Its loss is not due to the fault of the Rights Holder”)|Placed where purchasers read first|—|
-|DD-5-4|A list of the names and SHA-256 of all files of the Enclosed Document (files beginning with `00_RIGHTS`) is recorded in the manifest (jp.nrsd.rights) of every image output in that sale|Rewriting of the Enclosed Document can be detected (R-5-2-2“Rewriting can be detected”). Links images and documents as a set|Attaching a record signature to the Enclosed Document (asking purchasers to verify it is difficult; recording hashes suffices)|
-|DD-5-5|The wording is managed by NRSD with versions as reference information (Chapter 1, DD-1-6“NRSD signs reference information and places it in the Public Repository and the mirror”), and the app records the version when generating|Updates to the wording reach Users, and which version was used can be shown later (R-5-3-1“Who wrote it, who checked it, and which version it is can be known”, R-5-3-2“Updates can be delivered to Users (distribution of reference information; 1-3)”)|Embedding it fixed in the app|
+|DD-5-4|A list of the names and SHA-256 of all files of the Enclosed Document (files beginning with `00_RIGHTS`) is recorded in the manifest (jp.nrsd.rights) of every image output in that sale|Rewriting of the Enclosed Document can be detected (R-5-2-2). Links images and documents as a set|Attaching a record signature to the Enclosed Document (asking purchasers to verify it is difficult; recording hashes suffices)|
+|DD-5-5|The wording is managed by NRSD with versions as reference information (Chapter 1, DD-1-6“NRSD signs reference information and places it in the Public Repository and the mirror”), and the app records the version when generating|Updates to the wording reach Users, and which version was used can be shown later (R-5-3-1, R-5-3-2)|Embedding it fixed in the app|
 |DD-5-6|Sample Notice texts, including the posting of the notice code, are prepared in three levels (short, medium, long) to fit each platform's character count|Fits profile limits (X 160, Instagram 150, Xiaohongshu about 100) and pinned posts (long) (Chapter 2, 2.2 “Limits of the places where notice codes are posted”)|—|
 |DD-5-7|The machine-readable Permitted Scope (`00_RIGHTS.json`) is written in W3C ODRL 2.2 (a Recommendation for expressing usage conditions; JSON-LD). AI training and inference are not standard ODRL actions, so they are expressed as the System's extension actions|A standard format other software can read is better than a custom format. ODRL has permissions, prohibitions, and duties, and actions for display, print, reproduce, distribute, and modify (W3C Recommendation, 2018-02-15)|Custom JSON (first draft)|
 
@@ -78,6 +67,7 @@ Conditions always included
 - Rights (copyright and portrait rights) do not transfer by purchase.
 - The Matching Data (C2PA signature, invisible watermark, identification number) must not be removed.
 - The default Permitted Scope of social media images is “equivalent to P1: viewing only, no reposting” (Chapter 3, 8.2 “Differences between streams”).
+- Short notation (the Visible Signature placeholder `{license}`; Chapter 4, 3.1 “Content and placeholders”): the IDs of the basic scope and the additional permissions joined with `+` (e.g., `P1`, `P2+A1+A2`; the same idea as the Creative Commons abbreviations (CC BY-NC)).
 
 ### 2.2 Explanation for non-technical people
 
@@ -88,12 +78,14 @@ Conditions always included
 
 - One Permitted Scope is chosen per sales output (delivery), and recorded in the work data (rights) and manifest (jp.nrsd.rights, the terms of use in cawg.metadata, cawg.training-mining) of all images in that folder (Chapter 3 “Signing”).
 - At Registration (Chapter 6 “Registration and Evidence Preservation”), the work data is looked up by the identification number read from the invisible watermark of the reposted image and compared with the chosen Permitted Scope to show “what it violates” (D-9-2“The Permitted Scope chosen at the time of sale is the criterion for judging what a repost infringes”).
+- Rules for the candidates (the candidates shown by Chapter 6, 4.2 “What is violated”): from the manner of the repost (paid distribution, being public; Chapter 6, 2.3) and the Permitted Scope, “publication outside the Permitted Scope (reposting)” and “commercial use (without separate permission)” are shown. “Removal of Matching Data” is shown only when the C2PA signature is absent on a route where C2PA remains (posting sites and Cloud confirmed to retain it in Chapter 3, 10.3 “Retention on posting sites and in the cloud”), or when the reposted image is the delivery output with only the C2PA signature removed (no format conversion or recompression; identical pixels). Most social media remove C2PA at posting, so the absence of a C2PA signature on social media is no clue of removal (Japanese law also excludes removal due to technical constraints; Legal Research L-1“Removal or alteration of rights management information (Japan)”).
 
 ### 2.4 Changes after sale
 
 - The Permitted Scope of images already distributed is not changed (the manifests and Enclosed Documents of the distributed images serve as evidence).
 - To broaden the scope, the Rights Holder gives the purchaser separate permission (outside the System). The System does not show sample text for such permission, because the conditions (consideration, scope, period) are decided per transaction and cannot be expressed as a model form (DD-5-1“The Permitted Scope is chosen as a basic scope plus additional permissions”).
 - The scope is not narrowed (that would unilaterally revoke permission the purchaser has already obtained).
+- When a version of the reference information is released with a “correction” mark (correction of a wrong contact point or wording; `corrections` in the manifest of Chapter 8, 3.4: the corrected file, the first version containing the error, the reason), the app automatically lists the past works affected (exported with versions from the one containing the error up to the one before the correction, using that wording file) and generates a corrected Enclosed Document (`00_RIGHTS_ERRATA.txt`: the difference between the original document and the correction, and the hashes of the original and the corrected version) in the output folder. The User only has to place it again where the buyers get it. The Permitted Scope is not changed (NRSD's request, 2026-09-30). If the output folder no longer exists, the User chooses a location (the default is the parent of the original location), and the new location is appended to the output locations in the work data (Chapter 3, 7.2).
 
 ## 3. Enclosed Document
 
@@ -107,6 +99,7 @@ Conditions always included
 
 - The format is TXT (UTF-8, no BOM, CRLF line endings). It opens on any OS and can be read in cloud previews (the “TXT” of D-9-5“Information covering all countries is published as a link destination, and text versions are enclosed only for the nationalities common among purchasers”).
 - Placed at the top level of the folder, with names beginning `00_` so they are listed before the images.
+- The three files play the same roles as the three layers of Creative Commons licenses (the legal text, the human-readable Deed, and the machine-readable ccREL): the country part is the legal text, `00_RIGHTS_README.txt` the human-readable summary, and `00_RIGHTS.json` (ODRL) the machine-readable form. The “Verify” page of the public page opens the ODRL into plain words in the same form as the CC Deed (three columns of “you can”, “conditions”, and “you cannot”, with marks) (Chapter 8, 3.3) (NRSD's request, 2026-10-01).
 
 ### 3.2 Outline of the common part
 
@@ -142,7 +135,9 @@ Conditions always included
 
 ### 3.4 Detecting rewriting
 
-- DD-5-4“The SHA-256 of the Enclosed Documents is recorded in the manifest”. When images and the Enclosed Document folder are put into the app's “Verify” screen (Chapter 10, G-13“Verify”), the SHA-256 of each file is compared with the list in the manifest, and matches, mismatches, files not in the list, and missing files are shown. Checking the images themselves follows Chapter 3, 10.2 “Checking by the User”.
+- DD-5-4“The SHA-256 of the Enclosed Documents is recorded in the manifest”. When images and the Enclosed Document folder are put into the app's “Verify” screen (Chapter 10, G-13“Verify”) (when only a folder is put in, the images inside it are used, and if there is not a single image, “No images” is shown), the SHA-256 of each file is compared with the list in the manifest, and matches, mismatches, files not in the list, and missing files are shown. Checking the images themselves follows Chapter 3, 10.2 “Checking by the User”.
+- The “Verify” page of the public page (Chapter 8, 3.3) can do the same comparison (match, mismatch, missing, extra) when images and the Enclosed Document folder are dropped onto it. It runs only within the browser and sends nothing anywhere. Purchasers and experts can check without the app (NRSD's request, 2026-10-01).
+- Distinguishing a corrected version (2.4): at the head of `00_RIGHTS_ERRATA.txt`, the SHA-256 of each original file being corrected and the SHA-256 of the corrected version are written, and a record signature (JWS detached, `x5c`; Chapter 1, 8.3) is attached as `00_RIGHTS_ERRATA.txt.sig`. For `00_RIGHTS_ERRATA*` files not in the manifest's list, the check in G-13 and on the public page shows “legitimate corrected version” if the personal root of the signature chain matches the root in the image's `x5chain` and the original hashes written match the list (supplemented by the issuer's later signed statement; the same idea as a CRL).
 
 ### 3.5 Legal position (handled in legal)
 
@@ -162,17 +157,17 @@ Conditions always included
 |A3 Permission for AI training and inference|Permission: the System's extension actions `nrsd:aiTraining`, `nrsd:aiInference`, `nrsd:dataMining`|
 |Conditions always included|Prohibition: the System's extension action `nrsd:commercialUse` (commercial), `distribute` (except within A1), removal of Matching Data (`nrsd:removeProvenance`). Unless A3 is chosen, the three AI actions are prohibited|
 
-- The namespace of the System's extension actions is a URI of NRSD's domain, and the definitions of the actions are placed on the public page.
-- The target (Asset) is the list of identification numbers, and the assigner is the Rights Holder's handle name and notice code.
+- The namespace of the System's extension actions is `https://c2pa4cosplayer.nrsd.jp/ns/odrl/` (prefix `nrsd:`), and the definitions of the actions are placed on the public page. Identifiers are written as HTTPS URIs, not as unregistered `urn:nrsd:` (the practice of the W3C's “Cool URIs” and ODRL's examples): a policy is `https://c2pa4cosplayer.nrsd.jp/id/policy/<batch number>`, a Rights Holder `.../id/notice/<notice code>`, and a target `.../id/work/<identification number>`.
+- The target (Asset) is the list of identification numbers, and the assigner is one person, the signer (Rights Holder), with handle name and notice code. The principal Rights Holder of an authorized person's output and the joint rights holder of an output with a joint-rights document are expressed with the System's extension fields `nrsd:grantor` and `nrsd:coRightsHolder` (ODRL Party; handle name and notice code). The same people are listed in the “Rights Holder” row of `00_RIGHTS_README.txt` (row 1 of 3.2).
 - Example (outline when P1 and A1 are chosen):
 
 ```
 {
   "@context": "http://www.w3.org/ns/odrl.jsonld",
   "@type": "Offer",
-  "uid": "urn:nrsd:policy:{batch number}",
-  "assigner": {"uid": "urn:nrsd:notice:{notice code}", "name": "{handle name}"},
-  "target": ["urn:nrsd:id:{identification number}", "..."],
+  "uid": "https://c2pa4cosplayer.nrsd.jp/id/policy/{batch number}",
+  "assigner": {"uid": "https://c2pa4cosplayer.nrsd.jp/id/notice/{notice code}", "name": "{handle name}"},
+  "target": ["https://c2pa4cosplayer.nrsd.jp/id/work/{identification number}", "..."],
   "permission": [
     {"action": "display"},
     {"action": "reproduce", "constraint": [{"leftOperand": "purpose", "operator": "eq", "rightOperand": "nrsd:personalDeviceStorage"}]},
@@ -231,9 +226,10 @@ Conditions always included
 |---|---|
 |Drafting|NRSD drafts the provisions from the outline in Japanese and translates them into English and Chinese (the translations are checked by NRSD)|
 |Review|Each country's wording is published only after review by experts versed in that country's law (I-08“Wording of Rights Documents”). Country parts are not made for countries not yet reviewed; they are shown only by the link to complete coverage|
-|Versions|There is a version of the reference information package (an integer starting from 1; Chapter 8, 3.4 “Reference information package”) and a version per wording (a separate field)|
+|Versions|There is a version of the reference information package (an integer starting from 1; Chapter 8, 3.4 “Reference information package”) and a version per wording. The wording files are `texts/common.<language>.md` and `texts/country.<country code>.<language>.md`, with `version`, `reviewed_by`, and `reviewed_at` (expert review; R-5-3-1) in the front matter (YAML), and the placeholders in the body are `{handle}`, `{account}`, `{scope}`, and `{url}` (the same rules as Chapter 4, 3.1)|
 |Distribution|Placed in the Public Repository and mirror as the reference information package (Chapter 8, 3.4 “Reference information package”), and obtained and verified by the app (Chapter 1, DD-1-6“NRSD signs reference information and places it in the Public Repository and the mirror”)|
 |Following law revisions|NRSD checks quarterly and raises the version if there is a revision (Chapter 1, 18.1 “NRSD's points of involvement and structure”)|
+|Pinning and reproduction|A work session pins the version of the reference information at the time it was started and copies of the wording files themselves, and does not change the version midway. The SHA-256 of each file used is recorded in the work data and the manifest. Versions referenced by work data are not deleted from the device and are included in backups. The Enclosed Document of any sale can be made again from G-12“Works” with the version of that time (NRSD's request, 2026-09-30)|
 
 ## 5. Countries
 
@@ -248,7 +244,7 @@ Conditions always included
 
 |Level|Use|Outline|
 |---|---|---|
-|Short|Profiles on X, Instagram, Xiaohongshu (100 to 160 characters)|“No reposting. My photos carry a C2PA signature, watermark and identification number. NRSD-XXXXX-XXXXX-XXXXX-XXXXX”|
+|Short|Profiles on X, Instagram, Xiaohongshu (100 to 160 characters)|The sentences of 6.3 “Drafts of the short text (three languages)” (within 100 characters including the notice code)|
 |Medium|When the profile has room|Short plus “How to check: \<public page URL>” and “The CR mark is a mark of a record of the photo's provenance (C2PA), not a label of AI generation”|
 |Long|Pinned posts, Patreon's About|The following items: where the rights lie; that unauthorized reposting and removal of Matching Data may be unlawful; the intention to make complaints and claim damages; the meaning of the identification number (a number in the image's record that can also be added after the file name; Design Plan D-7-7“Identification numbers are issued by the Client App and recorded automatically in the C2PA manifest. Whether they are appended to file names is chosen by the User when saving”) and how to check it; an explanation that the C2PA check mark is not a label of AI generation but a record of the photo's provenance; the notice code; how to check (public page URL; for obtaining, points to the README). A work registration number (a number of public registration) is a string the User can optionally write if they have one|
 
@@ -264,29 +260,27 @@ Conditions always included
 - Japanese: 「無断転載禁止。写真には C2PA署名・透かし・識別番号があります。{告知コード}」
 - English: "No reposting. My photos carry a C2PA signature, watermark and ID. {notice code}"
 - Chinese (Simplified): 「禁止转载。照片含 C2PA 签名、水印及识别编号。{notice code}」
-- Character count: the notice code is 28 characters, and the sentences above, including the notice code, are 62 characters in Japanese, 54 in Chinese, and 94 in English, all within 100 characters (within X's 160 characters, Instagram's 150 characters, and Xiaohongshu's roughly 100 characters; Chapter 2, 2.2 “Limits of the places where notice codes are posted”).
+- Character count: the notice code is 28 characters, and the sentences above, including the notice code, are 61 characters in Japanese, 53 in Chinese, and 94 in English (recounted on 2026-10-01), all within 100 characters (within X's 160 characters, Instagram's 150 characters, and Xiaohongshu's roughly 100 characters; Chapter 2, 2.2 “Limits of the places where notice codes are posted”).
 - These are drafts, and review is as in 3.7.
 
 ## 7. Mapping to Requirements
 
-|Requirement number|Requirement|Sections in this chapter|
-|---|---|---|
-|R-5-1-1|Non-technical people can understand the meaning and choose (the criterion is set in the basic design)|2 “Permitted Scope”|
-|R-5-1-2|Which Permitted Scope was chosen for which image is kept|2 “Permitted Scope”|
-|R-5-1-3|The handling of changes after sale is determined|2 “Permitted Scope”|
-|R-5-2-1|Contains the items of Design Plan 9.2|3 “Enclosed Document”|
-|R-5-2-2|Rewriting can be detected|3 “Enclosed Document”|
-|R-5-3-1|Who wrote it, who checked it, and which version it is can be known|4 “Management of the Wording”|
-|R-5-3-2|Updates can be delivered to Users (distribution of reference information; 1-3)|4 “Management of the Wording”|
-|R-5-4-1|There is a link for complete coverage and a way to decide which nationalities to enclose|5 “Countries”|
-|R-5-5-1|Sample Notice texts (three languages) can be shown|6 “Support for Notices”|
-|R-5-5-2|Information needed for matching Entitlement can be placed in the Notice|6 “Support for Notices”|
+|Requirement number (text in the Outline Design Document)|Sections in this chapter|
+|---|---|
+|R-5-1-1|2 “Permitted Scope”|
+|R-5-1-2|2 “Permitted Scope”|
+|R-5-1-3|2 “Permitted Scope”|
+|R-5-2-1|3 “Enclosed Document”|
+|R-5-2-2|3 “Enclosed Document”|
+|R-5-3-1|4 “Management of the Wording”|
+|R-5-3-2|4 “Management of the Wording”|
+|R-5-4-1|5 “Countries”|
+|R-5-5-1|6 “Support for Notices”|
+|R-5-5-2|6 “Support for Notices”|
 
 ## 8. Gaps Declared in This Chapter
 
-- The Enclosed Document may be removed in the course of giving and receiving (D-9-4“The Enclosed Document includes a sentence stating that the images must not be passed to others without permission. Its loss is not due to the fault of the Rights Holder”: in that case it is not the Rights Holder's fault). The terms of use in the image's manifest remain, but disappear once uploaded to social media.
-- Whether the Enclosed Document is formed as a contract differs by country and is not guaranteed (3.5).
-- Country parts cannot be made for countries not reviewed by experts (only the link to complete coverage).
+- The gaps of this chapter follow the table in Chapter 13, 4.1 “Gaps in the mechanism” (the rows whose chapter column is this chapter; with why they cannot be closed, the extent addressed, the remaining risks, and who bears them) (not reproduced in this chapter).
 
 ## 9. Corrections to the Outline Design Document
 

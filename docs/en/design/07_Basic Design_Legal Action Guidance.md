@@ -11,15 +11,10 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 ## Position of This Document
 
 - Details Chapter 7 of the Outline Design Document.
-- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown).
+- The decisions received are as in the following table (the decisions, items to be investigated, and open items of Design Plan Edition 2, and omissions found in the item breakdown). The texts of the Design Plan's decisions, items to be investigated, and open items are per Chapter 13, 1.2 “Mapping from Design Plan decisions to the Outline Design Document and basic design” and the destination table of the Outline Design Document (not reproduced in this chapter; only the numbers and the omissions found in the item breakdown are listed).
 
 |Number|Type|Content|
 |---|---|---|
-|D-2-6|Decision|Representation in legal proceedings and legal judgment are not performed|
-|D-9-7|Decision|The location of the server is taken to be ascertainable by investigation; if it cannot be ascertained, action is abandoned|
-|D-11-1|Decision|How to pursue infringement is not judged|
-|D-11-2|Decision|Contact points, sample texts, and references to the laws of each country are presented as guidance|
-|D-11-3|Decision|The laws of each country are accumulated as references within an “all countries” framework and added with each implementation|
 |A-12|Omission found in the item breakdown|Handling of joint action and priority targets in Section 8 of the Draft Project Proposal|
 |A-16|Omission found in the item breakdown|Unauthorized practice of law (handled by Legal)|
 |A-21|Omission found in the item breakdown|Complaints passing the User's personal information to the other party|
@@ -39,7 +34,7 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 |---|---|---|---|
 |DD-7-1|For each case, the guidance shows “where (contact point)”, “what (required items and evidence to attach)”, and “how to write (model text)”. It does not give legal opinions on individual cases (whether one can win, how much can be claimed)|The Ministry of Justice's guidelines show cases where selecting and displaying registered model forms does not constitute legal services, while individual legal opinions may constitute “appraisal” (L-10“Handling of legal business (unauthorized practice of law) (Japan)”)|Automatically composing text to fit the case (approaches individual legal services)|
 |DD-7-2|The guidance is free of charge, and there is no path leading to paid legal services of NRSD or third parties|A premise for not falling under “for the purpose of obtaining remuneration” (L-10“Handling of legal business (unauthorized practice of law) (Japan)”)|Introducing affiliated lawyers (referrals invite suspicion of a consideration relationship)|
-|DD-7-3|Contact points, model texts, and references to each country's law are maintained by NRSD as reference information (with record signatures and versions) and distributed to the app|Contact points change (R-7-1-2“Changes in contact points can be followed (distribution of reference information; 1-3)”). They can be fixed without waiting for an app update|Embedding them fixed in the app|
+|DD-7-3|Contact points, model texts, and references to each country's law are maintained by NRSD as reference information (with versions; protected by TUF metadata signed with NRSD's keys; Chapter 8, 3.4) and distributed to the app|Contact points change (R-7-1-2). They can be fixed without waiting for an app update|Embedding them fixed in the app|
 |DD-7-4|The one who sends a complaint is the User. The app shows the complaint text in a copyable form and only opens the contact point's form or address; it does not send on the User's behalf|Acting as an agent may constitute legal services (L-10“Handling of legal business (unauthorized practice of law) (Japan)”). Complaints require the User's name and contact details, which may be passed to the other party (L-8“Takedown request procedures (China)”, L-9“Takedown request procedures (US)”, A-21“Complaints passing the User's personal information to the other party”), and the User sends only after understanding this|Sending automatically from the app|
 |DD-7-5|The Japanese model text for requests follows the items of Form A of the “Information Distribution Platform Act Copyright Guidelines” (3rd edition, May 2025, Council for Reviewing Guidelines of the Information Distribution Platform Act). For providers designated as Large-Scale Specified Telecommunications Service Providers, each company's published request contact point is shown|Form A is the primary source that sets the items of the request form (the requester, identification of the infringing information, description of the work, the right claimed to be infringed, reasons, manner of infringement, method of confirmation) and the materials confirming that one is the copyright holder or the like. The second draft used items from a law firm's commentary|Using the items of a commentary article (second draft; not a primary source)|
 |DD-7-6|Before showing the model text, the liability for mistaken or false complaints (United States: 17 U.S.C. Section 512(f); China: Regulations on the Protection of the Right of Communication through Information Network, Article 24) and the other party's counter procedures are shown, and the User is asked whether they have checked the matching clues (Chapter 2, 4.4 “Clues when a person posing as the Rights Holder appears”)|Persons posing as the Rights Holder cannot be prevented (Design Plan D-5-3“Acts of a person posing as the Rights Holder (signing first, replacing signatures, and reverse complaints) are treated as impossible to prevent; clues for matching are presented. No judgment is made”). Mistaken complaints cause damage to the other party, and the complaining User may be liable for compensation. Responsibility for the matching judgment lies with the User (D-10-6“The judgment on matching and the responsibility for Registration are borne by the User who registered”)|Showing the model text without showing liability|
@@ -60,6 +55,7 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 |pixiv|Guide and inquiry form for procedures related to the Information Distribution Platform Act|Web form|A Japanese Large-Scale Specified Telecommunications Service Provider (designated August 31, 2026). It notifies its request contact point within 3 months of designation (Article 21). [To be confirmed] Check the URL of the contact point after notification in the Ministry's list and revise the reference information|policies.pixiv.net/ja/provider.html, the Ministry's press release (August 31, 2026)|
 |pixivFANBOX|“…” on the creator page, then Report, or the inquiry form|Web form|—|fanbox.pixiv.help (I want to report somebody)|
 |Fantia|The operating company's inquiry contact (fantia.co.jp/contact/). The site also reportedly has a reporting function|Web form|No dedicated form for reporting rights infringement could be confirmed in public information; the inquiry contact is shown|fantia.co.jp/contact/, fantia.jp/help/terms (terms)|
+|爱发电 (afdian.com; the “support service for China” of Design Plan 3.3.1)|E-mail to the contact in the site's footer, report@afdian.com (建议反馈)|E-mail|No dedicated form for reporting rights infringement could be confirmed in public information; the footer contact is shown (checked 2026-10-01; the same handling as Fantia)|The footer of afdian.com, guide.afdian.com|
 |Cloudflare (CDN)|DMCA form at abuse.cloudflare.com|Web form|Complaints by e-mail are in principle not processed|cloudflare.com/trust-hub/reporting-abuse|
 |Hosting providers (general)|The abuse contact obtained by RDAP (Chapter 6, 5 “Who and Where (④)”)|E-mail, form|—|Draft Project Proposal [23]|
 |Sites in China (general)|The contact of the operator of the ICP filing. The filing lookup is in the filing management system of the Ministry of Industry and Information Technology|—|The lookup is done by the User|Draft Project Proposal [22]|
@@ -67,12 +63,14 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 - For Fantia, no dedicated contact point for reporting rights infringement could be confirmed in public information, so the operating company's inquiry contact is shown.
 - Japan's Large-Scale Specified Telecommunications Service Providers (designated under Article 20 of the Information Distribution Platform Act) publish their request methods (Article 22: requests can be made by electronic means, without excessive burden, and the requester can know when it was received), and only when a request is made following that published method do they investigate without delay (Article 23) and notify the result of their decision within 7 days of the request (Article 25 and Article 16 of the Enforcement Regulations). Even for the same provider, requests sent through contact points that are not Article 22 methods, such as DMCA report forms, do not carry this duty of investigation and notification. The list of designations follows the Ministry's press releases and the “List of takedown request contact points and takedown criteria”. The reference information holds, in addition to whether each provider is designated, whether each contact point “is an Article 22 method contact point”, used for the deadline display of 6.3.
 - When a Japanese User makes a request under Japanese law, the Form A model text (3.3.3) is shown paired with the Article 22 method contact point (the “requests under Japanese law” column of the table above). The DMCA model text is shown paired with the report form under U.S. law.
+- The reference information's `platforms.json` has one row per posting site or provider, with `id`, `name` (three languages), `hosts` (the host name patterns for detection) and `paths` (the path patterns of posts and profiles; the detection of Chapter 1, 10.10 uses these two, and Chapter 2, 2.3 and Chapter 6, 2.1 use the same table), `profile_limit` (Chapter 2, 2.2), `c2pa_survives` (Chapter 3, 10.3), `windows` (two: `copyright` and `portrait`, each with `url`, `method` (form or e-mail), `jp_art22` (whether it is an Article 22 method), and `notes`), `sources`, and `checked_at`. The contact points are two: “copyright” and “portrait/privacy” (the one shown for the standing “subject” of 3.4). The URLs of the first edition's portrait/privacy contact points (X's “private information” report, Meta's “privacy” report, and the corresponding reports of TikTok, Weibo, Xiaohongshu, and pixiv) are checked on each company's official pages and entered when the reference information sources are made.
 
 ### 2.2 Keeping up to date
 
 - NRSD checks the URL and requirements of each contact point quarterly and raises the version of the reference information if they have changed (Chapter 1, 18.1 “NRSD's points of involvement and structure”).
 - Reports from Users who notice changes to contact points are received through the feedback channel (Chapter 10, 9 “Feedback Channel”).
 - Additions to the Ministry's designations (press releases) are included in the quarterly checks.
+- The RDAP bootstrap list is also included in the reference information, and the operator tool M-01“Reference Information” shows the difference from IANA's list and raises the version (Chapter 8, 3.4).
 
 ## 3. Model Texts
 
@@ -111,6 +109,7 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
   - Subject: “I have confirmed that the person in this photo is me. I have looked at the matching clues (identification number, signer of the C2PA signature, notice code, Original).”
   - Authorized agent: “I have confirmed that I have been entrusted by the copyright holder of this photo to make this complaint. I have looked at the matching clues (identification number, signer of the C2PA signature, notice code, Original).”
 - For cases whose matching result is “A match cannot be confirmed”, “Similar (visual fingerprint): possibly the same photo edited”, or “Watermark with someone else's number” (Chapter 6, 4.1 “How the match level is shown”), a warning is shown at the top of this screen.
+- Threat T-2 (spoofing): treating the true Rights Holder's post as a repost and complaining to the provider. Attacker: same as above. Target asset: the true Rights Holder's post. Remaining gap: complaints outside the System cannot be prevented
 
 ### 3.2.2 The other party's counter procedures
 
@@ -124,15 +123,15 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 
 ### 3.3 Contents of the model texts
 
-- The required items of each model text are set by law. The app fills in fields that can be filled from the case record and shows the fields the User enters as blanks. Draft texts are not distributed until reviewed by experts (the same as Chapter 5, 4 “Management of the Wording”).
-- Language (R-7-2-1“They can be shown per country and language”): the text to be sent is in the language of the contact point's country (English for the United States, Chinese for China, Japanese for Japan). Beside it, a reference translation in the screen language (Japanese, Chinese, English) is shown, with “What you send is the original. The translation is for checking the content”. Reference translations are also distributed as versioned reference information.
+- The model texts are the reference information's `templates/<kind>.<language>.md` (the kinds are `dmca`, `cn_notice`, `jp_form_a`, `hosting`, and `portrait`), with `kind`, `standing` (the standings that can use it), `venue_kinds`, `version`, and `reviewed_by` and `reviewed_at` (expert review) in the front matter (YAML), and the fields in the body written as `{field}` (the placeholder rules are the same as Chapter 4, 3.1). The required items of each model text are set by law. The app fills in fields that can be filled from the case record and shows the fields the User enters as blanks. Draft texts are not distributed until reviewed by experts (the same as Chapter 5, 4 “Management of the Wording”).
+- Language (R-7-2-1): the text to be sent is in the language of the contact point's country (English for the United States, Chinese for China, Japanese for Japan). Beside it, a reference translation in the screen language (Japanese, Chinese, English) is shown, with “What you send is the original. The translation is for checking the content”. Reference translations are also distributed as versioned reference information.
 
 #### 3.3.1 United States (DMCA notice; 17 U.S.C. §512(c)(3)(A))
 
 |Item required by law|Field of the model text|Filled by|
 |---|---|---|
 |(i) Signature of the owner or a person authorized (electronic is acceptable)|Signature (entering the name)|User|
-|(ii) Identification of the copyrighted work claimed to have been infringed (a representative list is acceptable for multiple works at one site)|Description of the work, identification number, signer of the C2PA signature, URL of the original post|App (from work data)|
+|(ii) Identification of the copyrighted work claimed to have been infringed (a representative list is acceptable for multiple works at one site)|Description of the work, identification number, signer of the C2PA signature, URL of the original post|App (from work data; the URL of the original post is filled from the location of the original post the User recorded in G-12“Works” (`published` of Chapter 3, 7.2), and the User enters it if there is none. The System does not post, so it does not exist at export)|
 |(iii) Identification of the infringing material and information sufficient for the provider to locate it|URL of the repost, URL of the image|App (from the case record)|
 |(iv) The complainant's contact information (address, phone, e-mail)|Contact information|User|
 |(v) A statement of good faith belief that the use is not authorized by the owner or the like|Standard text|App (standard)|
@@ -175,7 +174,7 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 |2 Requester's name|Name|User|
 |3 Requester's contact information (phone number, e-mail)|Contact information|User|
 |4 Information for identifying the infringing information (URL, file name, other features)|URL of the repost, URL of the image, size and format of the image, date/time of the post (Chapter 6, 2.3 “Input fields for evidence that should be kept”)|App (from the case record)|
-|5 Description of the work (with a copy attached)|Description of the work, identification number, shooting date, URL of the original post|App (from work data) and User|
+|5 Description of the work (with a copy attached)|Description of the work, identification number, shooting date, URL of the original post|App (from work data; the shooting date is the shooting date/time of the work data, and the URL of the original post is `published` (Chapter 3, 7.2). The User enters them if there are none) and User|
 |6 The right claimed to be infringed|Right of public transmission (including the right of making transmittable; Copyright Act Article 23), right of reproduction (Article 21)|Chosen by the User (the app shows the right of public transmission by default)|
 |7 Reasons the copyright or the like is claimed to be infringed|That one holds the right, has not given permission to the sender, and has not assigned or entrusted the authority to permit to anyone (the statement of Guidelines IV 4(3))|App (standard) and User|
 |8 Manner of copyright infringement|That it is “a file copying all or part of the work as is” (Guidelines II 4(1)b). If reduced or recompressed, as manner (2), write the method of comparison (PDQ distance, reading the invisible watermark)|App (from the matching result)|
@@ -201,6 +200,14 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
   - 「上記内容のうち、4・5・9 の項目については証拠書類を添付いたします。また、上記内容が、事実に相違ないことを証します。」
 - The rights of the subject (cosplayer) concerning their portrait are outside the scope of the Guidelines (copyrights and the like), and are handled by requests of the “privacy / portrait” kind at each provider's contact point. The model text is shown separately from copyright requests (L-5“Portrait rights and publicity rights (Japan)”).
 
+#### 3.3.4 Portrait and privacy requests (the common items of each provider's report form)
+
+- To match the items each company's form asks for, the fields are: the target URL (from the case record), that the person depicted is the requester (the confirmation text of the standing “subject”), that the requester has not consented to publication, the measure sought (removal), and the requester's contact details (entered by the User; not saved). The legal basis of each country is attached per country (Japan: portrait rights (L-5); China: Civil Code Article 1019 (L-6); the United States: each state's right of publicity). Draft texts are not distributed until reviewed by experts.
+
+#### 3.3.5 Abuse notices to hosting providers and CDNs
+
+- The text sent to the abuse contact obtained by RDAP writes the six items of the DMCA notice (3.3.1) in English, with reference translations in Japanese and Chinese (most providers accept the DMCA format; Cloudflare's DMCA form has the same items).
+
 ### 3.4 Standing of the complainant
 
 - Users include the copyright holder of the photo (the photographer, etc.), the subject (cosplayer), and persons authorized by either (Design Plan D-3-1“The Users shall be the Rights Holders of the images (cosplayers and photographers) and those authorized by either of them”). Copyright requests can be made by copyright holders and the like, and the Copyright Guidelines, 3rd edition, do not cover requests from third parties (note to II 1 and III 1 of the Guidelines). If a subject files with the copyright model text claiming “the copyright I hold”, it is a statement contrary to fact and leads directly to liability for mistaken complaints (3.2.1).
@@ -209,7 +216,7 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 |Standing|Model text and contact point shown|What is shown as a caution|
 |---|---|---|
 |Copyright holder (photographer, etc.; including those who acquired the copyright)|The copyright model texts (3.3.1 to 3.3.3) and copyright contact points|—|
-|Subject (holder of rights concerning the portrait)|Portrait/privacy requests (the “privacy / portrait” kind at each provider's contact point; end of 3.3.3)|The copyright model text cannot be used. If the photo's copyright holder is someone else, the copyright request is made by that person, or by someone entrusted by that person|
+|Subject (holder of rights concerning the portrait)|Portrait/privacy requests (the “privacy / portrait” kind at each provider's contact point; 3.3.4)|The copyright model text cannot be used. If the photo's copyright holder is someone else, the copyright request is made by that person, or by someone entrusted by that person|
 |Authorized agent (entrusted by the copyright holder to make the complaint)|The agent form of the copyright model text. For the DMCA, the sentence “authorized to act on behalf of the owner” ((vi) of 3.3.1); for Japan's Form A, the requester is the agent, and materials showing the relation to the rights holder are attached|Materials showing entrustment (a letter of authorization, etc.) may be required. Making complaints on behalf of others for remuneration may constitute handling legal services in some countries (L-10“Handling of legal business (unauthorized practice of law) (Japan)”)|
 
 - For one photo, the photographer can make a copyright request and the subject a portrait request, each separately from their own app. The chosen standing is kept in the “complaint made” record (Chapter 6, 6.1 “Status records”).
@@ -217,11 +224,11 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 
 ## 4. References to Each Country's Law
 
-- The reference information contains a table of “countries and areas of law” (the same structure as the list in the Legal Research) with a summary and sources (URLs) per country.
+- The reference information's `laws.json` contains a table of “countries and areas of law” (the same structure as the list in the Legal Research; a row has `country`, `area`, `L` (the Legal Research number), `summary` (three languages), `url`, `official` (whether an official source), and `checked_at`) with a summary and sources (URLs) per country.
 - The first edition covers Japan, China, and the United States. Other countries are added to the reference information in the order NRSD adds them to the legal documents (accumulated under the “all” frame; D-11-3“The laws of each country are accumulated as references within an “all countries” framework and added with each implementation”).
 - The same content is also placed at `/rights/` on the public page (the same as the link for complete coverage in Chapter 5).
 - The first edition's reference items include Japan's requests and orders for disclosure of sender information (Information Distribution Platform Act Articles 5 and 8; the entry point to identifying the Reposter; Legal Research L-33“Disclosure of sender information (Japan)”) and remedies for copyright infringement (injunction, damages, criminal complaint; Legal Research L-32“Copyright infringement and remedies (Japan, China, US)”). All are procedures of courts and investigative authorities; the System does not perform them, and shows their names, links to official guides, and export as preparation for consulting experts (Chapter 6, 8 “List and Means”).
-- Authorities' contact points: Design Plan 11.1 lists the authorities in charge of the information among contact points. For consultation on criminal complaints (in Japan, the National Police Agency's “Consultation contact for cyber incidents” https://www.npa.go.jp/bureau/cyber/soudan.html) and China's administrative contact points for copyright (the National Copyright Administration's “投诉指南” https://www.ncac.gov.cn/bsfw/tszn/ and “在线举报” https://www.ncac.gov.cn/bsfw/zxjb/; 在线举报 accepts reports of illegal acts of infringement and piracy), only names and links are placed in the per-country references (the pages were confirmed to open on 2026-09-30). The Illegal and Harmful Information Reporting Center of the Cyberspace Administration of China (12377.cn) is a contact point for reports of illegal and harmful information in general, and is not listed as a contact point for copyright infringement. For the United States, contact points for criminal procedures for copyright infringement are added when the reference information is made.
+- Authorities' contact points: Design Plan 11.1 lists the authorities in charge of the information among contact points. For consultation on criminal complaints (in Japan, the National Police Agency's “Consultation contact for cyber incidents” https://www.npa.go.jp/bureau/cyber/soudan.html) and China's administrative contact points for copyright (the National Copyright Administration's “投诉指南” https://www.ncac.gov.cn/bsfw/tszn/ and “在线举报” https://www.ncac.gov.cn/bsfw/zxjb/; 在线举报 accepts reports of illegal acts of infringement and piracy), only names and links are placed in the per-country references (the pages were confirmed to open on 2026-09-30). The Illegal and Harmful Information Reporting Center of the Cyberspace Administration of China (12377.cn) is a contact point for reports of illegal and harmful information in general, and is not listed as a contact point for copyright infringement. For the United States, only the name and link of “Report IP Theft” of the National Intellectual Property Rights Coordination Center (IPR Center) (https://www.iprcenter.gov/referral/; the government reporting point where the FBI's intellectual property unit is placed) are placed (the page was confirmed to open on 2026-10-01).
 
 ## 5. Identifying the Operator
 
@@ -230,7 +237,7 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 |1|Show the results of Chapter 6, 5 “Who and Where (④)” (IP, ASN, country, domain registration information, contact points)|
 |2|For a CDN: go to the CDN provider's abuse contact (Cloudflare in 2.1). The CDN may forward to the provider of the real server|
 |3|Chinese sites: find the ICP filing number at the bottom of the page and show the procedure for looking up the operator in the filing management system (done by the User)|
-|4|If unknown: as in D-9-7“The location of the server is taken to be ascertainable by investigation; if it cannot be ascertained, action is abandoned”, show that action is abandoned for reposts whose location cannot be found even after investigation (declared as a gap in Chapter 13)|
+|4|If unknown: as in D-9-7“The location of the server is taken to be ascertainable by investigation; if it cannot be ascertained, action is abandoned”, show that action is abandoned for reposts whose location cannot be found even after investigation (declared in Chapter 13, 4.1 “Gaps in the mechanism”)|
 
 ## 6. Flow of Complaints
 
@@ -261,6 +268,8 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 |China|The provider forwards the counter statement to the rights holder and informs them that they may complain or sue. If the rights holder does not notify the provider within a reasonable period after the forwarded statement reaches them (15 days for e-commerce platforms) that they have complained or sued, the provider ends the measures (the removed images return). Article 17 of the Regulations on the Protection of the Right of Communication through Information Network says that a provider receiving a written counter explanation must immediately restore the removed work (disconnected links may be restored). The relation between the Regulations and the Civil Code requires confirmation by experts|Civil Code Article 1196, E-Commerce Law Article 43, Regulations Articles 15 to 17 (Legal Research L-8“Takedown request procedures (China)”)|
 
 - The display of procedural deadlines in Chapter 6, 6.1 “Status records” (the 7-day notification by Japan's Large-Scale Specified Telecommunications Service Providers, etc.) follows this table.
+- The table of deadlines is distributed as the reference information's `deadlines.json` (a row has `id`, `country`, `venue_kind`, `trigger` (`filed`, `counter_notice`, or `response`), `days`, `unit` (`calendar` or `business`), `basis` (the legal basis), and `text` (three languages)). Business days (the 10 to 14 business days in the United States) are counted excluding weekends and holidays from the reference information's `holidays.json` (holidays per country: the list of federal holidays for the United States (published by OPM), “national holidays” for Japan, and the State Council's holiday notice for China; updated by NRSD every year).
+- Deadlines are held as iCalendar (RFC 5545) VTODO (DUE = the deadline; the UID is `<case number>-<deadline number>@c2pa4cosplayer.nrsd.jp`; PRODID is `-//NRSD//c2pa4cosplayer <version>//JA`) with VALARM (TRIGGER relative to DUE, 3 days before and on the day; initial values), and can be exported per case as `.ics` (it goes into the User's calendar). The app itself also notifies at the same VALARM times through G-21“Notifications” and OS notifications (Chapter 10, 8), and shows at the next start those missed while it was not running. The case screen always shows “N days to the deadline” (NRSD's request, 2026-10-01).
 
 ## 7. Where the Line Is Drawn
 
@@ -270,26 +279,22 @@ Word version: [07_Basic Design_Legal Action Guidance.docx](07_Basic%20Design_Leg
 
 ## 8. Mapping to Requirements
 
-|Requirement number|Requirement|Sections in this chapter|
-|---|---|---|
-|R-7-1-1|The contact point for each posting site and provider is known|2 “Contact Points”|
-|R-7-1-2|Can keep up with changes in contact points (distribution of reference information; 1-3)|2 “Contact Points”|
-|R-7-2-1|Can be shown per country and language|3 “Model Texts”|
-|R-7-2-2|Users can know in advance that their personal information may be passed to the other party in a complaint|3.2 “Guidance that personal information is passed to the other party”, 3.2.1 “Liability for mistaken or false complaints”|
-|R-7-3-1|References to each country's law are accumulated under the “all” frame and can be delivered to Users|4 “References to Each Country's Law”|
-|R-7-4-1|The procedure can be shown|5 “Identifying the Operator”|
-|R-7-4-2|It is shown that action is abandoned when the location cannot be found even after investigation (declared as a gap in Chapter 13)|5 “Identifying the Operator”|
-|R-7-5-1|The flow of complaining with the evidence package, Permitted Scope, and Enclosed Document attached is clear|6 “Flow of Complaints”|
-|R-7-5-2|The approach of joint action and prioritizing commercial use is shown|6 “Flow of Complaints”|
-|R-7-6-1|That it is not legal advice, and the sources of information, are stated explicitly|7 “Where the Line Is Drawn”|
+|Requirement number (text in the Outline Design Document)|Sections in this chapter|
+|---|---|
+|R-7-1-1|2 “Contact Points”|
+|R-7-1-2|2 “Contact Points”|
+|R-7-2-1|3 “Model Texts”|
+|R-7-2-2|3.2 “Guidance that personal information is passed to the other party”, 3.2.1 “Liability for mistaken or false complaints”|
+|R-7-3-1|4 “References to Each Country's Law”|
+|R-7-4-1|5 “Identifying the Operator”|
+|R-7-4-2|5 “Identifying the Operator”|
+|R-7-5-1|6 “Flow of Complaints”|
+|R-7-5-2|6 “Flow of Complaints”|
+|R-7-6-1|7 “Where the Line Is Drawn”|
 
 ## 9. Gaps Declared in This Chapter
 
-- Reposts whose location is unknown are not dealt with (D-9-7“The location of the server is taken to be ascertainable by investigation; if it cannot be ascertained, action is abandoned”).
-- Complaints require the User's name and contact details, which may be passed to the other party. The System cannot prevent this (appointing an agent is the User's decision).
-- Contact point information is checked quarterly, so its reflection may lag behind changes.
-- Even after checking the matching clues, the User may mistakenly complain about someone else's photo, and this cannot be prevented. The System only shows the liability and asks for confirmation (3.2.1).
-- The judgment that this does not constitute unauthorized practice of law is NRSD's interpretation based on the Ministry of Justice's guidelines and requires confirmation by experts (L-10“Handling of legal business (unauthorized practice of law) (Japan)”).
+- The gaps of this chapter follow the table in Chapter 13, 4.1 “Gaps in the mechanism” (the rows whose chapter column is this chapter; with why they cannot be closed, the extent addressed, the remaining risks, and who bears them) (not reproduced in this chapter).
 
 ## 10. Corrections to the Outline Design Document and Other Chapters
 
